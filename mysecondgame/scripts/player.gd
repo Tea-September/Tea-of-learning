@@ -4,6 +4,7 @@ extends CharacterBody2D
 const SPEED = 130.0
 const JUMP_VELOCITY = -300.0
 
+@export var Number : int = 0;
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -21,5 +22,5 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-
+	
 	move_and_slide()
