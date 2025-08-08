@@ -1,8 +1,9 @@
 extends Area2D
 
+@onready var animation: AnimationPlayer = $AnimationPlayer
+
 func _on_body_entered(body: Node2D) -> void:
 	# 分数 + 1
 	body.Score += 1;
-	print(body.Score)
-	# 销毁金币节点
-	queue_free()
+	# 播放金币音乐，并销毁节点
+	animation.play("pickup")

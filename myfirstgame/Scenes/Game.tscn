@@ -9,12 +9,14 @@
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uugnx"]
 distance = -4.17
 
-[node name="Node2D" type="Node2D" node_paths=PackedStringArray("spawn_timer", "score_label", "game_over_label")]
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("spawn_timer", "prompt_timer", "prompt_label", "score_label", "game_over_label")]
 y_sort_enabled = true
 script = ExtResource("1_kldst")
 slime_scene = ExtResource("3_acmq7")
-spawn_timer = NodePath("Timer")
-score_label = NodePath("CanvasLayer/Label")
+spawn_timer = NodePath("Timer1")
+prompt_timer = NodePath("Timer2")
+prompt_label = NodePath("CanvasLayer/Prompt")
+score_label = NodePath("CanvasLayer/Label1")
 game_over_label = NodePath("CanvasLayer/Game Over Label")
 
 [node name="Background 1" type="Sprite2D" parent="."]
@@ -70,13 +72,26 @@ metadata/_edit_lock_ = true
 shape = SubResource("WorldBoundaryShape2D_uugnx")
 metadata/_edit_lock_ = true
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer1" type="Timer" parent="."]
 wait_time = 3.0
+autostart = true
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 5.0
 autostart = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Label" type="Label" parent="CanvasLayer"]
+[node name="Prompt" type="Label" parent="CanvasLayer"]
+offset_left = 178.0
+offset_top = 265.0
+offset_right = 767.0
+offset_bottom = 406.0
+theme_override_font_sizes/font_size = 32
+text = "W, A, S, D move up and down, left and right, J fires, and the space rolls and accelerates"
+autowrap_mode = 2
+
+[node name="Label1" type="Label" parent="CanvasLayer"]
 offset_left = 31.0
 offset_top = 29.0
 offset_right = 213.0
@@ -125,4 +140,5 @@ theme_override_font_sizes/font_size = 60
 text = "Game By Tea"
 horizontal_alignment = 1
 
-[connection signal="timeout" from="Timer" to="." method="_spawn_slime"]
+[connection signal="timeout" from="Timer1" to="." method="_spawn_slime"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]

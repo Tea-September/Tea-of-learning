@@ -5,7 +5,7 @@ const SPEED = 130.0
 # 跳跃速度
 const JUMP_VELOCITY = -300.0
 # 分数
-@export var Score : int;
+@export var Score : int = 0;
 # 动画
 @onready var animated: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -32,6 +32,7 @@ func _physics_process(delta: float) -> void:
 		
 	# 跳跃，在地板上时
 	if Input.is_action_just_pressed("Jump") and is_on_floor():
+		$JumpMusic.play()
 		velocity.y = JUMP_VELOCITY
 		
 	velocity.x = direction * SPEED

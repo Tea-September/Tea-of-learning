@@ -4,8 +4,12 @@ extends Node2D
 @export var slime_scene : PackedScene
 # 设置史莱姆生成时间的间隔
 @export var spawn_timer : Timer
+# 键位提示时间
+@export var prompt_timer : Timer
 # 分数
 @export var score : int
+# 键位提示
+@export var prompt_label : Label
 # 分数显示
 @export var score_label : Label
 # 游戏结束显示
@@ -35,3 +39,8 @@ func _spawn_slime() -> void:
 func show_game_over():
 	# 修改游戏结束为显示
 	game_over_label.visible = true
+
+
+func _on_timer_2_timeout() -> void:
+	# 键位提示结束显示
+	prompt_label.visible = false
