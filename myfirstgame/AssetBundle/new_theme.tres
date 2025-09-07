@@ -1,0 +1,26 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cei2cyt0yotjm"]
+
+[ext_resource type="Texture2D" uid="uid://b7ohv4fdggarc" path="res://AssetBundle/Sprite sheet for Basic Pack.png" id="1_cdedx"]
+[ext_resource type="FontFile" uid="uid://h1btahupb030" path="res://AssetBundle/Uranus_Pixel_11Px.ttf" id="2_yxnmq"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yxnmq"]
+texture = ExtResource("1_cdedx")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(275, 212, 90, 25)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c51ac"]
+texture = ExtResource("1_cdedx")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(275, 178, 90, 27)
+
+[resource]
+Button/styles/hover = SubResource("StyleBoxTexture_yxnmq")
+Button/styles/normal = SubResource("StyleBoxTexture_c51ac")
+Button/styles/pressed = SubResource("StyleBoxTexture_yxnmq")
+Label/fonts/font = ExtResource("2_yxnmq")

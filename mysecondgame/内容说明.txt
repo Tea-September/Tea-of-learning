@@ -1,4 +1,4 @@
-本游戏来自跟着Brackeys学习，如何用Godot制作你的第一款游戏，又经过本人的修改学习后得出：
+本游戏来自跟着Brackeys学习，如何用Godot制作你的第一款游戏，又经过本人的修改学习后得出，视频B站可搜到：
 视频：
 https://www.youtube.com/watch?v=LOhfqjmasi0
 资产：
