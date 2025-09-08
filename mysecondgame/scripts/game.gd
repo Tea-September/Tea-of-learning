@@ -11,21 +11,3 @@ func _process(delta: float) -> void:
 
 func show_game_over():
 	game_over_label.visible = true
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
