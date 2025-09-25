@@ -1,0 +1,118 @@
+[33mcommit f6be016bdd1126493099b8b148fe38b1b8d1aa7c[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Tea-September <2921676100@qq.com>
+Date:   Thu Sep 11 21:50:24 2025 +0800
+
+    Learn TileMapLayer
+    
+    2025/9/11 对TileMapLayer进行深度学习
+
+[33mcommit d9788a568acfe67bc02ff53fd6c57bee63231394[m
+Author: Tea-September <2921676100@qq.com>
+Date:   Wed Sep 10 22:49:50 2025 +0800
+
+    Production Third Game
+    
+    2025/9/10 Camera2D进阶学习
+
+[33mcommit 897caaf277df5802b23006e4dcaf248f44bd4fd0[m
+Author: Tea-September <2921676100@qq.com>
+Date:   Tue Sep 9 22:45:33 2025 +0800
+
+    Add Game
+    
+    2025/9/9 学习制作
+
+[33mcommit 848e2a48f6eb35dbabb06cae55bebbab1d4b12f2[m
+Author: Tea-September <2921676100@qq.com>
+Date:   Mon Sep 8 22:20:10 2025 +0800
+
+    优化存储
+    
+    2025/9/8 减少内存占用
+
+[33mcommit edd848f6c45c3a198cc414daa84a1114b2b83145[m
+Author: Tea-September <2921676100@qq.com>
+Date:   Mon Sep 8 22:03:12 2025 +0800
+
+    Add UI
+    
+    2025/9/8 新增UI和修改可运行文件
+
+[33mcommit 4b810b06d397a15acd024ac467fa7d858ff9c889[m
+Author: Tea-September <2921676100@qq.com>
+Date:   Sun Sep 7 21:12:45 2025 +0800
+
+    Add UI
+    
+    2025/9/7 简略UI制作
+
+[33mcommit 304f4498e5796be71d6b6a0481fbc50ecb5541a5[m
+Author: Tea-September <2921676100@qq.com>
+Date:   Thu Sep 4 23:11:32 2025 +0800
+
+    学习
+    
+    2025/9/4学习制作
+
+[33mcommit aab4f2e52ce4a4cf3e40f5a0e220d7110ebcf0e5[m
+Author: Tea-September <2921676100@qq.com>
+Date:   Fri Aug 8 23:33:36 2025 +0800
+
+    学习
+    
+    2025/8/8学习制作
+
+[33mcommit bf16b122cc62f54c8ce9ed65e29228a4be2598b9[m
+Author: Tea-September <2921676100@qq.com>
+Date:   Thu Aug 7 23:27:11 2025 +0800
+
+    学习
+    
+    2025/8/7学习制作
+
+[33mcommit d4413f1bd1477f4456e48a6511099737e114f335[m
+Author: Tea-September <2921676100@qq.com>
+Date:   Wed Aug 6 23:37:29 2025 +0800
+
+    学习
+    
+    2025/8/6学习制作
+
+[33mcommit 6aeb26202f9fd7efe194abceb4646c60f67b95b1[m
+Author: Tea-September <2921676100@qq.com>
+Date:   Tue Aug 5 23:40:01 2025 +0800
+
+    Update game.tscn
+
+[33mcommit d919eeda02e98255a04b74d46eabf51fea020445[m
+Merge: ed1777c 0e09b86
+Author: Tea-September <2921676100@qq.com>
+Date:   Tue Aug 5 17:10:58 2025 +0800
+
+    Merge branch 'main' of https://github.com/Tea-September/Tea-of-learning
+
+[33mcommit ed1777c7a84903d67966ae32fd6550128e1f9fbc[m
+Author: Tea-September <2921676100@qq.com>
+Date:   Tue Aug 5 17:10:37 2025 +0800
+
+    Create 内容说明.txt
+
+[33mcommit 0e09b86ef25b351200952760b66010fc0f01b060[m
+Author: 秋茗 <2921676100@qq.com>
+Date:   Tue Aug 5 17:00:17 2025 +0800
+
+    Create README.md
+
+[33mcommit 2d9d0a2891a28fd2c7df8f00dcb1b6837b1cb79b[m
+Author: Tea-September <2921676100@qq.com>
+Date:   Tue Aug 5 16:30:26 2025 +0800
+
+    del
+    
+    删除不需要文件，更改可运行游戏所在目录的文件夹名
+
+[33mcommit dde5e27b53941eff8dae7a75e44167a1b492c86c[m
+Author: Tea-September <2921676100@qq.com>
+Date:   Tue Aug 5 16:15:56 2025 +0800
+
+    Initial commit
