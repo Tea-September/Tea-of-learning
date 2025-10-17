@@ -15,4 +15,3 @@ func _ready() -> void:
 	camera_2d.limit_left = used.position.x * tile_size.x
 	# 将相机立即设置到设定位置
 	camera_2d.reset_smoothing()
-	pass
