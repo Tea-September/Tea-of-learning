@@ -14,11 +14,14 @@ enum State{
 	LANDING,
 	# 滑墙
 	SLIDINGWALL,
+	# 蹬墙跳
+	WALLJUMP,
 }
 
 # 位于地面
 const GROUND_STATES = [State.IDLE, State.RUNNING, State.LANDING]
-var default_gravity := ProjectSettings.get("physics/2d/default_gravity") as float
+const WALL_JUMP_VELOCITY = Vector2(600, -400)
+var default_gravity = ProjectSettings.get("physics/2d/default_gravity") as float
 # 移动速度
 @export var move_speed: float
 # 跳跃高度
@@ -38,6 +41,9 @@ var default_gravity := ProjectSettings.get("physics/2d/default_gravity") as floa
 var input_jump: bool = false
 # 状态变化后的第一帧
 var is_first_tick: bool = false
+# 
+var is_left_wall: bool = false
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	# 空中按下跳跃键，prepare_jump_timer计时器启动，0.2秒内落地，可直接起跳
@@ -63,7 +69,10 @@ func tick_physics(state: State, delta: float) -> void:
 			move(default_gravity, delta)
 		State.SLIDINGWALL:
 			# 滑墙时，下坠速度除三
-			move(default_gravity / 3, delta)
+			move(default_gravity / 5, delta)
+		State.WALLJUMP:
+			# 跳跃第一帧无重力
+			move(0.0 if is_first_tick else default_gravity, delta)
 	# 结束第一帧
 	is_first_tick = false
 
@@ -73,7 +82,7 @@ func move(gravity: float, delta: float) -> void:
 	# 获取左右的输入
 	var direction = Input.get_axis("Left", "Right")
 	# 空中和陆地上的加速度
-	var add_speed: float = 0.2 if is_on_floor() else 0.03
+	var add_speed: float = 0.2 if is_on_floor() else 0.1
 	# 左右移动，0.2秒后加速到设置速度，空中为0.03秒
 	velocity.x = move_toward(velocity.x, direction * move_speed, move_speed / add_speed * delta)
 	# 镜像翻转
@@ -96,7 +105,6 @@ func get_next_state(state: State) -> State:
 	# 跳跃，按空格松下后，再次按空格，才能跳跃
 	if not input_jump:
 		if judgment_jump1 or judgment_jump2:
-			velocity.y = jump_speed
 			return State.JUMP
 	input_jump = Input.is_action_pressed("Jump")
 	# 判断是否站立不动
@@ -132,11 +140,23 @@ func get_next_state(state: State) -> State:
 			if not animated.is_playing():
 				return State.IDLE
 		State.SLIDINGWALL:
+			# 蹬墙跳
+			if prepare_jump_timer.time_left > 0:
+				if is_left_wall:
+					if Input.is_action_pressed("Right"):
+						return State.WALLJUMP
+				else:
+					if Input.is_action_pressed("Left"):
+						return State.WALLJUMP
 			# 在地面时，状态变化为LANDING
 			if is_on_floor():
 				return State.LANDING
 			# 不贴墙或者没有按住左右键时，状态变化为FALL
 			if not is_on_wall() or not (Input.is_action_pressed("Left") or Input.is_action_pressed("Right")):
+				return State.FALL
+		State.WALLJUMP:
+			# 下坠时，状态变化为FALL
+			if velocity.y >= 0:
 				return State.FALL
 	return state
 
@@ -152,6 +172,7 @@ func transition_state(from: State, to: State) -> void:
 		State.JUMP:
 			coyote_timer.stop()
 			prepare_jump_timer.stop()
+			velocity.y = jump_speed
 			animated.play("Jump")
 		State.FALL:
 			animated.play("Fall")
@@ -161,7 +182,17 @@ func transition_state(from: State, to: State) -> void:
 		State.LANDING:
 			animated.play("Landing")
 		State.SLIDINGWALL:
+			is_left_wall = Input.is_action_pressed("Left")
 			animated.play("SlidingWall")
+		State.WALLJUMP:
+			prepare_jump_timer.stop()
+			velocity = WALL_JUMP_VELOCITY
+			velocity.x *= get_wall_normal().x
+			animated.play("Jump")
 				
+	if to == State.WALLJUMP:
+		Engine.time_scale = 0.7
+	if from == State.WALLJUMP:
+		Engine.time_scale = 1.0
 	# 设置为第一帧
 	is_first_tick = true

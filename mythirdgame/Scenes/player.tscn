@@ -266,7 +266,7 @@ metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Graphics"]
 sprite_frames = SubResource("SpriteFrames_8erm5")
-animation = &"Fall"
+animation = &"SlidingWall"
 autoplay = "Stand"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
