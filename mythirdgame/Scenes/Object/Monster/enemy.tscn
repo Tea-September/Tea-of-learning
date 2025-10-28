@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3qssqg0bgv4p"]
+
+[ext_resource type="Script" uid="uid://d2jkx5sbhuxip" path="res://Scripts/Object/Monster/enemy.gd" id="1_ghaa6"]
+[ext_resource type="Script" uid="uid://c7ingndjv0lwx" path="res://Scripts/Config/StateMachine.gd" id="6_1dp5w"]
+
+[node name="enemy" type="CharacterBody2D"]
+collision_layer = 4
+script = ExtResource("1_ghaa6")
+
+[node name="Graphic" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Graphic"]
+position = Vector2(2, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 3)
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("6_1dp5w")
+metadata/_custom_type_script = "uid://c7ingndjv0lwx"
