@@ -206,7 +206,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7sjl0")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack1",
 "speed": 10.0
 }, {
@@ -217,7 +217,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_okqo8")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack2",
 "speed": 10.0
 }, {
@@ -246,7 +246,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3yo4b")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack3",
 "speed": 10.0
 }, {
@@ -395,7 +395,7 @@ metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Graphics"]
 sprite_frames = SubResource("SpriteFrames_8erm5")
-animation = &"Attack2"
+animation = &"Attack3"
 autoplay = "Stand"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

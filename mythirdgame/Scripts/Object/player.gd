@@ -1,3 +1,4 @@
+class_name player
 extends CharacterBody2D
 
 # 玩家状态
@@ -48,6 +49,7 @@ const WALL_JUMP_VELOCITY = Vector2(600, -400)
 @onready var up_sliding_wall: RayCast2D = $Graphics/SlidingWall/UpSlidingWall
 @onready var down_sliding_wall: RayCast2D = $Graphics/SlidingWall/DownSlidingWall
 
+# 重力
 var default_gravity = ProjectSettings.get("physics/2d/default_gravity") as float
 # 按下跳跃键会变成true，防止未松开跳跃键导致的连续跳跃
 var input_jump: bool = false
@@ -57,7 +59,6 @@ var is_first_tick: bool = false
 var is_left_wall: bool = false
 # 判断可以连击事件是否出现
 var is_combo_requested: bool = false
-
 
 func _unhandled_input(event: InputEvent) -> void:
 	# 空中按下跳跃键，prepare_jump_timer计时器启动，0.2秒内落地，可直接起跳
@@ -69,6 +70,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	# 按下攻击键，并且可以连击
 	if event.is_action_pressed("Attack") and can_combo:
 		is_combo_requested = true
+
 # 状态执行函数
 func tick_physics(state: State, delta: float) -> void:
 	match state:
@@ -89,12 +91,12 @@ func tick_physics(state: State, delta: float) -> void:
 		State.WALLJUMP:
 			# 跳跃第一帧无重力
 			move(0.0 if is_first_tick else default_gravity, delta)
-		State.ATTACK_1:
-			move(default_gravity, delta)
-		State.ATTACK_2:
-			move(default_gravity, delta)
-		State.ATTACK_3:
-			move(default_gravity, delta)
+		#State.ATTACK_1:
+			#move(default_gravity, delta)
+		#State.ATTACK_2:
+			#move(default_gravity, delta)
+		#State.ATTACK_3:
+			#move(default_gravity, delta)
 	# 结束第一帧
 	is_first_tick = false
 
@@ -111,7 +113,7 @@ func move(gravity: float, delta: float) -> void:
 	if direction:
 		graphics.scale.x = -1.0 if direction < 0 else 1.0
 	move_and_slide()
-	
+
 # 状态判断函数
 func get_next_state(state: State) -> State:
 	# 获取左右的输入
@@ -244,7 +246,6 @@ func transition_state(from: State, to: State) -> void:
 			animated.play("Attack2")
 		State.ATTACK_3:
 			animated.play("Attack3")
-				
 	# 引擎速度减慢
 	if to == State.WALLJUMP:
 		Engine.time_scale = 0.5

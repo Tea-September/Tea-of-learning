@@ -183,7 +183,7 @@ autoplay = "Idle"
 
 [node name="Find" type="RayCast2D" parent="Graphic" index="1"]
 target_position = Vector2(-63, 0)
-collision_mask = 2
+collision_mask = 3
 
 [node name="Wall" type="RayCast2D" parent="Graphic" index="2"]
 target_position = Vector2(-20, 0)

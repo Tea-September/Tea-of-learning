@@ -11,6 +11,11 @@ enum State {
 @onready var wall: RayCast2D = $Graphic/Wall
 @onready var idle_timer: Timer = $IdleTimer
 
+func can_find_player() -> bool:
+	if not find.is_colliding():
+		return false
+	return find.get_collider() is player
+
 # 状态执行函数
 func tick_physics(state: State, delta: float) -> void:
 	match state:
@@ -27,7 +32,7 @@ func tick_physics(state: State, delta: float) -> void:
 
 # 状态判断函数
 func get_next_state(state: State) -> State:
-	if find.is_colliding():
+	if can_find_player():
 		idle_timer.start()
 		return State.RUNNING
 	match state:
