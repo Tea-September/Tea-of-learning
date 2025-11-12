@@ -91,12 +91,6 @@ func tick_physics(state: State, delta: float) -> void:
 		State.WALLJUMP:
 			# 跳跃第一帧无重力
 			move(0.0 if is_first_tick else default_gravity, delta)
-		#State.ATTACK_1:
-			#move(default_gravity, delta)
-		#State.ATTACK_2:
-			#move(default_gravity, delta)
-		#State.ATTACK_3:
-			#move(default_gravity, delta)
 	# 结束第一帧
 	is_first_tick = false
 
@@ -192,19 +186,31 @@ func get_next_state(state: State) -> State:
 			if velocity.y >= 0:
 				return State.FALL
 		State.ATTACK_1:
+			# 攻击框开启
+			$Graphics/HitBox/Attack1.disabled = false
 			if not animated.is_playing():
+				# 攻击框关闭
+				$Graphics/HitBox/Attack1.disabled = true
 				if is_combo_requested:
 					return State.ATTACK_2
 				else:
 					return State.IDLE
 		State.ATTACK_2:
+			# 攻击框开启
+			$Graphics/HitBox/Attack2.disabled = false
 			if not animated.is_playing():
+				# 攻击框关闭
+				$Graphics/HitBox/Attack2.disabled = true
 				if is_combo_requested:
 					return State.ATTACK_3
 				else:
 					return State.IDLE
 		State.ATTACK_3:
+			# 攻击框开启
+			$Graphics/HitBox/Attack3.disabled = false
 			if not animated.is_playing():
+				# 攻击框关闭
+				$Graphics/HitBox/Attack3.disabled = true
 				return State.IDLE
 	return state
 

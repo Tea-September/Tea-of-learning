@@ -25,7 +25,7 @@ func tick_physics(state: State, delta: float) -> void:
 			move(max_speed / 3, delta)
 		State.RUNNING:
 			if not if_floor.is_colliding() or wall.is_colliding():
-				direction *= -1
+				direction *= -1.0
 			move(max_speed, delta)
 		State.HIT:
 			move(0.0, delta)
@@ -58,11 +58,11 @@ func transition_state(_from: State, to: State) -> void:
 			idle_timer.start()
 			animated.play("Idle")
 			if wall.is_colliding():
-				direction *= -1
+				direction *= -1.0
 		State.WALK:
 			animated.play("Walk")
 			if not if_floor.is_colliding():
-				direction *= -1
+				direction *= -1.0
 				if_floor.force_raycast_update()
 		State.RUNNING:
 			idle_timer.start()

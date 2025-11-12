@@ -1,9 +1,11 @@
-[gd_scene load_steps=52 format=3 uid="uid://dcl2tc6ebw5o1"]
+[gd_scene load_steps=57 format=3 uid="uid://dcl2tc6ebw5o1"]
 
 [ext_resource type="Script" uid="uid://danmhjqhpq7y4" path="res://Scripts/Object/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://bxa62dh7d7mkj" path="res://Game Assets/generic_char_v0.2/png/blue/char_blue_1.png" id="1_v0iea"]
 [ext_resource type="Script" uid="uid://c7ingndjv0lwx" path="res://Scripts/Config/StateMachine.gd" id="3_6t5aa"]
 [ext_resource type="Texture2D" uid="uid://dnp5kvewenmss" path="res://Game Assets/generic_char_v0.2/png/blue/char_blue_2.png" id="3_vgqql"]
+[ext_resource type="Script" uid="uid://c57brssayd6m2" path="res://Scripts/Config/HurtBox.gd" id="4_7yi3x"]
+[ext_resource type="Script" uid="uid://cwj582pp1fwkb" path="res://Scripts/Config/HitBox.gd" id="5_isakk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o8c3t"]
 atlas = ExtResource("1_v0iea")
@@ -369,7 +371,16 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vgqql"]
-size = Vector2(24, 31)
+size = Vector2(21, 31)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_isakk"]
+size = Vector2(33, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ju12x"]
+size = Vector2(23, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k37lx"]
+size = Vector2(22, 22)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
@@ -395,8 +406,40 @@ metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Graphics"]
 sprite_frames = SubResource("SpriteFrames_8erm5")
-animation = &"Attack3"
-autoplay = "Stand"
+animation = &"Attack1"
+frame = 5
+frame_progress = 1.0
+
+[node name="HurtBox" type="Area2D" parent="Graphics"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("4_7yi3x")
+metadata/_custom_type_script = "uid://c57brssayd6m2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Graphics/HurtBox"]
+position = Vector2(-1.5, 11.5)
+shape = SubResource("RectangleShape2D_vgqql")
+
+[node name="HitBox" type="Area2D" parent="Graphics"]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("5_isakk")
+metadata/_custom_type_script = "uid://cwj582pp1fwkb"
+
+[node name="Attack1" type="CollisionShape2D" parent="Graphics/HitBox"]
+position = Vector2(12.5, 11)
+shape = SubResource("RectangleShape2D_isakk")
+disabled = true
+
+[node name="Attack2" type="CollisionShape2D" parent="Graphics/HitBox"]
+position = Vector2(8.5, 13)
+shape = SubResource("RectangleShape2D_ju12x")
+disabled = true
+
+[node name="Attack3" type="CollisionShape2D" parent="Graphics/HitBox"]
+position = Vector2(13, 14)
+shape = SubResource("RectangleShape2D_k37lx")
+disabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 11.5)

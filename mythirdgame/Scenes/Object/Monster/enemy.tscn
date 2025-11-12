@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://d3qssqg0bgv4p"]
+[gd_scene load_steps=5 format=3 uid="uid://d3qssqg0bgv4p"]
 
 [ext_resource type="Script" uid="uid://d2jkx5sbhuxip" path="res://Scripts/Object/Monster/enemy.gd" id="1_ghaa6"]
+[ext_resource type="Script" uid="uid://cwj582pp1fwkb" path="res://Scripts/Config/HitBox.gd" id="2_3s8a6"]
+[ext_resource type="Script" uid="uid://c57brssayd6m2" path="res://Scripts/Config/HurtBox.gd" id="3_onqfy"]
 [ext_resource type="Script" uid="uid://c7ingndjv0lwx" path="res://Scripts/Config/StateMachine.gd" id="6_1dp5w"]
 
 [node name="enemy" type="CharacterBody2D"]
@@ -11,6 +13,18 @@ script = ExtResource("1_ghaa6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Graphic"]
 position = Vector2(2, -1)
+
+[node name="HitBox" type="Area2D" parent="Graphic"]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("2_3s8a6")
+metadata/_custom_type_script = "uid://cwj582pp1fwkb"
+
+[node name="HurtBox" type="Area2D" parent="Graphic"]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("3_onqfy")
+metadata/_custom_type_script = "uid://c57brssayd6m2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.5, 3)
