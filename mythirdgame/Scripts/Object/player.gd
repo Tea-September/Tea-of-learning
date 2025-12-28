@@ -23,6 +23,10 @@ enum State{
 	ATTACK_2,
 	# 三段攻击
 	ATTACK_3,
+	# 受伤
+	HURT,
+	# 死亡
+	DIE
 }
 
 # 位于地面
@@ -30,13 +34,20 @@ const GROUND_STATES = [
 	State.IDLE, State.RUNNING, State.LANDING, 
 	State.ATTACK_1, State.ATTACK_2, State.ATTACK_3
 ]
+# 贴墙跳距离
 const WALL_JUMP_VELOCITY = Vector2(600, -400)
+# 被击飞距离
+const REPEL_AMOUNT: float = 450.0
 # 移动速度
 @export var move_speed: float
 # 跳跃高度
 @export var jump_speed: float
+# 玩家基础攻击
+@export var basic_attack: int = 1
 # 是否能够连击
 @export var can_combo: bool = false
+# 伤害对象
+@onready var pending_damage: Damage
 # 人物动画
 @onready var animated: AnimatedSprite2D = $Graphics/AnimatedSprite2D
 # 场景翻转
@@ -45,9 +56,17 @@ const WALL_JUMP_VELOCITY = Vector2(600, -400)
 @onready var coyote_timer: Timer = $CoyoteTimer
 # 空中预备跳跃
 @onready var prepare_jump_timer: Timer = $PrepareJumpTimer
+# 无敌时间
+@onready var invincible_timer: Timer = $InvincibleTimer
 # 贴墙检测射线
 @onready var up_sliding_wall: RayCast2D = $Graphics/SlidingWall/UpSlidingWall
 @onready var down_sliding_wall: RayCast2D = $Graphics/SlidingWall/DownSlidingWall
+# 受击框
+@onready var hurt_box: HurtBox = $Graphics/HurtBox
+# 玩家是否可以输入
+@onready var game_over: bool = true
+
+@onready var stats: Stats = $Stats
 
 # 重力
 var default_gravity = ProjectSettings.get("physics/2d/default_gravity") as float
@@ -86,30 +105,43 @@ func tick_physics(state: State, delta: float) -> void:
 		State.LANDING:
 			move(default_gravity, delta)
 		State.SLIDINGWALL:
-			# 滑墙时，下坠速度除三
+			# 滑墙时，下坠速度除5
 			move(default_gravity / 5, delta)
 		State.WALLJUMP:
 			# 跳跃第一帧无重力
 			move(0.0 if is_first_tick else default_gravity, delta)
+		State.HURT:
+			move(default_gravity * 2, delta)
+		State.DIE:
+			move(default_gravity * 2, delta)
 	# 结束第一帧
 	is_first_tick = false
 
 func move(gravity: float, delta: float) -> void:
 	# 重力下坠
 	velocity.y += gravity * delta
-	# 获取左右的输入
-	var direction = Input.get_axis("Left", "Right")
-	# 空中和陆地上的加速度
-	var add_speed: float = 0.2 if is_on_floor() else 0.1
-	# 左右移动，0.2秒后加速到设置速度，空中为0.1秒
-	velocity.x = move_toward(velocity.x, direction * move_speed, move_speed / add_speed * delta)
-	# 镜像翻转
-	if direction:
-		graphics.scale.x = -1.0 if direction < 0 else 1.0
+	# 游戏结束时，无法移动
+	if game_over:
+		# 获取左右的输入
+		var direction = Input.get_axis("Left", "Right")
+		# 空中和陆地上的加速度
+		var add_speed: float = 0.2 if is_on_floor() else 0.1
+		# 左右移动，0.2秒后加速到设置速度，空中为0.1秒
+		velocity.x = move_toward(velocity.x, direction * move_speed, move_speed / add_speed * delta)
+		# 镜像翻转
+		if direction:
+			graphics.scale.x = -1.0 if direction < 0 else 1.0
 	move_and_slide()
 
 # 状态判断函数
 func get_next_state(state: State) -> State:
+	# 死亡
+	if stats.health <= 0:
+		return State.DIE
+	# 当处于非HURT状态时，才会进入HURT状态
+	if pending_damage:
+		if state != State.HURT:
+			return State.HURT
 	# 获取左右的输入
 	var direction = Input.get_axis("Left", "Right")
 	# （条件1）设置跳跃条件，按下跳跃键后，并且在地板上，或者coyote_timer计时器未结束<“走”出地块后的那一帧，也可以跳跃>
@@ -130,6 +162,9 @@ func get_next_state(state: State) -> State:
 	# 在地面时,并且没有地板，状态变化为FALL
 	if state in GROUND_STATES and not is_on_floor():
 		return State.FALL
+	if invincible_timer.time_left == 0:
+		# 开启受击框
+		hurt_box.monitorable = true
 	match state:
 		State.IDLE:
 			# 玩家按下攻击键位，状态变化为ATTACK_1
@@ -212,6 +247,9 @@ func get_next_state(state: State) -> State:
 				# 攻击框关闭
 				$Graphics/HitBox/Attack3.disabled = true
 				return State.IDLE
+		State.HURT:
+			if not animated.is_playing():
+				return State.IDLE
 	return state
 
 # 动画播放函数，只有在状态发送改变时调用
@@ -247,11 +285,33 @@ func transition_state(from: State, to: State) -> void:
 			velocity.x *= get_wall_normal().x
 			animated.play("Jump")
 		State.ATTACK_1:
+			# 伤害
+			stats.attack = 1
 			animated.play("Attack1")
 		State.ATTACK_2:
+			# 伤害
+			stats.attack = 2
 			animated.play("Attack2")
 		State.ATTACK_3:
+			# 伤害
+			stats.attack = 3
 			animated.play("Attack3")
+		State.HURT:
+			# 血量减少
+			stats.health -= pending_damage.amount
+			# 获取方向，伤害来源的位置，指向自己（玩家）的位置
+			var dir = pending_damage.source.global_position.direction_to(global_position)
+			# 被击退
+			velocity = dir * REPEL_AMOUNT
+			# 受到攻击，关闭受击框，开启计时器
+			hurt_box.monitorable = false
+			invincible_timer.start()
+			# 清空对象
+			pending_damage = null
+			animated.play("Hurt")
+		State.DIE:
+			game_over = false
+			$AnimationPlayer.play("Die")
 	# 引擎速度减慢
 	if to == State.WALLJUMP:
 		Engine.time_scale = 0.5
@@ -259,3 +319,12 @@ func transition_state(from: State, to: State) -> void:
 		Engine.time_scale = 1.0
 	# 设置为第一帧
 	is_first_tick = true
+
+
+func _on_hurt_box_hurt(hitbox: HitBox) -> void:
+	pending_damage = Damage.new()
+	pending_damage.amount = hitbox.owner.stats.attack
+	pending_damage.source = hitbox.owner
+
+func die() -> void:
+	get_tree().reload_current_scene()

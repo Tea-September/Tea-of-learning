@@ -18,6 +18,7 @@ enum Direction {
 
 @onready var graphic: Node2D = $Graphic
 @onready var animated: AnimatedSprite2D = $Graphic/AnimatedSprite2D
+@onready var stats: Stats = $Stats
 
 var default_gravity = ProjectSettings.get("physics/2d/default_gravity") as float
 

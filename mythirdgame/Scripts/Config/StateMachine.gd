@@ -2,6 +2,8 @@
 class_name StateMachine
 extends Node
 
+#const KEEP_STATE = -1
+
 # current_state初始值为-1
 var  current_state : int = -1:
 	# 当对current_state进行赋值时，会执行下面函数，T为要赋的值

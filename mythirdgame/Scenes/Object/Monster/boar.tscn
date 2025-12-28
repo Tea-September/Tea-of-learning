@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bhspt0y5sjkql"]
+[gd_scene load_steps=37 format=3 uid="uid://bhspt0y5sjkql"]
 
 [ext_resource type="PackedScene" uid="uid://d3qssqg0bgv4p" path="res://Scenes/Object/Monster/enemy.tscn" id="1_2qgeg"]
 [ext_resource type="Texture2D" uid="uid://dgvovmlvmvidc" path="res://Game Assets/Legacy-Fantasy - High Forest 2.3/Mob/Boar/Hit-Vanish/Hit-Sheet.png" id="2_1jx2i"]
@@ -22,6 +22,26 @@ region = Rect2(96, 0, 48, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_hjsew"]
 atlas = ExtResource("2_1jx2i")
 region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_css1y"]
+atlas = ExtResource("2_1jx2i")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4cexm"]
+atlas = ExtResource("2_1jx2i")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t5qu0"]
+atlas = ExtResource("2_1jx2i")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2ujt"]
+atlas = ExtResource("2_1jx2i")
+region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8mii"]
+atlas = ExtResource("4_4cexm")
+region = Rect2(0, 0, 48, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dt3wx"]
 atlas = ExtResource("3_css1y")
@@ -102,8 +122,28 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_hjsew")
 }],
-"loop": true,
-"name": &"Hit",
+"loop": false,
+"name": &"Die",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_css1y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4cexm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t5qu0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e2ujt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8mii")
+}],
+"loop": false,
+"name": &"Hurt",
 "speed": 8.0
 }, {
 "frames": [{
@@ -173,15 +213,112 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_v8mii"]
 radius = 12.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_css1y"]
-size = Vector2(35, 7)
+[sub_resource type="Animation" id="Animation_css1y"]
+resource_name = "Die"
+length = 2.0
+step = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphic/AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Die"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Graphic/AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Graphic/AnimatedSprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_4cexm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphic/AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Die"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Graphic/AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Graphic/AnimatedSprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t5qu0"]
+_data = {
+&"Die": SubResource("Animation_css1y"),
+&"RESET": SubResource("Animation_4cexm")
+}
 
 [node name="Boar" instance=ExtResource("1_2qgeg")]
 script = ExtResource("2_css1y")
 
 [node name="AnimatedSprite2D" parent="Graphic" index="0"]
 sprite_frames = SubResource("SpriteFrames_e2ujt")
-animation = &"Walk"
+animation = &"Die"
 autoplay = "Idle"
 
 [node name="Find" type="RayCast2D" parent="Graphic" index="1"]
@@ -200,17 +337,9 @@ target_position = Vector2(0, 24)
 position = Vector2(1, 3)
 shape = SubResource("CircleShape2D_v8mii")
 
-[node name="Graphic_HurtBox2" type="CollisionShape2D" parent="Graphic/HitBox" index="1"]
-position = Vector2(0.5, 5.5)
-shape = SubResource("RectangleShape2D_css1y")
-
 [node name="Graphic_HurtBox" type="CollisionShape2D" parent="Graphic/HurtBox" index="0"]
 position = Vector2(1, 3)
 shape = SubResource("CircleShape2D_v8mii")
-
-[node name="Graphic_HurtBox2" type="CollisionShape2D" parent="Graphic/HurtBox" index="1"]
-position = Vector2(0.5, 5.5)
-shape = SubResource("RectangleShape2D_css1y")
 
 [node name="IdleTimer" type="Timer" parent="." index="1"]
 wait_time = 1.5
@@ -219,3 +348,10 @@ one_shot = true
 [node name="CollisionShape2D" parent="." index="2"]
 position = Vector2(1, 3)
 shape = SubResource("CircleShape2D_v8mii")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
+libraries = {
+&"": SubResource("AnimationLibrary_t5qu0")
+}
+
+[connection signal="hurt" from="Graphic/HurtBox" to="." method="_on_hurt_box_hurt"]

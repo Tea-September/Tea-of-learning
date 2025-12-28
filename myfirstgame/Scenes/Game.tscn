@@ -12,13 +12,13 @@
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kldst"]
 distance = -4.17
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2irst"]
-texture = ExtResource("6_2irst")
-region_rect = Rect2(305, 146, 26, 26)
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bf53h"]
 texture = ExtResource("6_2irst")
 region_rect = Rect2(273, 144, 26, 28)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2irst"]
+texture = ExtResource("6_2irst")
+region_rect = Rect2(305, 146, 26, 26)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_71axn"]
 bg_color = Color(0, 0, 0, 0.490196)
@@ -105,6 +105,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Prompt" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
 offset_left = 178.0
 offset_top = 265.0
 offset_right = 767.0
@@ -114,6 +115,7 @@ text = "W, A, S, D move up and down, left and right, J fires, and the space roll
 autowrap_mode = 2
 
 [node name="Label1" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
 offset_left = 31.0
 offset_top = 29.0
 offset_right = 213.0
@@ -181,9 +183,9 @@ theme_override_constants/margin_right = 35
 [node name="StopButton" type="Button" parent="GameUI/StopMarginContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-theme_override_styles/hover = SubResource("StyleBoxTexture_2irst")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_2irst")
 theme_override_styles/normal = SubResource("StyleBoxTexture_bf53h")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_2irst")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2irst")
 
 [node name="Control" type="Control" parent="GameUI"]
 visible = false
