@@ -66,7 +66,7 @@ const REPEL_AMOUNT: float = 450.0
 # 玩家是否可以输入
 @onready var game_over: bool = true
 
-@onready var stats: Stats = $Stats
+@onready var stats: Stats = $Method/Stats
 
 # 重力
 var default_gravity = ProjectSettings.get("physics/2d/default_gravity") as float
@@ -162,7 +162,13 @@ func get_next_state(state: State) -> State:
 	# 在地面时,并且没有地板，状态变化为FALL
 	if state in GROUND_STATES and not is_on_floor():
 		return State.FALL
-	if invincible_timer.time_left == 0:
+	# 无敌计时器
+	if invincible_timer.time_left > 0:
+		# 进行闪烁
+		graphics.modulate.a = sin(Time.get_ticks_msec() / 20.0) * 0.5 + 0.5
+	else:
+		# 不进行闪烁
+		graphics.modulate.a = 1
 		# 开启受击框
 		hurt_box.monitorable = true
 	match state:

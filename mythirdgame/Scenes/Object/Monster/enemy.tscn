@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://d2jkx5sbhuxip" path="res://Scripts/Object/Monster/enemy.gd" id="1_ghaa6"]
 [ext_resource type="Script" uid="uid://cwj582pp1fwkb" path="res://Scripts/Config/HitBox.gd" id="2_3s8a6"]
 [ext_resource type="Script" uid="uid://c57brssayd6m2" path="res://Scripts/Config/HurtBox.gd" id="3_onqfy"]
-[ext_resource type="Script" uid="uid://dkkbqle4cds62" path="res://Scripts/Config/Stats.gd" id="5_q5u44"]
+[ext_resource type="Script" uid="uid://dkkbqle4cds62" path="res://Scripts/Data/Stats.gd" id="5_q5u44"]
 [ext_resource type="Script" uid="uid://c7ingndjv0lwx" path="res://Scripts/Config/StateMachine.gd" id="6_1dp5w"]
 
 [node name="enemy" type="CharacterBody2D"]
@@ -36,5 +36,4 @@ metadata/_custom_type_script = "uid://c7ingndjv0lwx"
 
 [node name="Stats" type="Node" parent="."]
 script = ExtResource("5_q5u44")
-health = 10
 metadata/_custom_type_script = "uid://dkkbqle4cds62"

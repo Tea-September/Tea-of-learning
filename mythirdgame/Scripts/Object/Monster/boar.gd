@@ -15,6 +15,9 @@ enum State {
 @onready var idle_timer: Timer = $IdleTimer
 @onready var hit_box: HitBox = $Graphic/HitBox
 @onready var animated_boar: AnimatedSprite2D = $Graphic/AnimatedSprite2D
+@onready var head: MarginContainer = $Control/PlayerMenuMargin/VSplitContainer/HBoxContainer/Head
+@onready var health: MarginContainer = $Control/PlayerMenuMargin/VSplitContainer/HBoxContainer/Health
+
 const REPEL_AMOUNT: float = 520.0
 
 # 可以攻击
@@ -26,6 +29,9 @@ func can_find_player() -> bool:
 	if not find.is_colliding():
 		return false
 	return find.get_collider() is player
+
+func _ready() -> void:
+	head.visible = false
 
 # 状态执行函数
 func tick_physics(state: State, delta: float) -> void:
@@ -116,6 +122,7 @@ func transition_state(_from: State, to: State) -> void:
 			hit_box.monitoring = false
 			animated.play("Hurt")
 		State.DIE:
+			health.visible = false
 			$AnimationPlayer.play("Die")
 # 血量计算
 func _on_hurt_box_hurt(hitbox: HitBox) -> void:
