@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://dcl2tc6ebw5o1"]
+[gd_scene load_steps=91 format=3 uid="uid://dcl2tc6ebw5o1"]
 
 [ext_resource type="Script" uid="uid://danmhjqhpq7y4" path="res://Scripts/Object/Player/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://bxa62dh7d7mkj" path="res://Game Assets/generic_char_v0.2/png/blue/char_blue_1.png" id="1_v0iea"]
@@ -7,7 +7,12 @@
 [ext_resource type="Script" uid="uid://c57brssayd6m2" path="res://Scripts/Config/HurtBox.gd" id="4_7yi3x"]
 [ext_resource type="Script" uid="uid://cwj582pp1fwkb" path="res://Scripts/Config/HitBox.gd" id="5_isakk"]
 [ext_resource type="Script" uid="uid://dkkbqle4cds62" path="res://Scripts/Data/Stats.gd" id="7_ju12x"]
-[ext_resource type="PackedScene" uid="uid://dyjhfo7fsj32k" path="res://Scenes/Surroundings/Ui/PlayerMenu.tscn" id="8_k37lx"]
+[ext_resource type="Script" uid="uid://gc2pg5p6xvmw" path="res://Scripts/Object/Player/PlayerInputAhead.gd" id="8_7sjl0"]
+[ext_resource type="PackedScene" uid="uid://dyjhfo7fsj32k" path="res://Scenes/Surroundings/Ui/StateMenu.tscn" id="8_k37lx"]
+[ext_resource type="Script" uid="uid://cwexi221qjsyt" path="res://Scripts/Object/Player/PlayerTickPhysics.gd" id="9_8wdfv"]
+[ext_resource type="Script" uid="uid://c4pl3g6v0px3w" path="res://Scripts/Object/Player/PlayerMove.gd" id="10_okqo8"]
+[ext_resource type="Script" uid="uid://bvmggb50t67v8" path="res://Scripts/Object/Player/PlayerGetNextState.gd" id="11_01eq3"]
+[ext_resource type="Script" uid="uid://cxprug7hlniy2" path="res://Scripts/Object/Player/PlayerTransitionState.gd" id="12_j1jur"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o8c3t"]
 atlas = ExtResource("1_v0iea")
@@ -213,6 +218,30 @@ region = Rect2(336, 112, 56, 56)
 atlas = ExtResource("1_v0iea")
 region = Rect2(392, 112, 56, 56)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_tvul8"]
+atlas = ExtResource("3_vgqql")
+region = Rect2(0, 112, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5o1f"]
+atlas = ExtResource("3_vgqql")
+region = Rect2(56, 112, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gkc07"]
+atlas = ExtResource("3_vgqql")
+region = Rect2(112, 112, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ais8"]
+atlas = ExtResource("3_vgqql")
+region = Rect2(168, 112, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rk77m"]
+atlas = ExtResource("3_vgqql")
+region = Rect2(224, 112, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7scp1"]
+atlas = ExtResource("3_vgqql")
+region = Rect2(280, 112, 56, 56)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_0gysh"]
 atlas = ExtResource("3_vgqql")
 region = Rect2(0, 168, 56, 56)
@@ -252,6 +281,14 @@ region = Rect2(224, 0, 56, 56)
 [sub_resource type="AtlasTexture" id="AtlasTexture_3smsa"]
 atlas = ExtResource("1_v0iea")
 region = Rect2(280, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22vls"]
+atlas = ExtResource("3_vgqql")
+region = Rect2(336, 112, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v82uq"]
+atlas = ExtResource("3_vgqql")
+region = Rect2(392, 112, 56, 56)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8erm5"]
 animations = [{
@@ -455,6 +492,34 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_tvul8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5o1f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gkc07")
+}],
+"loop": false,
+"name": &"SlideStart",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ais8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rk77m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7scp1")
+}],
+"loop": true,
+"name": &"SlideTackle",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_0gysh")
 }, {
 "duration": 1.0,
@@ -492,6 +557,17 @@ animations = [{
 "loop": true,
 "name": &"Stand",
 "speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_22vls")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v82uq")
+}],
+"loop": false,
+"name": &"UpStanding",
+"speed": 8.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vgqql"]
@@ -581,12 +657,11 @@ _data = {
 &"RESET": SubResource("Animation_k37lx")
 }
 
-[node name="Player" type="CharacterBody2D" groups=["Player"]]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
 script = ExtResource("1_cvnsp")
 move_speed = 150.0
 jump_speed = -320.0
-can_combo = true
 
 [node name="Graphics" type="Node2D" parent="."]
 
@@ -654,6 +729,10 @@ one_shot = true
 wait_time = 3.0
 one_shot = true
 
+[node name="PrepareSlideTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_7sjl0")
@@ -665,10 +744,31 @@ libraries = {
 script = ExtResource("3_6t5aa")
 metadata/_custom_type_script = "uid://c7ingndjv0lwx"
 
-[node name="Stats" type="Node" parent="Method" groups=["Player"]]
+[node name="Stats" type="Node" parent="Method"]
 script = ExtResource("7_ju12x")
-max_health = 10
 metadata/_custom_type_script = "uid://dkkbqle4cds62"
+
+[node name="Player" type="Node" parent="Method"]
+
+[node name="PlayerInputAhead" type="Node" parent="Method/Player"]
+script = ExtResource("8_7sjl0")
+metadata/_custom_type_script = "uid://gc2pg5p6xvmw"
+
+[node name="PlayerTickPhysics" type="Node" parent="Method/Player"]
+script = ExtResource("9_8wdfv")
+metadata/_custom_type_script = "uid://cwexi221qjsyt"
+
+[node name="PlayerMove" type="Node" parent="Method/Player"]
+script = ExtResource("10_okqo8")
+metadata/_custom_type_script = "uid://c4pl3g6v0px3w"
+
+[node name="PlayerGetNextState" type="Node" parent="Method/Player"]
+script = ExtResource("11_01eq3")
+metadata/_custom_type_script = "uid://bvmggb50t67v8"
+
+[node name="PlayerTransitionState" type="Node" parent="Method/Player"]
+script = ExtResource("12_j1jur")
+metadata/_custom_type_script = "uid://cxprug7hlniy2"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
