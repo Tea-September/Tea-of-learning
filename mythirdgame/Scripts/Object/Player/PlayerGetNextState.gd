@@ -48,6 +48,10 @@ const SLIDE_STATES = [
 ]
 
 func _get_next_state(Player: CharacterBody2D, state: State) -> State:
+	# 能量条恢复
+	if Player.stats.energy < Player.stats.max_energy and not Player.if_energy:
+		Player.energy_timer.start()
+		Player.if_energy = true
 	# 死亡
 	if Player.stats.health <= 0:
 		return State.DIE
@@ -75,7 +79,7 @@ func _get_next_state(Player: CharacterBody2D, state: State) -> State:
 	# （条件2）prepare_slide_timer计时未结束和在地板上<落地提前按下滑铲键滑铲>
 	var judgment_slide2 = Player.prepare_slide_timer.time_left > 0 and Player.is_on_floor()
 	# 滑铲，按滑铲键松下后，再次按滑铲键，才能滑铲
-	if not Player.input_slide and state not in SLIDE_STATES:
+	if not Player.input_slide and state not in SLIDE_STATES and Player.stats.energy >= 1:
 		if (judgment_slide1 or judgment_slide2) and not Player.down_sliding_wall.is_colliding():
 			return State.SLIDESTART
 	Player.input_slide = Input.is_action_pressed("Slide")

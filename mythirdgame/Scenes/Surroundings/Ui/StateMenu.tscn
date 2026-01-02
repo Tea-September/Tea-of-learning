@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dyjhfo7fsj32k"]
+[gd_scene load_steps=10 format=3 uid="uid://dyjhfo7fsj32k"]
 
 [ext_resource type="Script" uid="uid://ceim1n1g5e1yk" path="res://Scripts/Surroundings/state_menu.gd" id="1_eguws"]
 [ext_resource type="Texture2D" uid="uid://c5jrfqwnowjd0" path="res://Game Assets/Legacy-Fantasy - High Forest 2.3/HUD/Base-01.png" id="2_fjd4i"]
@@ -28,6 +28,10 @@ region = Rect2(308, 118, 56, 4)
 atlas = ExtResource("2_fjd4i")
 region = Rect2(308, 86, 56, 4)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhenr"]
+atlas = ExtResource("2_fjd4i")
+region = Rect2(308, 150, 56, 4)
+
 [node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -47,32 +51,34 @@ grow_vertical = 2
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 7
 
-[node name="VSplitContainer" type="VSplitContainer" parent="PlayerMenuMargin"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerMenuMargin"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PlayerMenuMargin/VSplitContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerMenuMargin/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="Head" type="MarginContainer" parent="PlayerMenuMargin/VSplitContainer/HBoxContainer"]
+[node name="Head" type="MarginContainer" parent="PlayerMenuMargin/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="PlayerMenuMargin/VSplitContainer/HBoxContainer/Head"]
+[node name="PanelContainer" type="PanelContainer" parent="PlayerMenuMargin/VBoxContainer/HBoxContainer/Head"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_6c1lm")
 
-[node name="TextureRect" type="TextureRect" parent="PlayerMenuMargin/VSplitContainer/HBoxContainer/Head/PanelContainer"]
+[node name="TextureRect" type="TextureRect" parent="PlayerMenuMargin/VBoxContainer/HBoxContainer/Head/PanelContainer"]
 custom_minimum_size = Vector2(26, 26)
 layout_mode = 2
 texture = SubResource("AtlasTexture_kmr3e")
 stretch_mode = 5
 
-[node name="Health" type="MarginContainer" parent="PlayerMenuMargin/VSplitContainer/HBoxContainer"]
+[node name="StateProgressBar" type="VBoxContainer" parent="PlayerMenuMargin/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
+alignment = 1
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="PlayerMenuMargin/VSplitContainer/HBoxContainer/Health"]
+[node name="Health" type="MarginContainer" parent="PlayerMenuMargin/VBoxContainer/HBoxContainer/StateProgressBar"]
+layout_mode = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="PlayerMenuMargin/VBoxContainer/HBoxContainer/StateProgressBar/Health"]
 layout_mode = 2
 max_value = 1.0
 step = 0.0
@@ -81,11 +87,23 @@ texture_over = SubResource("AtlasTexture_t0co0")
 texture_progress = SubResource("AtlasTexture_d3j4w")
 texture_progress_offset = Vector2(1, 1)
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="PlayerMenuMargin/VSplitContainer/HBoxContainer/Health/TextureProgressBar"]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="PlayerMenuMargin/VBoxContainer/HBoxContainer/StateProgressBar/Health/TextureProgressBar"]
 show_behind_parent = true
 layout_mode = 0
 max_value = 1.0
 step = 0.0
 value = 1.0
 texture_progress = SubResource("AtlasTexture_eguws")
+texture_progress_offset = Vector2(1, 1)
+
+[node name="Energy" type="MarginContainer" parent="PlayerMenuMargin/VBoxContainer/HBoxContainer/StateProgressBar"]
+layout_mode = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="PlayerMenuMargin/VBoxContainer/HBoxContainer/StateProgressBar/Energy"]
+layout_mode = 2
+max_value = 1.0
+step = 0.0
+value = 1.0
+texture_over = SubResource("AtlasTexture_t0co0")
+texture_progress = SubResource("AtlasTexture_hhenr")
 texture_progress_offset = Vector2(1, 1)

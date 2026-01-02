@@ -109,6 +109,8 @@ func _transition_state(Player: CharacterBody2D, from: State, to: State) -> void:
 			Player.game_over = false
 			$"../../../AnimationPlayer".play("Die")
 		State.SLIDESTART:
+			# 伤害
+			Player.stats.energy -= 1
 			# 开始滑铲，关闭受击框
 			Player.hurt_box.monitorable = false
 			Player.animated.play("SlideStart")

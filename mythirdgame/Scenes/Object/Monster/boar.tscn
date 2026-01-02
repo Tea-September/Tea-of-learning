@@ -365,9 +365,9 @@ libraries = {
 }
 
 [node name="Control" parent="." index="6" node_paths=PackedStringArray("stats") instance=ExtResource("7_4cexm")]
-offset_left = -6.0
+offset_left = -10.0
 offset_top = -22.0
-offset_right = -6.0
+offset_right = -10.0
 offset_bottom = -22.0
 stats = NodePath("../Stats")
 

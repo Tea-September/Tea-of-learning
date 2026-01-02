@@ -23,9 +23,11 @@ enum State {
 # 野猪动画
 @onready var animated_boar: AnimatedSprite2D = $Graphic/AnimatedSprite2D
 # 血条头像
-@onready var head: MarginContainer = $Control/PlayerMenuMargin/VSplitContainer/HBoxContainer/Head
+@onready var head: MarginContainer = $Control/PlayerMenuMargin/VBoxContainer/HBoxContainer/Head
 # 血条进度条
-@onready var health: MarginContainer = $Control/PlayerMenuMargin/VSplitContainer/HBoxContainer/Health
+@onready var health: MarginContainer = $Control/PlayerMenuMargin/VBoxContainer/HBoxContainer/StateProgressBar/Health
+# 能量进度条
+@onready var energy: MarginContainer = $Control/PlayerMenuMargin/VBoxContainer/HBoxContainer/StateProgressBar/Energy
 
 # 击飞距离
 const REPEL_AMOUNT: float = 520.0
@@ -47,6 +49,7 @@ func can_find_player() -> bool:
 func _ready() -> void:
 	# 隐藏头像
 	head.visible = false
+	energy.visible = false
 
 # 状态执行函数
 func tick_physics(state: State, delta: float) -> void:

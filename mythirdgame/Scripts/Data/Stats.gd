@@ -2,6 +2,7 @@ class_name Stats
 extends Node
 
 signal health_changed
+signal  energy_changed
 
 # 生命值，默认3
 @export var max_health : int = 3
@@ -13,6 +14,17 @@ signal health_changed
 			return
 		health = T
 		health_changed.emit()
+
+# 能量值，默认5
+@export var max_energy : int = 5
+
+@onready var energy : int = max_energy:
+	set(T):
+		T = clampi(T, 0, max_energy)
+		if energy == T:
+			return
+		energy = T
+		energy_changed.emit()
 
 # 攻击力，默认1
 @export var max_attack : int = 1

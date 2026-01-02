@@ -13,6 +13,8 @@ const REPEL_AMOUNT: float = 450.0
 @export var basic_attack: int = 1
 # 是否能够连击
 @onready var can_combo: bool = false
+# 是否开启能量条计时器
+@onready var if_energy: bool = false
 # 重力
 @onready var default_gravity = ProjectSettings.get("physics/2d/default_gravity") as float
 # 按下跳跃键会变成true，防止未松开跳跃键导致的连续跳跃
@@ -37,6 +39,8 @@ const REPEL_AMOUNT: float = 450.0
 @onready var prepare_jump_timer: Timer = $PrepareJumpTimer
 # 空中预备滑铲
 @onready var prepare_slide_timer: Timer = $PrepareSlideTimer
+# 能量条恢复
+@onready var energy_timer: Timer = $EnergyTimer
 # 无敌时间
 @onready var invincible_timer: Timer = $InvincibleTimer
 # 贴墙检测射线
@@ -88,3 +92,11 @@ func _on_hurt_box_hurt(hitbox: HitBox) -> void:
 
 func die() -> void:
 	get_tree().reload_current_scene()
+
+
+func _on_energy_timer_timeout() -> void:
+	if stats.energy == stats.max_energy:
+		if_energy = false
+		energy_timer.stop()
+	if stats.energy < stats.max_energy:
+		stats.energy += 1
