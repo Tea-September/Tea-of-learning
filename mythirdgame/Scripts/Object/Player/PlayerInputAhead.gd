@@ -17,3 +17,7 @@ func _input_ahead(Player: CharacterBody2D, event: InputEvent) -> void:
 	# 空中按下滑铲键，prepare_slide_timer计时器启动，0.5秒内落地，可直接滑铲
 	if event.is_action_pressed("Slide"):
 		Player.prepare_slide_timer.start()
+	# 按下Interact（交互）键位，并且交互对象非空
+	if event.is_action_pressed("Interact") and Player.interacting_with:
+		# 调用可交互对象数组中的最后一个对象
+		Player.interacting_with.back().interact()

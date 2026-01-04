@@ -106,6 +106,9 @@ func _transition_state(Player: CharacterBody2D, from: State, to: State) -> void:
 			Player.pending_damage = null
 			Player.animated.play("Hurt")
 		State.DIE:
+			# 清空可交互数组内的对象
+			Player.interacting_with.clear()
+			# 游戏结束标准
 			Player.game_over = false
 			$"../../../AnimationPlayer".play("Die")
 		State.SLIDESTART:

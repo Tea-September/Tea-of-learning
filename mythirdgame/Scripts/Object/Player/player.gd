@@ -58,6 +58,10 @@ const REPEL_AMOUNT: float = 450.0
 @onready var player_move: PlayerMove = $Method/Player/PlayerMove
 @onready var player_get_next_state: PlayerGetNextState = $Method/Player/PlayerGetNextState
 @onready var player_transition_state: PlayerTransitionState = $Method/Player/PlayerTransitionState
+# 确定交互对象
+@onready var interacting_with: Array[Interactable]
+# 交互对象
+@onready var interacting: AnimatedSprite2D = $Interacting
 
 
 # 提前输入
@@ -90,13 +94,28 @@ func _on_hurt_box_hurt(hitbox: HitBox) -> void:
 	pending_damage.amount = hitbox.owner.stats.attack
 	pending_damage.source = hitbox.owner
 
+# 死亡执行
 func die() -> void:
 	get_tree().reload_current_scene()
 
-
+# 能量条恢复
 func _on_energy_timer_timeout() -> void:
+	# 能量条满时，标记为不可恢复，恢复计时器结束
 	if stats.energy == stats.max_energy:
 		if_energy = false
 		energy_timer.stop()
+	# 能量条未满时，能量增加
 	if stats.energy < stats.max_energy:
 		stats.energy += 1
+
+# 创建可交互的对象，该函数是为预防可交互对象重叠
+func create_interactable(T: Interactable) -> void:
+	# 交互对象在数组中时返回退出，不在时，在数组末尾加入对象
+	if T in interacting_with:
+		return
+	else:
+		interacting_with.append(T)
+
+# 删除对象
+func delete_interactable(T: Interactable) -> void:
+		interacting_with.erase(T)

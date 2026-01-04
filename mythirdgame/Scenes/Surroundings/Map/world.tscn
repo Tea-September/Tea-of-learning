@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://3ysa5bd8k7it"]
+[gd_scene load_steps=13 format=4 uid="uid://3ysa5bd8k7it"]
 
 [ext_resource type="Script" uid="uid://cydk1c6fpbx00" path="res://Scripts/Surroundings/world.gd" id="1_265bt"]
 [ext_resource type="PackedScene" uid="uid://dcl2tc6ebw5o1" path="res://Scenes/Object/player.tscn" id="2_0702v"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://3cjcorgu5fql" path="res://Game Assets/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="4_8j1dr"]
 [ext_resource type="Texture2D" uid="uid://dntc8tjja2mua" path="res://Game Assets/Legacy-Fantasy - High Forest 2.3/Trees/Background.png" id="5_le8i6"]
 [ext_resource type="PackedScene" uid="uid://bhspt0y5sjkql" path="res://Scenes/Object/Monster/boar.tscn" id="6_265bt"]
+[ext_resource type="Script" uid="uid://rghok5m7iw6f" path="res://Scripts/Config/Interactable.gd" id="7_ff2fp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_go701"]
 texture = ExtResource("3_76g7w")
@@ -810,6 +811,8 @@ physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 2
 sources/1 = SubResource("TileSetAtlasSource_5a7ea")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ff2fp"]
+
 [node name="World" type="Node2D"]
 script = ExtResource("1_265bt")
 
@@ -1047,3 +1050,18 @@ region_rect = Rect2(210, 293, 124, 86)
 [node name="Boar" parent="." instance=ExtResource("6_265bt")]
 z_index = 5
 position = Vector2(46, -9)
+
+[node name="Interact" type="Node" parent="."]
+
+[node name="Interactable" type="Area2D" parent="Interact"]
+z_index = 6
+position = Vector2(-55, 23)
+script = ExtResource("7_ff2fp")
+metadata/_custom_type_script = "uid://rghok5m7iw6f"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interact/Interactable"]
+shape = SubResource("CircleShape2D_ff2fp")
+
+[node name="Map" type="Node" parent="Interact"]
+
+[node name="AddHealth" type="Node" parent="Interact"]

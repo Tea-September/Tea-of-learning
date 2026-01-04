@@ -48,6 +48,8 @@ const SLIDE_STATES = [
 ]
 
 func _get_next_state(Player: CharacterBody2D, state: State) -> State:
+	# 交互按钮是否可见，取决于交互对象数组中，是否存在该对象
+	Player.interacting.visible = not Player.interacting_with.is_empty()
 	# 能量条恢复
 	if Player.stats.energy < Player.stats.max_energy and not Player.if_energy:
 		Player.energy_timer.start()

@@ -1,8 +1,9 @@
-[gd_scene load_steps=92 format=3 uid="uid://dcl2tc6ebw5o1"]
+[gd_scene load_steps=98 format=3 uid="uid://dcl2tc6ebw5o1"]
 
 [ext_resource type="Script" uid="uid://danmhjqhpq7y4" path="res://Scripts/Object/Player/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://bxa62dh7d7mkj" path="res://Game Assets/generic_char_v0.2/png/blue/char_blue_1.png" id="1_v0iea"]
 [ext_resource type="Script" uid="uid://c7ingndjv0lwx" path="res://Scripts/Config/StateMachine.gd" id="3_6t5aa"]
+[ext_resource type="Texture2D" uid="uid://c3bge1henvr2r" path="res://Game Assets/gdb-gamepad-2(all)/gdb-keyboard-2.png" id="3_avtl5"]
 [ext_resource type="Texture2D" uid="uid://dnp5kvewenmss" path="res://Game Assets/generic_char_v0.2/png/blue/char_blue_2.png" id="3_vgqql"]
 [ext_resource type="Script" uid="uid://c57brssayd6m2" path="res://Scripts/Config/HurtBox.gd" id="4_7yi3x"]
 [ext_resource type="Script" uid="uid://cwj582pp1fwkb" path="res://Scripts/Config/HitBox.gd" id="5_isakk"]
@@ -13,6 +14,42 @@
 [ext_resource type="Script" uid="uid://c4pl3g6v0px3w" path="res://Scripts/Object/Player/PlayerMove.gd" id="10_okqo8"]
 [ext_resource type="Script" uid="uid://bvmggb50t67v8" path="res://Scripts/Object/Player/PlayerGetNextState.gd" id="11_01eq3"]
 [ext_resource type="Script" uid="uid://cxprug7hlniy2" path="res://Scripts/Object/Player/PlayerTransitionState.gd" id="12_j1jur"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6thy"]
+atlas = ExtResource("3_avtl5")
+region = Rect2(96, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_755qk"]
+atlas = ExtResource("3_avtl5")
+region = Rect2(96, 160, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_krb7v"]
+atlas = ExtResource("3_avtl5")
+region = Rect2(96, 272, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mrx1o"]
+atlas = ExtResource("3_avtl5")
+region = Rect2(96, 384, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n7pj6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m6thy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_755qk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_krb7v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mrx1o")
+}],
+"loop": true,
+"name": &"Interacting",
+"speed": 8.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o8c3t"]
 atlas = ExtResource("1_v0iea")
@@ -582,6 +619,10 @@ size = Vector2(14, 12)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k37lx"]
 size = Vector2(12, 18)
 
+[sub_resource type="Animation" id="Animation_j1jur"]
+resource_name = "AddEnergy"
+length = 2.0
+
 [sub_resource type="Animation" id="Animation_ju12x"]
 resource_name = "Die"
 length = 2.0
@@ -651,10 +692,6 @@ tracks/1/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_j1jur"]
-resource_name = "AddEnergy"
-length = 2.0
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7sjl0"]
 _data = {
 &"AddEnergy": SubResource("Animation_j1jur"),
@@ -667,6 +704,13 @@ collision_layer = 2
 script = ExtResource("1_cvnsp")
 move_speed = 150.0
 jump_speed = -320.0
+
+[node name="Interacting" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -16)
+sprite_frames = SubResource("SpriteFrames_n7pj6")
+animation = &"Interacting"
+autoplay = "Interacting"
+frame_progress = 0.5895697
 
 [node name="Graphics" type="Node2D" parent="."]
 
