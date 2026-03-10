@@ -55,6 +55,8 @@ func _transition_state(Player: CharacterBody2D, from: State, to: State) -> void:
 		State.RUNNING:
 			Player.animated.play("Run")
 		State.JUMP:
+			if not Player.double_jump:
+				Player.stats.energy -= 1
 			Player.coyote_timer.stop()
 			Player.prepare_jump_timer.stop() 
 			Player.velocity.y = Player.jump_speed

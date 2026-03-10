@@ -1,12 +1,13 @@
-[gd_scene load_steps=13 format=4 uid="uid://3ysa5bd8k7it"]
+[gd_scene format=4 uid="uid://3ysa5bd8k7it"]
 
 [ext_resource type="Script" uid="uid://cydk1c6fpbx00" path="res://Scripts/Surroundings/world.gd" id="1_265bt"]
 [ext_resource type="PackedScene" uid="uid://dcl2tc6ebw5o1" path="res://Scenes/Object/player.tscn" id="2_0702v"]
 [ext_resource type="Texture2D" uid="uid://x00je0ue6unw" path="res://Game Assets/Legacy-Fantasy - High Forest 2.3/Assets/Tree-Assets.png" id="3_76g7w"]
 [ext_resource type="Texture2D" uid="uid://3cjcorgu5fql" path="res://Game Assets/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="4_8j1dr"]
+[ext_resource type="PackedScene" uid="uid://colxpnyy8ib6t" path="res://Scenes/Object/mine_gate.tscn" id="4_ff2fp"]
 [ext_resource type="Texture2D" uid="uid://dntc8tjja2mua" path="res://Game Assets/Legacy-Fantasy - High Forest 2.3/Trees/Background.png" id="5_le8i6"]
+[ext_resource type="Script" uid="uid://cv1ovs7tewfd6" path="res://Scripts/Config/EntryPoint.gd" id="5_p1gi4"]
 [ext_resource type="PackedScene" uid="uid://bhspt0y5sjkql" path="res://Scenes/Object/Monster/boar.tscn" id="6_265bt"]
-[ext_resource type="Script" uid="uid://rghok5m7iw6f" path="res://Scripts/Config/Interactable.gd" id="7_ff2fp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_go701"]
 texture = ExtResource("3_76g7w")
@@ -811,132 +812,129 @@ physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 2
 sources/1 = SubResource("TileSetAtlasSource_5a7ea")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ff2fp"]
-
-[node name="World" type="Node2D"]
+[node name="World" type="Node2D" unique_id=1685336126]
 script = ExtResource("1_265bt")
 
-[node name="Player" parent="." instance=ExtResource("2_0702v")]
+[node name="Player" parent="." unique_id=261933534 instance=ExtResource("2_0702v")]
 z_index = 5
 position = Vector2(-123, -5)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=911140717]
+process_callback = 0
 limit_smoothed = true
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 editor_draw_drag_margin = true
 
-[node name="Background" type="Node" parent="."]
+[node name="Background" type="Node" parent="." unique_id=1682211782]
 
-[node name="TileMapLayer1" type="TileMapLayer" parent="Background"]
+[node name="TileMapLayer1" type="TileMapLayer" parent="Background" unique_id=137304126]
 z_index = 4
-tile_map_data = PackedByteArray("AAAAAAIAAQAHAAIAAAABAAIAAQACAAMAAAADAAIAAQACAAMAAAAEAAIAAQACAAMAAAAFAAEAAQACAAAAAAAGAAAAAQAAAAAAAAAHAAAAAQAHAAIAAAAIAAAAAQADAAIAAAAJAAAAAQADAAIAAAAKAAAAAQADAAIAAAANAAEAAQAFAAIAAAAOAAEAAQAEAAAAAAAOAAIAAQAFAAIAAAAOAAMAAQADAAQAAAAPAAMAAQADAAQAAAACAAMAAQAGAAAAAAADAAMAAQACAAQAAAAEAAMAAQABAAQAAAAFAAMAAQADAAQAAAAGAAMAAQACAAQAAAAHAAMAAQACAAQAAAAIAAMAAQAGAAAAAAAJAAMAAQADAAQAAAAKAAMAAQAGAAAAAAALAAMAAQABAAQAAAAMAAMAAQACAAQAAAANAAMAAQABAAQAAAANAAIAAQABAAIAAAAMAAIAAQABAAIAAAALAAIAAQABAAIAAAAKAAIAAQABAAIAAAAJAAIAAQABAAIAAAAIAAIAAQABAAIAAAAHAAIAAQABAAIAAAAGAAIAAQACAAMAAAAHAAEAAQADAAIAAAAKAAEAAQABAAIAAAAJAAEAAQABAAIAAAAIAAEAAQADAAIAAAD//wMAAQADAAQAAAD+/wMAAQADAAQAAAD9/wMAAQABAAQAAAD8/wMAAQABAAQAAAD7/wMAAQABAAQAAAD6/wMAAQADAAQAAAD5/wMAAQABAAQAAAD4/wMAAQADAAQAAAD3/wMAAQABAAQAAAD2/wMAAQAGAAAAAAD1/wIAAQAFAAIAAAD1/wEAAQAFAAEAAAD1/wAAAQAEAAIAAAD1////AQAEAAIAAAD1//7/AQAFAAEAAAD1//3/AQAEAAIAAAD1//z/AQAKAAEAAAD1//v/AQAFAAEAAAD1//r/AQAFAAEAAAAQAAMAAQAGAAAAAAARAAMAAQACAAQAAAASAAMAAQAGAAAAAAATAAMAAQADAAQAAAAUAAMAAQAGAAAAAAAVAAMAAQADAAQAAAAVAAIAAQAHAAIAAAAVAP7/AQAAAAIAAAAVAP3/AQAAAAIAAAAVAPz/AQAAAAIAAAAVAPv/AQAAAAIAAAAVAPr/AQAAAAIAAAAPAP3/AQAAAAQAAAAQAP3/AQABAAQAAAARAP3/AQACAAQAAAASAP3/AQADAAQAAAD0//r/AQAAAAIAAAD0//v/AQAAAAIAAAD0//z/AQAAAAMAAAD0//3/AQAAAAIAAAD0//7/AQAAAAIAAAD0////AQAIAAEAAAD0/wAAAQAAAAMAAAD0/wEAAQAAAAIAAAD0/wIAAQAAAAMAAAD0/wMAAQAAAAQAAAAWAAMAAQAEAAQAAAAWAAIAAQAEAAIAAAAWAP7/AQAKAAAAAAAWAP3/AQAFAAEAAAAWAPz/AQAKAAAAAAAWAPv/AQAEAAMAAAAWAPr/AQAFAAEAAAAVAPn/AQAAAAIAAAAVAPj/AQAAAAIAAAAVAPf/AQAAAAIAAAAVAPb/AQAAAAIAAAAVAPX/AQAHAAAAAAAVAPT/AQAHAAIAAAD1//n/AQAFAAAAAAD1//j/AQACAAMAAAD1//f/AQABAAMAAAD1//b/AQABAAIAAAD1//X/AQAFAAIAAAD1//T/AQAEAAMAAAD0//n/AQAIAAEAAAD0//j/AQAAAAIAAAD0//f/AQAIAAAAAAD0//b/AQAAAAIAAAD0//X/AQAAAAIAAAD0//T/AQAAAAIAAAAWAPn/AQAFAAEAAAAWAPj/AQAKAAEAAAAWAPf/AQAFAAEAAAAWAPb/AQAEAAIAAAAWAPX/AQAEAAIAAAAWAPT/AQAEAAMAAAD1/wMAAQADAAQAAAAAAAEAAQAAAAAAAAABAAEAAQABAAAAAAACAAEAAQACAAAAAAADAAEAAQADAAAAAAABAAMAAQAGAAAAAAAAAAMAAQAGAAAAAAD9/wIAAQABAAAAAAD+/wIAAQACAAAAAAD//wIAAQADAAAAAAD6/wIAAQABAAAAAAD7/wIAAQACAAAAAAD8/wIAAQADAAAAAAD3/wIAAQABAAAAAAD4/wIAAQACAAAAAAD5/wIAAQADAAAAAAD2/wIAAQACAAAAAAAEAAEAAQACAAAAAAAFAAIAAQACAAMAAAAGAAEAAQAHAAIAAAAHAP//AQAAAAAAAAAIAP//AQABAAAAAAAJAP//AQACAAAAAAAKAP//AQADAAAAAAANAAAAAQAEAAAAAAAPAAIAAQABAAAAAAAQAAIAAQACAAAAAAARAAIAAQADAAAAAAASAAIAAQABAAAAAAATAAIAAQACAAAAAAAUAAIAAQADAAAAAAAVAPP/AQAAAAIAAAAWAPP/AQAEAAMAAAAPAPz/AQAAAAAAAAARAPz/AQACAAAAAAASAPz/AQADAAAAAAAQAPz/AQABAAAAAAATAPz/AQAEAAAAAAATAP3/AQAEAAQAAAD7////AQACAAQAAAD6////AQAAAAQAAAD6//7/AQAAAAAAAAD9//7/AQAEAAAAAAD7//7/AQABAAAAAAD9//3/AQAIAAIAAAD8/wEAAQAGAAMAAAD+/wEAAQAHAAMAAAACAAAAAQAGAAMAAAD6//3/AQAJAAIAAAAAAPT/AQAFAAIAAAAAAPP/AQAKAAAAAAD///T/AQAHAAAAAAD///P/AQABAAMAAAD+//T/AQADAAQAAAD+//P/AQAHAAIAAAD9//T/AQABAAQAAAD9//P/AQAGAAEAAAD8//T/AQABAAQAAAD8//P/AQAGAAEAAAD7//T/AQAAAAQAAAD7//P/AQAAAAAAAAD///L/AQAHAAIAAAAAAPL/AQAEAAMAAAAKAPX/AQABAAQAAAAKAPT/AQACAAIAAAAJAPX/AQAGAAAAAAAJAPT/AQAHAAIAAAAIAPX/AQACAAQAAAAIAPT/AQAGAAEAAAAHAPX/AQACAAQAAAAHAPT/AQAGAAEAAAAGAPX/AQAFAAAAAAAFAPX/AQAHAAAAAAAEAPX/AQADAAQAAAADAPX/AQABAAQAAAADAPT/AQAGAAEAAAACAPX/AQAGAAAAAAACAPT/AQAGAAEAAAABAPX/AQAGAAAAAAABAPT/AQAGAAEAAAAAAPX/AQAGAAAAAAAJAPP/AQAAAAAAAAAKAPP/AQAGAAEAAAD///X/AQAAAAQAAAAQAPb/AQAEAAIAAAAQAPX/AQAFAAAAAAAQAPT/AQAFAAIAAAAQAPP/AQAEAAIAAAAQAPL/AQAEAAAAAAAPAPb/AQACAAMAAAAPAPX/AQABAAIAAAAPAPT/AQACAAIAAAAPAPP/AQACAAMAAAAPAPL/AQACAAAAAAAOAPf/AQACAAQAAAAOAPb/AQACAAIAAAAOAPX/AQACAAMAAAAOAPT/AQACAAIAAAAOAPP/AQACAAMAAAAOAPL/AQACAAAAAAANAPf/AQADAAQAAAANAPb/AQADAAMAAAANAPX/AQADAAMAAAANAPT/AQABAAMAAAANAPP/AQABAAMAAAANAPL/AQAFAAIAAAANAPH/AQAEAAAAAAAMAPf/AQADAAQAAAAMAPb/AQADAAMAAAAMAPX/AQADAAIAAAAMAPT/AQADAAMAAAAMAPP/AQABAAIAAAAMAPL/AQABAAMAAAAMAPH/AQABAAAAAAALAPf/AQAAAAQAAAALAPb/AQAIAAEAAAALAPX/AQAHAAAAAAALAPT/AQADAAMAAAALAPP/AQAHAAIAAAALAPL/AQAIAAAAAAALAPH/AQAAAAAAAAASAPX/AQACAAQAAAASAPT/AQAGAAEAAAARAPX/AQACAAQAAAARAPT/AQAGAAEAAAAGAPf/AQAEAAQAAAAGAPb/AQAFAAEAAAAFAPf/AQAAAAQAAAAFAPb/AQAIAAEAAAD5//n/AQAFAAIAAAD5//j/AQAEAAIAAAD4//n/AQAHAAAAAAD4//f/AQAGAAEAAAD3//n/AQABAAQAAAD3//f/AQAFAAIAAAD2//n/AQACAAQAAAD2//j/AQADAAMAAAD2//f/AQABAAIAAAD4//j/AQABAAMAAAD3//j/AQABAAIAAAD5//f/AQAEAAAAAAD7//r/AQAEAAQAAAD7//n/AQAEAAAAAAD6//r/AQADAAQAAAD6//n/AQACAAAAAAD5//r/AQACAAQAAAD4//r/AQAAAAQAAAAEAPz/AQAEAAQAAAAEAPv/AQAEAAAAAAADAPz/AQACAAQAAAADAPv/AQACAAAAAAACAPz/AQADAAQAAAACAPv/AQACAAAAAAABAPz/AQABAAQAAAABAPv/AQADAAAAAAAAAPz/AQAAAAQAAAAAAPv/AQAAAAAAAAD1//P/AQAKAAAAAAD1//L/AQAKAAAAAAD1//H/AQAFAAEAAAD1//D/AQAEAAMAAAD1/+//AQAKAAEAAAD1/+7/AQAFAAEAAAD1/+3/AQAFAAEAAAD1/+z/AQAFAAEAAAD1/+v/AQAFAAAAAAD0//P/AQAAAAMAAAD0//L/AQAAAAMAAAD0//H/AQAIAAAAAAD0//D/AQAAAAMAAAD0/+//AQAAAAIAAAD0/+7/AQAAAAIAAAD0/+3/AQAAAAIAAAD0/+z/AQAAAAMAAAD0/+v/AQAAAAIAAAAWAPL/AQAEAAMAAAAWAPH/AQAEAAIAAAAWAPD/AQAFAAEAAAAWAO//AQAFAAEAAAAVAPL/AQAIAAEAAAAVAPD/AQAIAAEAAAAVAO//AQAAAAIAAAAWAO7/AQAEAAIAAAAWAO3/AQAEAAIAAAAWAOz/AQAFAAEAAAAWAOv/AQAEAAIAAAAWAOr/AQAEAAAAAAAVAO7/AQAAAAMAAAAVAO3/AQAAAAMAAAAVAOz/AQAAAAMAAAAVAOv/AQAHAAAAAAAVAOr/AQAGAAEAAAD1/+r/AQAGAAEAAAD0/+r/AQAAAAAAAAAUAOv/AQABAAQAAAAUAOr/AQADAAAAAAATAOv/AQACAAQAAAATAOr/AQADAAAAAAASAOv/AQABAAQAAAASAOr/AQACAAAAAAARAOv/AQABAAQAAAARAOr/AQADAAAAAAAQAOv/AQABAAQAAAAQAOr/AQABAAAAAAAPAOv/AQAGAAAAAAAPAOr/AQACAAAAAAAOAOv/AQADAAQAAAAOAOr/AQADAAAAAAANAOv/AQAGAAAAAAANAOr/AQADAAAAAAAMAOv/AQACAAQAAAAMAOr/AQADAAAAAAALAOv/AQABAAQAAAALAOr/AQABAAAAAAAKAOv/AQABAAQAAAAKAOr/AQABAAAAAAAJAOv/AQACAAQAAAAJAOr/AQAGAAEAAAAIAOv/AQADAAQAAAAIAOr/AQAGAAEAAAAHAOv/AQACAAQAAAAHAOr/AQADAAAAAAAGAOv/AQACAAQAAAAGAOr/AQAGAAEAAAAFAOv/AQAGAAAAAAAFAOr/AQAGAAEAAAAEAOv/AQABAAQAAAAEAOr/AQAGAAEAAAADAOv/AQABAAQAAAADAOr/AQABAAAAAAACAOv/AQAGAAAAAAACAOr/AQACAAAAAAABAOv/AQABAAQAAAABAOr/AQACAAAAAAAAAOv/AQADAAQAAAAAAOr/AQADAAAAAAD//+v/AQAGAAAAAAD//+r/AQADAAAAAAD+/+v/AQADAAQAAAD+/+r/AQAGAAEAAAD9/+v/AQABAAQAAAD9/+r/AQADAAAAAAD8/+v/AQACAAQAAAD8/+r/AQABAAAAAAD7/+v/AQABAAQAAAD7/+r/AQACAAAAAAD6/+v/AQADAAQAAAD6/+r/AQABAAAAAAD5/+v/AQABAAQAAAD5/+r/AQABAAAAAAD4/+v/AQACAAQAAAD4/+r/AQADAAAAAAD3/+v/AQABAAQAAAD3/+r/AQABAAAAAAD2/+v/AQAGAAAAAAD2/+r/AQADAAAAAAD3//b/AQAEAAMAAAD3//X/AQAEAAAAAAD2//b/AQACAAIAAAD2//X/AQADAAAAAAD///H/AQAAAAAAAAAAAPH/AQAEAAAAAAD+//L/AQAAAAAAAAD8/+//AQAEAAQAAAD8/+7/AQAEAAAAAAD7/+//AQAGAAAAAAD7/+7/AQABAAAAAAD6/+//AQABAAQAAAD6/+7/AQACAAAAAAD5/+//AQACAAQAAAD5/+7/AQACAAAAAAD4/+//AQAAAAQAAAD4/+7/AQAAAAAAAAAAAAAAAQAJAAIAAAAJAP7/AQAIAAIAAAD3/wEAAQAHAAMAAAAIAP7/AQAGAAMAAAAUAAEAAQAIAAMAAAAEAAAAAQAJAAMAAAANAP//AQAIAAIAAAAPAPv/AQAJAAIAAAAQAPv/AQAIAAIAAAAAAPr/AQAJAAMAAAACAPr/AQAHAAMAAAD4/+3/AQAIAAMAAAD6/+3/AQAJAAMAAAALAPD/AQAHAAMAAAAOAPH/AQAKAAIAAAAQAPH/AQAIAAIAAAARAPP/AQAJAAMAAAD7//L/AQAIAAIAAAD///D/AQAGAAMAAAACAAIAAQACAAMAAAAVAP//AQAIAAEAAAAWAP//AQAEAAMAAAAWAAAAAQAFAAEAAAAVAAAAAQAAAAIAAAAVAAEAAQAAAAMAAAAWAAEAAQAKAAEAAAD8//7/AQACAAAAAAD8////AQADAAQAAAD9////AQAEAAQAAAAEAPT/AQABAAAAAAAFAPT/AQACAAAAAAAGAPT/AQADAAAAAAAEAPP/AQAKAAIAAAAIAPP/AQAIAAIAAAAVAPH/AQAIAAEAAAATAPT/AQABAAAAAAAUAPT/AQABAAAAAAATAPX/AQABAAQAAAAUAPX/AQACAAQAAAALAP//AQADAAAAAAALAAAAAQADAAIAAAALAAEAAQABAAIAAAAMAAEAAQADAAIAAAAMAAAAAQAFAAIAAAAMAP//AQAEAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAAIAAQADAAIAAAABAAIAAQACAAMAAAADAAIAAQACAAMAAAAEAAIAAQACAAMAAAAFAAEAAQAHAAIAAAAGAAAAAQAHAAIAAAAHAAAAAQADAAMAAAAIAAAAAQADAAIAAAAJAAAAAQADAAIAAAAKAAAAAQADAAIAAAANAAEAAQAEAAAAAAAPAAMAAQADAAQAAAACAAMAAQAGAAAAAAADAAMAAQACAAQAAAAEAAMAAQABAAQAAAAFAAMAAQADAAQAAAAGAAMAAQACAAQAAAAHAAMAAQACAAQAAAAIAAMAAQAGAAAAAAAJAAMAAQADAAQAAAAKAAMAAQAGAAAAAAALAAMAAQABAAQAAAAMAAMAAQACAAQAAAANAAMAAQABAAQAAAANAAIAAQAFAAIAAAAMAAIAAQABAAIAAAALAAIAAQABAAIAAAAKAAIAAQABAAIAAAAJAAIAAQABAAIAAAAIAAIAAQABAAIAAAAHAAIAAQABAAIAAAAGAAIAAQACAAMAAAAHAAEAAQADAAIAAAAKAAEAAQABAAIAAAAJAAEAAQABAAIAAAAIAAEAAQADAAIAAAD//wMAAQADAAQAAAD+/wMAAQADAAQAAAD9/wMAAQABAAQAAAD8/wMAAQABAAQAAAD7/wMAAQABAAQAAAD6/wMAAQADAAQAAAD5/wMAAQABAAQAAAD4/wMAAQADAAQAAAD3/wMAAQABAAQAAAD2/wMAAQAGAAAAAAD1/wIAAQAFAAIAAAD1/wEAAQAFAAEAAAD1/wAAAQAEAAIAAAD1////AQAEAAIAAAD1//7/AQAFAAEAAAD1//3/AQAEAAIAAAD1//z/AQAFAAAAAAD1//v/AQAFAAIAAAD1//r/AQAFAAEAAAAQAAMAAQAGAAAAAAARAAMAAQACAAQAAAASAAMAAQAGAAAAAAATAAMAAQADAAQAAAAUAAMAAQAGAAAAAAAVAAMAAQADAAQAAAAVAAIAAQAHAAIAAAAVAP7/AQAAAAIAAAAVAP3/AQAAAAIAAAAVAPz/AQAAAAIAAAAVAPv/AQAAAAIAAAAVAPr/AQAAAAIAAAD0//r/AQAAAAIAAAD0//v/AQAAAAIAAAD0//z/AQAAAAMAAAD0//3/AQAAAAIAAAD0//7/AQAAAAIAAAD0////AQAIAAEAAAD0/wAAAQAAAAMAAAD0/wEAAQAAAAIAAAD0/wIAAQAAAAMAAAD0/wMAAQAAAAQAAAAWAAMAAQAEAAQAAAAWAAIAAQAEAAIAAAAWAP7/AQAKAAAAAAAWAP3/AQAFAAEAAAAWAPz/AQAKAAAAAAAWAPv/AQAEAAMAAAAWAPr/AQAFAAEAAAAVAPn/AQAAAAIAAAAVAPj/AQAAAAIAAAAVAPf/AQAAAAIAAAAVAPb/AQAAAAIAAAAVAPX/AQAHAAAAAAAVAPT/AQAHAAIAAAD1//n/AQAEAAMAAAD1//j/AQAEAAIAAAD1//f/AQAFAAAAAAD1//b/AQACAAIAAAD1//X/AQABAAIAAAD1//T/AQAFAAIAAAD0//n/AQAIAAEAAAD0//j/AQAAAAIAAAD0//f/AQAIAAAAAAD0//b/AQAAAAIAAAD0//X/AQAAAAIAAAD0//T/AQAAAAIAAAAWAPn/AQAFAAEAAAAWAPj/AQAKAAEAAAAWAPf/AQAFAAEAAAAWAPb/AQAEAAIAAAAWAPX/AQAEAAIAAAAWAPT/AQAEAAMAAAD1/wMAAQADAAQAAAAAAAEAAQAGAAEAAAABAAEAAQABAAAAAAACAAEAAQACAAAAAAADAAEAAQADAAAAAAABAAMAAQAGAAAAAAAAAAMAAQAGAAAAAAD9/wIAAQABAAMAAAD+/wIAAQABAAMAAAD//wIAAQABAAMAAAD6/wIAAQABAAAAAAD7/wIAAQACAAAAAAD8/wIAAQAHAAIAAAD3/wIAAQABAAAAAAD4/wIAAQACAAAAAAD5/wIAAQADAAAAAAD2/wIAAQACAAAAAAAEAAEAAQAGAAEAAAAFAAIAAQACAAMAAAAGAAEAAQADAAMAAAAHAP//AQABAAAAAAAIAP//AQABAAAAAAAJAP//AQACAAAAAAAKAP//AQADAAAAAAAPAAIAAQADAAAAAAAQAAIAAQADAAAAAAARAAIAAQADAAAAAAASAAIAAQADAAAAAAATAAIAAQADAAAAAAAUAAIAAQADAAAAAAAVAPP/AQAAAAIAAAAWAPP/AQAEAAMAAAD8/wEAAQAAAAAAAAACAAAAAQAGAAMAAAAAAPT/AQAFAAIAAAAAAPP/AQAKAAEAAAD///T/AQABAAIAAAD///P/AQAHAAIAAAD+//T/AQAHAAIAAAD+//P/AQAAAAAAAAD9//T/AQACAAAAAAD8//T/AQACAAAAAAD7//T/AQADAAAAAAAKAPX/AQABAAQAAAAKAPT/AQABAAIAAAAJAPX/AQAGAAAAAAAJAPT/AQABAAIAAAAIAPX/AQACAAQAAAAIAPT/AQAHAAIAAAAHAPX/AQACAAQAAAAHAPT/AQAGAAEAAAAGAPX/AQAFAAAAAAAFAPX/AQAHAAAAAAAEAPX/AQADAAQAAAADAPX/AQABAAQAAAADAPT/AQAGAAEAAAACAPX/AQAGAAAAAAACAPT/AQAGAAEAAAABAPX/AQAGAAAAAAABAPT/AQAGAAEAAAAAAPX/AQAGAAAAAAD///X/AQACAAQAAAAQAPX/AQABAAQAAAAQAPT/AQABAAAAAAAPAPX/AQABAAQAAAAPAPT/AQABAAAAAAAOAPX/AQABAAQAAAAOAPT/AQABAAAAAAANAPX/AQABAAQAAAANAPT/AQAFAAIAAAAMAPX/AQABAAQAAAAMAPT/AQADAAIAAAALAPX/AQABAAQAAAALAPT/AQABAAIAAAASAPX/AQACAAQAAAASAPT/AQAGAAEAAAARAPX/AQABAAQAAAARAPT/AQAGAAEAAAAGAPf/AQAEAAQAAAAGAPb/AQAFAAEAAAAFAPf/AQAAAAQAAAAFAPb/AQAIAAEAAAD1//P/AQAFAAEAAAD1//L/AQAKAAAAAAD1//H/AQAFAAEAAAD1//D/AQAEAAMAAAD1/+//AQAKAAEAAAD1/+7/AQAFAAEAAAD1/+3/AQAFAAEAAAD1/+z/AQAFAAEAAAD1/+v/AQAFAAAAAAD0//P/AQAAAAMAAAD0//L/AQAAAAMAAAD0//H/AQAIAAAAAAD0//D/AQAAAAMAAAD0/+//AQAAAAIAAAD0/+7/AQAAAAIAAAD0/+3/AQAAAAIAAAD0/+z/AQAAAAMAAAD0/+v/AQAAAAIAAAAWAPL/AQAEAAMAAAAWAPH/AQAEAAIAAAAWAPD/AQAFAAEAAAAWAO//AQAFAAEAAAAVAPL/AQAIAAEAAAAVAPD/AQAIAAEAAAAVAO//AQAAAAIAAAAWAO7/AQAEAAIAAAAWAO3/AQAEAAIAAAAWAOz/AQAFAAEAAAAWAOv/AQAEAAIAAAAWAOr/AQAEAAAAAAAVAO7/AQAAAAMAAAAVAO3/AQAAAAMAAAAVAOz/AQAAAAMAAAAVAOv/AQAHAAAAAAAVAOr/AQAGAAEAAAD1/+r/AQAGAAEAAAD0/+r/AQAAAAAAAAAUAOv/AQABAAQAAAAUAOr/AQADAAAAAAATAOv/AQACAAQAAAATAOr/AQADAAAAAAASAOv/AQABAAQAAAASAOr/AQACAAAAAAARAOv/AQABAAQAAAARAOr/AQADAAAAAAAQAOv/AQABAAQAAAAQAOr/AQABAAAAAAAPAOv/AQAGAAAAAAAPAOr/AQACAAAAAAAOAOv/AQADAAQAAAAOAOr/AQADAAAAAAANAOv/AQAGAAAAAAANAOr/AQADAAAAAAAMAOv/AQACAAQAAAAMAOr/AQADAAAAAAALAOv/AQABAAQAAAALAOr/AQABAAAAAAAKAOv/AQABAAQAAAAKAOr/AQABAAAAAAAJAOv/AQACAAQAAAAJAOr/AQAGAAEAAAAIAOv/AQADAAQAAAAIAOr/AQAGAAEAAAAHAOv/AQACAAQAAAAHAOr/AQADAAAAAAAGAOv/AQACAAQAAAAGAOr/AQAGAAEAAAAFAOv/AQAGAAAAAAAFAOr/AQAGAAEAAAAEAOv/AQABAAQAAAAEAOr/AQAGAAEAAAADAOv/AQABAAQAAAADAOr/AQABAAAAAAACAOv/AQAGAAAAAAACAOr/AQACAAAAAAABAOv/AQABAAQAAAABAOr/AQACAAAAAAAAAOv/AQADAAQAAAAAAOr/AQADAAAAAAD//+v/AQAGAAAAAAD//+r/AQADAAAAAAD+/+v/AQADAAQAAAD+/+r/AQAGAAEAAAD9/+v/AQABAAQAAAD9/+r/AQADAAAAAAD8/+v/AQACAAQAAAD8/+r/AQABAAAAAAD7/+v/AQABAAQAAAD7/+r/AQACAAAAAAD6/+v/AQADAAQAAAD6/+r/AQABAAAAAAD5/+v/AQABAAQAAAD5/+r/AQABAAAAAAD4/+v/AQACAAQAAAD4/+r/AQADAAAAAAD3/+v/AQABAAQAAAD3/+r/AQABAAAAAAD2/+v/AQAGAAAAAAD2/+r/AQADAAAAAAAAAAAAAQAJAAIAAAAJAP7/AQAIAAIAAAD3/wEAAQAHAAMAAAAIAP7/AQAGAAMAAAAUAAEAAQAIAAMAAAACAAIAAQACAAMAAAAVAP//AQAIAAEAAAAWAP//AQAEAAMAAAAWAAAAAQAFAAEAAAAVAAAAAQAAAAIAAAAVAAEAAQAAAAMAAAAWAAEAAQAKAAEAAAAEAPT/AQABAAAAAAAFAPT/AQACAAAAAAAGAPT/AQADAAAAAAAEAPP/AQAKAAIAAAATAPT/AQABAAAAAAAUAPT/AQABAAAAAAATAPX/AQABAAQAAAAUAPX/AQACAAQAAAALAP//AQAEAAAAAAALAAAAAQAFAAIAAAALAAEAAQABAAIAAAAMAAEAAQAFAAIAAAAMAAAAAQAEAAAAAAAOAAIAAQADAAAAAAAOAAMAAQACAAQAAAAOAAEAAQAGAAMAAAAOAPP/AQAJAAMAAAAJAPP/AQAAAAAAAAAKAPP/AQABAAAAAAALAPP/AQABAAAAAAAMAPP/AQADAAAAAAALAPL/AQAKAAIAAAANAPP/AQAEAAAAAAAVAPH/AQAAAAIAAAD6//T/AQABAAAAAAD5//T/AQACAAAAAAD4//T/AQADAAAAAAD3//T/AQACAAAAAAD2//T/AQABAAAAAAD8//z/AQAFAAIAAAD8//v/AQAEAAAAAAD7//z/AQAHAAAAAAD7//v/AQADAAAAAAAAAP3/AQADAAQAAAD///3/AQABAAQAAAD+//3/AQABAAQAAAD9//3/AQABAAQAAAD8//3/AQABAAQAAAD6//z/AQABAAQAAAD6//v/AQAGAAEAAAD5//z/AQACAAQAAAD5//v/AQAGAAEAAAD4//z/AQAGAAAAAAD4//v/AQABAAAAAAD3//z/AQABAAQAAAD3//v/AQAGAAEAAAD2//z/AQACAAQAAAD2//v/AQAGAAEAAAD+//X/AQADAAQAAAD9//X/AQABAAQAAAD8//X/AQADAAQAAAD7//X/AQADAAQAAAD6//X/AQAGAAAAAAD5//X/AQAGAAAAAAD4//X/AQAFAAAAAAD3//X/AQADAAMAAAD2//X/AQADAAIAAAAAAPL/AQAEAAAAAAD///L/AQAAAAAAAAAFAAAAAQAAAAAAAAAGAP//AQAAAAAAAAD//wEAAQADAAAAAAD+/wEAAQADAAAAAAD9/wEAAQACAAAAAAD4//f/AQAEAAQAAAD4//b/AQAEAAMAAAD3//f/AQAGAAAAAAD3//b/AQADAAMAAAD2//f/AQABAAQAAAD2//b/AQABAAIAAAD7//3/AQAAAAQAAAAAAPz/AQAGAAEAAAD///z/AQADAAAAAAD+//z/AQAGAAEAAAD9//z/AQADAAAAAAACAPz/AQAEAAAAAAABAPz/AQABAAAAAAD3//r/AQAGAAMAAAD8//r/AQAJAAIAAAAAAPv/AQAJAAMAAAACAP3/AQAEAAQAAAABAP3/AQADAAQAAAA=")
 tile_set = SubResource("TileSet_5a7ea")
 
-[node name="TileMapLayer2" type="TileMapLayer" parent="Background"]
+[node name="TileMapLayer2" type="TileMapLayer" parent="Background" unique_id=1948888952]
 z_index = 3
-tile_map_data = PackedByteArray("AAD1/+v/AQAAAAUAAAD1/+3/AQANAA0AAAD1/+7/AQANAA4AAAD1/+//AQANAA8AAAD1//D/AQANABAAAAD2/+v/AQAAAAUAAAD2/+z/AQAAAAYAAAD2/+3/AQAAAAYAAAD2/+7/AQAAAAcAAAD2/+//AQAAAAYAAAD2//D/AQAAAAcAAAD2//H/AQAAAAYAAAD2//L/AQAAAAcAAAD2//P/AQAAAAYAAAD2//T/AQAAAAYAAAD2//X/AQAAAAcAAAD2//b/AQAAAAYAAAD2//f/AQAAAAcAAAD2//j/AQAAAAYAAAD2//n/AQAAAAcAAAD2//r/AQAAAAcAAAD2//v/AQAAAAcAAAD2//z/AQAAAAYAAAD2//3/AQAAAAcAAAD2//7/AQAEAAgAAAD2////AQAEAAkAAAD2/wAAAQAEAAoAAAD2/wEAAQAEAAsAAAD3/+v/AQABAAUAAAD3/+z/AQABAAYAAAD3/+3/AQABAAYAAAD3/+7/AQABAAcAAAD3/+//AQABAAYAAAD3//D/AQABAAcAAAD3//H/AQABAAYAAAD3//L/AQABAAcAAAD3//P/AQABAAYAAAD3//T/AQABAAYAAAD3//X/AQABAAcAAAD3//b/AQABAAYAAAD3//f/AQABAAcAAAD3//j/AQABAAYAAAD3//n/AQABAAcAAAD3//r/AQABAAcAAAD3//v/AQABAAcAAAD3//z/AQABAAYAAAD3//3/AQABAAcAAAD3//7/AQAFAAgAAAD3////AQAFAAkAAAD3/wAAAQAFAAoAAAD3/wEAAQAFAAsAAAD7//n/AQANAAQAAAAEAPz/AQANAAoAAAANAPH/AQANAAQAAAAPAPL/AQAPAAUAAAAQAPL/AQAQAAUAAAATAOv/AQACAAUAAAATAOz/AQACAAYAAAATAO3/AQACAAcAAAATAO7/AQACAAYAAAATAO//AQACAAcAAAATAPD/AQAGAAgAAAATAPH/AQAGAAkAAAATAPL/AQAGAAoAAAATAPb/AQACAAkAAAATAPf/AQACAAoAAAATAPj/AQACAAsAAAATAPn/AQACAAkAAAATAPr/AQACAAoAAAATAPv/AQACAAsAAAATAP3/AQAGAAYAAAATAP7/AQACAAsAAAATAP//AQACAAkAAAATAAAAAQACAAoAAAATAAEAAQACAAsAAAAUAOv/AQADAAUAAAAUAOz/AQADAAYAAAAUAO3/AQADAAcAAAAUAO7/AQADAAYAAAAUAO//AQADAAcAAAAUAPD/AQAHAAgAAAAUAPH/AQAHAAkAAAAUAPL/AQAHAAoAAAAUAPP/AQAHAAsAAAAUAPb/AQADAAkAAAAUAPf/AQADAAoAAAAUAPj/AQADAAsAAAAUAPn/AQADAAkAAAAUAPr/AQADAAoAAAAUAPv/AQADAAsAAAAUAPz/AQADAAkAAAAUAP3/AQAHAAYAAAAUAP7/AQADAAsAAAAUAP//AQADAAkAAAAUAAAAAQADAAoAAAAUAAEAAQADAAsAAAAWAP3/AQAHAAYAAAATAPP/AQAGAAsAAAA=")
+tile_map_data = PackedByteArray("AAD1/+v/AQAAAAUAAAD1/+3/AQANAA0AAAD1/+7/AQANAA4AAAD1/+//AQANAA8AAAD1//D/AQANABAAAAD2/+v/AQAAAAUAAAD2/+z/AQAAAAYAAAD2/+3/AQAAAAYAAAD2/+7/AQAAAAcAAAD2/+//AQAAAAYAAAD2//D/AQAEAAgAAAD2//H/AQAEAAkAAAD2//L/AQAEAAoAAAD2//P/AQAEAAsAAAD2//T/AQAAAAYAAAD2//X/AQAAAAcAAAD2//b/AQAAAAYAAAD2//f/AQAAAAcAAAD2//j/AQAAAAYAAAD2//n/AQAAAAcAAAD2//r/AQAAAAcAAAD2//v/AQAAAAcAAAD2//z/AQAAAAYAAAD2//3/AQAAAAcAAAD2//7/AQAEAAgAAAD2////AQAEAAkAAAD2/wAAAQAEAAoAAAD2/wEAAQAEAAsAAAD3/+v/AQABAAUAAAD3/+z/AQABAAYAAAD3/+3/AQABAAYAAAD3/+7/AQABAAcAAAD3/+//AQABAAYAAAD3//D/AQAFAAgAAAD3//H/AQAFAAkAAAD3//L/AQAFAAoAAAD3//P/AQAFAAsAAAD3//T/AQABAAYAAAD3//X/AQABAAcAAAD3//b/AQABAAYAAAD3//f/AQABAAcAAAD3//j/AQABAAYAAAD3//n/AQABAAcAAAD3//r/AQABAAcAAAD3//v/AQABAAcAAAD3//z/AQABAAYAAAD3//3/AQABAAcAAAD3//7/AQAFAAgAAAD3////AQAFAAkAAAD3/wAAAQAFAAoAAAD3/wEAAQAFAAsAAAD7//n/AQANAAQAAAAEAPz/AQANAAoAAAA=")
 tile_set = SubResource("TileSet_8j60k")
 
-[node name="ParallaxBackground" type="Node" parent="Background"]
+[node name="ParallaxBackground" type="Node" parent="Background" unique_id=2133023390]
 
-[node name="Sky" type="Parallax2D" parent="Background/ParallaxBackground"]
+[node name="Sky" type="Parallax2D" parent="Background/ParallaxBackground" unique_id=1373581001]
 scroll_scale = Vector2(0.1, 0.1)
 scroll_offset = Vector2(1, -48)
 repeat_size = Vector2(384, 0)
 repeat_times = 3
-metadata/_edit_lock_ = true
 
-[node name="Background" type="Sprite2D" parent="Background/ParallaxBackground/Sky"]
+[node name="Background" type="Sprite2D" parent="Background/ParallaxBackground/Sky" unique_id=1279580491]
 scale = Vector2(0.8, 0.93014705)
 texture = ExtResource("4_8j1dr")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="Hills" type="Parallax2D" parent="Background/ParallaxBackground"]
+[node name="Hills" type="Parallax2D" parent="Background/ParallaxBackground" unique_id=913505606]
 scroll_scale = Vector2(0.3, 0.2)
 scroll_offset = Vector2(-18, -33)
 repeat_size = Vector2(68, 0)
 repeat_times = 11
-metadata/_edit_lock_ = true
 
-[node name="Background" type="Sprite2D" parent="Background/ParallaxBackground/Hills"]
+[node name="Background" type="Sprite2D" parent="Background/ParallaxBackground/Hills" unique_id=854173623]
 position = Vector2(0, 20.000004)
 scale = Vector2(0.7083334, 0.85202205)
 texture = ExtResource("5_le8i6")
 centered = false
 region_enabled = true
 region_rect = Rect2(800, 0, 96, 256)
+metadata/_edit_lock_ = true
 
-[node name="Trees" type="Parallax2D" parent="Background/ParallaxBackground"]
+[node name="Trees" type="Parallax2D" parent="Background/ParallaxBackground" unique_id=1617729710]
 scroll_scale = Vector2(0.5, 0.3)
 scroll_offset = Vector2(-26, -33)
 repeat_size = Vector2(56, 0)
 repeat_times = 13
-metadata/_edit_lock_ = true
 
-[node name="Background" type="Sprite2D" parent="Background/ParallaxBackground/Trees"]
+[node name="Background" type="Sprite2D" parent="Background/ParallaxBackground/Trees" unique_id=1925682777]
 position = Vector2(0, 91.000015)
 scale = Vector2(0.59375006, 0.5746783)
 texture = ExtResource("5_le8i6")
 centered = false
 region_enabled = true
 region_rect = Rect2(112, 0, 96, 256)
-
-[node name="Leaves1" type="Parallax2D" parent="Background/ParallaxBackground"]
 metadata/_edit_lock_ = true
 
-[node name="TreeAssets" type="Sprite2D" parent="Background/ParallaxBackground/Leaves1"]
+[node name="Leaves1" type="Parallax2D" parent="Background/ParallaxBackground" unique_id=933564959]
+
+[node name="TreeAssets" type="Sprite2D" parent="Background/ParallaxBackground/Leaves1" unique_id=1906943610]
 position = Vector2(-100, 18)
 texture = ExtResource("3_76g7w")
 region_enabled = true
 region_rect = Rect2(210, 5, 124, 86)
 metadata/_edit_lock_ = true
 
-[node name="TreeAssets2" type="Sprite2D" parent="Background/ParallaxBackground/Leaves1"]
+[node name="TreeAssets2" type="Sprite2D" parent="Background/ParallaxBackground/Leaves1" unique_id=2134783483]
 position = Vector2(317, 12)
 texture = ExtResource("3_76g7w")
 region_enabled = true
 region_rect = Rect2(210, 5, 124, 86)
 metadata/_edit_lock_ = true
 
-[node name="TreeAssets3" type="Sprite2D" parent="Background/ParallaxBackground/Leaves1"]
+[node name="TreeAssets3" type="Sprite2D" parent="Background/ParallaxBackground/Leaves1" unique_id=80420503]
 position = Vector2(102, 11)
 texture = ExtResource("3_76g7w")
 region_enabled = true
 region_rect = Rect2(210, 5, 124, 86)
 metadata/_edit_lock_ = true
 
-[node name="TreeAssets5" type="Sprite2D" parent="Background/ParallaxBackground/Leaves1"]
+[node name="TreeAssets5" type="Sprite2D" parent="Background/ParallaxBackground/Leaves1" unique_id=1214410916]
 position = Vector2(182, -202)
 texture = ExtResource("3_76g7w")
 region_enabled = true
 region_rect = Rect2(210, 5, 124, 86)
 metadata/_edit_lock_ = true
 
-[node name="TreeAssets6" type="Sprite2D" parent="Background/ParallaxBackground/Leaves1"]
+[node name="TreeAssets6" type="Sprite2D" parent="Background/ParallaxBackground/Leaves1" unique_id=369867162]
 position = Vector2(-132, -129)
 texture = ExtResource("3_76g7w")
 region_enabled = true
 region_rect = Rect2(210, 5, 124, 86)
 metadata/_edit_lock_ = true
 
-[node name="TreeAssets7" type="Sprite2D" parent="Background/ParallaxBackground/Leaves1"]
+[node name="TreeAssets7" type="Sprite2D" parent="Background/ParallaxBackground/Leaves1" unique_id=940625656]
 position = Vector2(-117, -308)
 texture = ExtResource("3_76g7w")
 region_enabled = true
 region_rect = Rect2(210, 5, 124, 86)
 metadata/_edit_lock_ = true
 
-[node name="TreeAssets8" type="Sprite2D" parent="Background/ParallaxBackground/Leaves1"]
+[node name="TreeAssets8" type="Sprite2D" parent="Background/ParallaxBackground/Leaves1" unique_id=613274201]
 position = Vector2(309, -309)
 texture = ExtResource("3_76g7w")
 region_enabled = true
 region_rect = Rect2(210, 5, 124, 86)
 metadata/_edit_lock_ = true
 
-[node name="TreeAssets4" type="Sprite2D" parent="Background/ParallaxBackground/Leaves1"]
+[node name="TreeAssets4" type="Sprite2D" parent="Background/ParallaxBackground/Leaves1" unique_id=1032793763]
 position = Vector2(317, -96)
 rotation = 4.404995
 texture = ExtResource("3_76g7w")
@@ -944,124 +942,202 @@ region_enabled = true
 region_rect = Rect2(210, 5, 124, 86)
 metadata/_edit_lock_ = true
 
-[node name="Leaves2" type="Parallax2D" parent="Background/ParallaxBackground"]
+[node name="TreeAssets9" type="Sprite2D" parent="Background/ParallaxBackground/Leaves1" unique_id=316005087]
+position = Vector2(-88, -72)
+texture = ExtResource("3_76g7w")
+region_enabled = true
+region_rect = Rect2(210, 5, 124, 86)
 metadata/_edit_lock_ = true
 
-[node name="TreeAssets" type="Sprite2D" parent="Background/ParallaxBackground/Leaves2"]
+[node name="Leaves2" type="Parallax2D" parent="Background/ParallaxBackground" unique_id=887887119]
+
+[node name="TreeAssets" type="Sprite2D" parent="Background/ParallaxBackground/Leaves2" unique_id=241766635]
 position = Vector2(44, -72)
 texture = ExtResource("3_76g7w")
 region_enabled = true
 region_rect = Rect2(210, 101, 124, 86)
+metadata/_edit_lock_ = true
 
-[node name="TreeAssets2" type="Sprite2D" parent="Background/ParallaxBackground/Leaves2"]
+[node name="TreeAssets2" type="Sprite2D" parent="Background/ParallaxBackground/Leaves2" unique_id=429857043]
 position = Vector2(-8, -185)
 texture = ExtResource("3_76g7w")
 region_enabled = true
 region_rect = Rect2(210, 101, 124, 86)
+metadata/_edit_lock_ = true
 
-[node name="TreeAssets3" type="Sprite2D" parent="Background/ParallaxBackground/Leaves2"]
+[node name="TreeAssets3" type="Sprite2D" parent="Background/ParallaxBackground/Leaves2" unique_id=891936154]
 position = Vector2(221, -144)
 texture = ExtResource("3_76g7w")
 region_enabled = true
 region_rect = Rect2(210, 101, 124, 86)
+metadata/_edit_lock_ = true
 
-[node name="TreeAssets4" type="Sprite2D" parent="Background/ParallaxBackground/Leaves2"]
+[node name="TreeAssets4" type="Sprite2D" parent="Background/ParallaxBackground/Leaves2" unique_id=1250403138]
 position = Vector2(82, -318)
 texture = ExtResource("3_76g7w")
 region_enabled = true
 region_rect = Rect2(210, 101, 124, 86)
-
-[node name="Leaves3" type="Parallax2D" parent="Background/ParallaxBackground"]
-z_index = 5
-scroll_offset = Vector2(53, 5)
 metadata/_edit_lock_ = true
 
-[node name="TreeAssets" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3"]
-position = Vector2(-207, -109)
+[node name="Leaves3" type="Parallax2D" parent="Background/ParallaxBackground" unique_id=1236418169]
+z_index = 5
+scroll_offset = Vector2(53, 5)
+
+[node name="TreeAssets" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=1231579681]
+position = Vector2(-165, -165)
 texture = ExtResource("3_76g7w")
 region_enabled = true
 region_rect = Rect2(210, 293, 124, 86)
+metadata/_edit_lock_ = true
 
-[node name="TreeAssets2" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3"]
+[node name="TreeAssets2" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=1021087963]
 position = Vector2(-32, 48)
 texture = ExtResource("3_76g7w")
 region_enabled = true
 region_rect = Rect2(210, 293, 124, 86)
+metadata/_edit_lock_ = true
 
-[node name="TreeAssets3" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3"]
-position = Vector2(124, 21)
+[node name="TreeAssets3" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=85611767]
+position = Vector2(106, 15)
+rotation = 0.12497834
+scale = Vector2(1, 1.0116279)
 texture = ExtResource("3_76g7w")
 region_enabled = true
 region_rect = Rect2(210, 293, 124, 86)
+metadata/_edit_lock_ = true
 
-[node name="TreeAssets4" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3"]
-position = Vector2(245, -45)
-scale = Vector2(0.94556457, 0.6686047)
+[node name="TreeAssets5" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=271359968]
+position = Vector2(211, -157)
 texture = ExtResource("3_76g7w")
 region_enabled = true
 region_rect = Rect2(210, 293, 124, 86)
+metadata/_edit_lock_ = true
 
-[node name="TreeAssets5" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3"]
-position = Vector2(125, -172)
-texture = ExtResource("3_76g7w")
-region_enabled = true
-region_rect = Rect2(210, 293, 124, 86)
-
-[node name="TreeAssets6" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3"]
+[node name="TreeAssets6" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=1390262092]
 position = Vector2(5, -167)
 scale = Vector2(1.217742, 0.89534885)
 texture = ExtResource("3_76g7w")
 region_enabled = true
 region_rect = Rect2(210, 293, 124, 86)
+metadata/_edit_lock_ = true
 
-[node name="TreeAssets9" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3"]
-position = Vector2(-83, -198.00002)
+[node name="TreeAssets9" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=1836046793]
+position = Vector2(-61, -181.00002)
 scale = Vector2(0.7903226, 0.6686046)
 texture = ExtResource("3_76g7w")
 region_enabled = true
 region_rect = Rect2(210, 293, 124, 86)
+metadata/_edit_lock_ = true
 
-[node name="TreeAssets7" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3"]
-position = Vector2(192, -178)
+[node name="TreeAssets7" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=1978990819]
+position = Vector2(107, -173)
 texture = ExtResource("3_76g7w")
 region_enabled = true
 region_rect = Rect2(210, 293, 124, 86)
+metadata/_edit_lock_ = true
 
-[node name="TreeAssets10" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3"]
+[node name="TreeAssets10" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=1091620429]
 position = Vector2(70, -331)
 texture = ExtResource("3_76g7w")
 region_enabled = true
 region_rect = Rect2(210, 293, 124, 86)
+metadata/_edit_lock_ = true
 
-[node name="TreeAssets11" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3"]
+[node name="TreeAssets11" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=1847747868]
 position = Vector2(-5, -343)
 texture = ExtResource("3_76g7w")
 region_enabled = true
 region_rect = Rect2(210, 293, 124, 86)
+metadata/_edit_lock_ = true
 
-[node name="TreeAssets8" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3"]
+[node name="TreeAssets8" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=1952250917]
 position = Vector2(-217.00002, -326)
 rotation = 1.1024075
 scale = Vector2(0.9162393, 0.8891574)
 texture = ExtResource("3_76g7w")
 region_enabled = true
 region_rect = Rect2(210, 293, 124, 86)
+metadata/_edit_lock_ = true
 
-[node name="Boar" parent="." instance=ExtResource("6_265bt")]
+[node name="TreeAssets4" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=164859957]
+position = Vector2(203, -77)
+texture = ExtResource("3_76g7w")
+region_enabled = true
+region_rect = Rect2(210, 293, 124, 86)
+metadata/_edit_lock_ = true
+
+[node name="TreeAssets12" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=492562504]
+position = Vector2(221, -309)
+texture = ExtResource("3_76g7w")
+region_enabled = true
+region_rect = Rect2(210, 293, 124, 86)
+metadata/_edit_lock_ = true
+
+[node name="TreeAssets13" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=543456669]
+position = Vector2(291, -101)
+texture = ExtResource("3_76g7w")
+region_enabled = true
+region_rect = Rect2(210, 293, 124, 86)
+metadata/_edit_lock_ = true
+
+[node name="TreeAssets14" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=856598504]
+position = Vector2(-168, -360)
+texture = ExtResource("3_76g7w")
+region_enabled = true
+region_rect = Rect2(210, 293, 124, 86)
+metadata/_edit_lock_ = true
+
+[node name="TreeAssets15" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=1808367261]
+position = Vector2(289, -323)
+texture = ExtResource("3_76g7w")
+region_enabled = true
+region_rect = Rect2(210, 293, 124, 86)
+metadata/_edit_lock_ = true
+
+[node name="TreeAssets16" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=1590071268]
+position = Vector2(160, -362)
+texture = ExtResource("3_76g7w")
+region_enabled = true
+region_rect = Rect2(210, 293, 124, 86)
+metadata/_edit_lock_ = true
+
+[node name="TreeAssets17" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=1089028479]
+position = Vector2(-237, -69)
+texture = ExtResource("3_76g7w")
+region_enabled = true
+region_rect = Rect2(210, 293, 124, 86)
+metadata/_edit_lock_ = true
+
+[node name="Boar" parent="." unique_id=893280259 instance=ExtResource("6_265bt")]
 z_index = 5
-position = Vector2(46, -9)
+position = Vector2(0, -88)
 
-[node name="Interact" type="Node" parent="."]
+[node name="Boar2" parent="." unique_id=1517129695 instance=ExtResource("6_265bt")]
+z_index = 5
+position = Vector2(68, -211)
 
-[node name="Interactable" type="Area2D" parent="Interact"]
-z_index = 6
-position = Vector2(-55, 23)
-script = ExtResource("7_ff2fp")
-metadata/_custom_type_script = "uid://rghok5m7iw6f"
+[node name="Interact" type="Node" parent="." unique_id=1327184662]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interact/Interactable"]
-shape = SubResource("CircleShape2D_ff2fp")
+[node name="Map" type="Node" parent="Interact" unique_id=72046388]
 
-[node name="Map" type="Node" parent="Interact"]
+[node name="MineGate" parent="Interact/Map" unique_id=388448989 instance=ExtResource("4_ff2fp")]
+position = Vector2(143, -127)
+path = "uid://dmbvi2jkctndw"
+entry_point = "BottomEntry"
 
-[node name="AddHealth" type="Node" parent="Interact"]
+[node name="MineGate2" parent="Interact/Map" unique_id=1862591523 instance=ExtResource("4_ff2fp")]
+position = Vector2(144, -349)
+path = "uid://dmbvi2jkctndw"
+entry_point = "TopEntry"
+
+[node name="BottomEntry" type="Marker2D" parent="Interact/Map" unique_id=1349569179]
+position = Vector2(272, 8)
+script = ExtResource("5_p1gi4")
+metadata/_custom_type_script = "uid://cv1ovs7tewfd6"
+
+[node name="TopEntry" type="Marker2D" parent="Interact/Map" unique_id=1814656990]
+position = Vector2(272, -216)
+script = ExtResource("5_p1gi4")
+metadata/_custom_type_script = "uid://cv1ovs7tewfd6"
+
+[node name="AddHealth" type="Node" parent="Interact" unique_id=1241905867]

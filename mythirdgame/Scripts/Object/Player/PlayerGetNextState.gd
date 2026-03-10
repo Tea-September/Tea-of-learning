@@ -71,13 +71,19 @@ func _get_next_state(Player: CharacterBody2D, state: State) -> State:
 	var judgment_jump1 = (Player.is_on_floor() or Player.coyote_timer.time_left > 0) and Input.is_action_pressed("Jump")
 	# （条件2）prepare_jump_timer计时未结束和在地板上<落地提前按下跳跃键跳跃>
 	var judgment_jump2 = Player.prepare_jump_timer.time_left > 0 and Player.is_on_floor()
+	# 二段跳
+	if Player.is_on_floor() and Player.stats.energy >= 1:
+		Player.double_jump = true
+	if Player.double_jump and not Player.is_on_floor() and Player.prepare_jump_timer.time_left > 0:
+		Player.double_jump = false
+		return State.JUMP
 	# 跳跃，按空格松下后，再次按空格，才能跳跃
 	if not Player.input_jump:
 		if judgment_jump1 or judgment_jump2:
 			return State.JUMP
 	Player.input_jump = Input.is_action_pressed("Jump")
 	# （条件1）设置滑铲条件，按下滑铲键后，并且在地板上
-	var judgment_slide1 = (Player.is_on_floor() or Player.coyote_timer.time_left > 0) and Input.is_action_pressed("Jump")
+	var judgment_slide1 = (Player.is_on_floor() or Player.coyote_timer.time_left > 0) and Input.is_action_pressed("Slide")
 	# （条件2）prepare_slide_timer计时未结束和在地板上<落地提前按下滑铲键滑铲>
 	var judgment_slide2 = Player.prepare_slide_timer.time_left > 0 and Player.is_on_floor()
 	# 滑铲，按滑铲键松下后，再次按滑铲键，才能滑铲

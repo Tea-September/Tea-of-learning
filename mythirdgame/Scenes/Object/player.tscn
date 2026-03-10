@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=3 uid="uid://dcl2tc6ebw5o1"]
+[gd_scene format=3 uid="uid://dcl2tc6ebw5o1"]
 
 [ext_resource type="Script" uid="uid://danmhjqhpq7y4" path="res://Scripts/Object/Player/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://bxa62dh7d7mkj" path="res://Game Assets/generic_char_v0.2/png/blue/char_blue_1.png" id="1_v0iea"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://dnp5kvewenmss" path="res://Game Assets/generic_char_v0.2/png/blue/char_blue_2.png" id="3_vgqql"]
 [ext_resource type="Script" uid="uid://c57brssayd6m2" path="res://Scripts/Config/HurtBox.gd" id="4_7yi3x"]
 [ext_resource type="Script" uid="uid://cwj582pp1fwkb" path="res://Scripts/Config/HitBox.gd" id="5_isakk"]
-[ext_resource type="Script" uid="uid://dkkbqle4cds62" path="res://Scripts/Data/Stats.gd" id="7_ju12x"]
 [ext_resource type="Script" uid="uid://gc2pg5p6xvmw" path="res://Scripts/Object/Player/PlayerInputAhead.gd" id="8_7sjl0"]
 [ext_resource type="PackedScene" uid="uid://dyjhfo7fsj32k" path="res://Scenes/Surroundings/Ui/StateMenu.tscn" id="8_k37lx"]
 [ext_resource type="Script" uid="uid://cwexi221qjsyt" path="res://Scripts/Object/Player/PlayerTickPhysics.gd" id="9_8wdfv"]
@@ -699,135 +698,127 @@ _data = {
 &"RESET": SubResource("Animation_k37lx")
 }
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1511381810 groups=["player"]]
 collision_layer = 2
 script = ExtResource("1_cvnsp")
 move_speed = 150.0
 jump_speed = -320.0
 
-[node name="Interacting" type="AnimatedSprite2D" parent="."]
+[node name="Interacting" type="AnimatedSprite2D" parent="." unique_id=2143231529]
 position = Vector2(1, -16)
 sprite_frames = SubResource("SpriteFrames_n7pj6")
 animation = &"Interacting"
 autoplay = "Interacting"
 frame_progress = 0.5895697
 
-[node name="Graphics" type="Node2D" parent="."]
+[node name="Graphics" type="Node2D" parent="." unique_id=1228800014]
 
-[node name="SlidingWall" type="Node2D" parent="Graphics"]
+[node name="SlidingWall" type="Node2D" parent="Graphics" unique_id=1552438245]
 metadata/_edit_lock_ = true
 
-[node name="UpSlidingWall" type="RayCast2D" parent="Graphics/SlidingWall"]
+[node name="UpSlidingWall" type="RayCast2D" parent="Graphics/SlidingWall" unique_id=1685702465]
 position = Vector2(0, -2)
 target_position = Vector2(14, 0)
 metadata/_edit_lock_ = true
 
-[node name="DownSlidingWall" type="RayCast2D" parent="Graphics/SlidingWall"]
+[node name="DownSlidingWall" type="RayCast2D" parent="Graphics/SlidingWall" unique_id=51764232]
 position = Vector2(0, 26)
 target_position = Vector2(14, 0)
 metadata/_edit_lock_ = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Graphics"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Graphics" unique_id=1734333504]
 sprite_frames = SubResource("SpriteFrames_8erm5")
 animation = &"Die"
 
-[node name="HurtBox" type="Area2D" parent="Graphics"]
+[node name="HurtBox" type="Area2D" parent="Graphics" unique_id=237775442]
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("4_7yi3x")
 metadata/_custom_type_script = "uid://c57brssayd6m2"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Graphics/HurtBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Graphics/HurtBox" unique_id=339345385]
 position = Vector2(-1.5, 11.5)
 shape = SubResource("RectangleShape2D_vgqql")
 
-[node name="HitBox" type="Area2D" parent="Graphics"]
+[node name="HitBox" type="Area2D" parent="Graphics" unique_id=1554446404]
 collision_layer = 0
 collision_mask = 16
 script = ExtResource("5_isakk")
 metadata/_custom_type_script = "uid://cwj582pp1fwkb"
 
-[node name="Attack1" type="CollisionShape2D" parent="Graphics/HitBox"]
+[node name="Attack1" type="CollisionShape2D" parent="Graphics/HitBox" unique_id=1461162421]
 position = Vector2(15, 10.5)
 shape = SubResource("RectangleShape2D_isakk")
 disabled = true
 
-[node name="Attack2" type="CollisionShape2D" parent="Graphics/HitBox"]
+[node name="Attack2" type="CollisionShape2D" parent="Graphics/HitBox" unique_id=1498720787]
 position = Vector2(11, 13)
 shape = SubResource("RectangleShape2D_ju12x")
 disabled = true
 
-[node name="Attack3" type="CollisionShape2D" parent="Graphics/HitBox"]
+[node name="Attack3" type="CollisionShape2D" parent="Graphics/HitBox" unique_id=1414000727]
 position = Vector2(17, 12)
 shape = SubResource("RectangleShape2D_k37lx")
 disabled = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1924216233]
 position = Vector2(0, 11.5)
 shape = SubResource("RectangleShape2D_vgqql")
 
-[node name="CoyoteTimer" type="Timer" parent="."]
+[node name="CoyoteTimer" type="Timer" parent="." unique_id=1206408655]
 wait_time = 0.1
 one_shot = true
 
-[node name="PrepareJumpTimer" type="Timer" parent="."]
+[node name="PrepareJumpTimer" type="Timer" parent="." unique_id=1227091565]
 wait_time = 0.5
 one_shot = true
 
-[node name="InvincibleTimer" type="Timer" parent="."]
+[node name="InvincibleTimer" type="Timer" parent="." unique_id=2038852490]
 wait_time = 3.0
 one_shot = true
 
-[node name="PrepareSlideTimer" type="Timer" parent="."]
+[node name="PrepareSlideTimer" type="Timer" parent="." unique_id=460553507]
 wait_time = 0.5
 one_shot = true
 
-[node name="EnergyTimer" type="Timer" parent="."]
+[node name="EnergyTimer" type="Timer" parent="." unique_id=731745448]
 wait_time = 2.0
 autostart = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_7sjl0")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1770686630]
+libraries/ = SubResource("AnimationLibrary_7sjl0")
 
-[node name="Method" type="Node" parent="."]
+[node name="Method" type="Node" parent="." unique_id=2104292396]
 
-[node name="StateMachine" type="Node" parent="Method"]
+[node name="StateMachine" type="Node" parent="Method" unique_id=1762865764]
 script = ExtResource("3_6t5aa")
 metadata/_custom_type_script = "uid://c7ingndjv0lwx"
 
-[node name="Stats" type="Node" parent="Method"]
-script = ExtResource("7_ju12x")
-max_health = 10
-metadata/_custom_type_script = "uid://dkkbqle4cds62"
+[node name="Player" type="Node" parent="Method" unique_id=875442536]
 
-[node name="Player" type="Node" parent="Method"]
-
-[node name="PlayerInputAhead" type="Node" parent="Method/Player"]
+[node name="PlayerInputAhead" type="Node" parent="Method/Player" unique_id=95053072]
 script = ExtResource("8_7sjl0")
 metadata/_custom_type_script = "uid://gc2pg5p6xvmw"
 
-[node name="PlayerTickPhysics" type="Node" parent="Method/Player"]
+[node name="PlayerTickPhysics" type="Node" parent="Method/Player" unique_id=1306604518]
 script = ExtResource("9_8wdfv")
 metadata/_custom_type_script = "uid://cwexi221qjsyt"
 
-[node name="PlayerMove" type="Node" parent="Method/Player"]
+[node name="PlayerMove" type="Node" parent="Method/Player" unique_id=2087265567]
 script = ExtResource("10_okqo8")
 metadata/_custom_type_script = "uid://c4pl3g6v0px3w"
 
-[node name="PlayerGetNextState" type="Node" parent="Method/Player"]
+[node name="PlayerGetNextState" type="Node" parent="Method/Player" unique_id=657250972]
 script = ExtResource("11_01eq3")
 metadata/_custom_type_script = "uid://bvmggb50t67v8"
 
-[node name="PlayerTransitionState" type="Node" parent="Method/Player"]
+[node name="PlayerTransitionState" type="Node" parent="Method/Player" unique_id=902649120]
 script = ExtResource("12_j1jur")
 metadata/_custom_type_script = "uid://cxprug7hlniy2"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1843163232]
 
-[node name="Control" parent="CanvasLayer" node_paths=PackedStringArray("stats") instance=ExtResource("8_k37lx")]
-stats = NodePath("../../Method/Stats")
+[node name="Control" parent="CanvasLayer" unique_id=1130097294 instance=ExtResource("8_k37lx")]
 
 [connection signal="hurt" from="Graphics/HurtBox" to="." method="_on_hurt_box_hurt"]
 [connection signal="timeout" from="EnergyTimer" to="." method="_on_energy_timer_timeout"]

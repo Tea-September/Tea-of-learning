@@ -13,6 +13,8 @@ const REPEL_AMOUNT: float = 450.0
 @export var basic_attack: int = 1
 # 是否能够连击
 @onready var can_combo: bool = false
+# 是否能够二段跳
+@onready var double_jump: bool = true
 # 是否开启能量条计时器
 @onready var if_energy: bool = false
 # 重力
@@ -51,7 +53,7 @@ const REPEL_AMOUNT: float = 450.0
 # 玩家是否可以输入
 @onready var game_over: bool = true
 # 玩家属性
-@onready var stats: Stats = $Method/Stats
+@onready var stats: Stats = Game.player_stats
 # 组件引用
 @onready var player_input_ahead: PlayerInputAhead = $Method/Player/PlayerInputAhead
 @onready var player_tick_physics: PlayerTickPhysics = $Method/Player/PlayerTickPhysics
@@ -97,7 +99,9 @@ func _on_hurt_box_hurt(hitbox: HitBox) -> void:
 # 死亡执行
 func die() -> void:
 	get_tree().reload_current_scene()
-
+	# 血量值恢复初始值
+	stats.health = stats.max_health
+	
 # 能量条恢复
 func _on_energy_timer_timeout() -> void:
 	# 能量条满时，标记为不可恢复，恢复计时器结束

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://db5mplxd163k"]
+
+[ext_resource type="Script" uid="uid://b805fqlvsnlay" path="res://Scripts/Config/game.gd" id="1_2cln0"]
+[ext_resource type="Script" uid="uid://dkkbqle4cds62" path="res://Scripts/Data/Stats.gd" id="2_pbi0n"]
+
+[node name="Game" type="CanvasLayer" unique_id=2007197677]
+layer = 99
+script = ExtResource("1_2cln0")
+
+[node name="PlayerStats" type="Node" parent="." unique_id=1654638973]
+script = ExtResource("2_pbi0n")
+max_health = 10
+metadata/_custom_type_script = "uid://dkkbqle4cds62"
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=737735216]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
