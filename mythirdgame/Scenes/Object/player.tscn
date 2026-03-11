@@ -698,7 +698,7 @@ _data = {
 &"RESET": SubResource("Animation_k37lx")
 }
 
-[node name="Player" type="CharacterBody2D" unique_id=1511381810 groups=["player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1968240566 groups=["player"]]
 collision_layer = 2
 script = ExtResource("1_cvnsp")
 move_speed = 150.0

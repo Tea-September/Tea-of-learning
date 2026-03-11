@@ -42,14 +42,14 @@ func _move(Player: CharacterBody2D, gravity: float, delta: float) -> void:
 	# 游戏结束时，无法移动
 	if Player.game_over:
 		# 获取左右的输入
-		var direction = Input.get_axis("Left", "Right")
+		var movement = Input.get_axis("Left", "Right")
 		# 空中和陆地上的加速度
 		var add_speed: float = 0.2 if Player.is_on_floor() else 0.1
 		# 左右移动，0.2秒后加速到设置速度，空中为0.1秒
-		Player.velocity.x = move_toward(Player.velocity.x, direction * Player.move_speed, Player.move_speed / add_speed * delta)
+		Player.velocity.x = move_toward(Player.velocity.x, movement * Player.move_speed, Player.move_speed / add_speed * delta)
 		# 镜像翻转
-		if direction:
-			Player.graphics.scale.x = -1.0 if direction < 0 else 1.0
+		if movement:
+			Player.direction = Player.Direction.LEFT if movement < 0 else Player.Direction.RIGHT
 	Player.move_and_slide()
 	
 func _slide(Player: CharacterBody2D, gravity: float, delta: float) -> void:
@@ -58,5 +58,5 @@ func _slide(Player: CharacterBody2D, gravity: float, delta: float) -> void:
 	# 游戏结束时，无法移动
 	if Player.game_over:
 		# 左右滑铲
-		Player.velocity.x = Player.graphics.scale.x * 200.0
+		Player.velocity.x = Player.direction * 200.0
 	Player.move_and_slide()

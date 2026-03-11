@@ -62,7 +62,7 @@ func _get_next_state(Player: CharacterBody2D, state: State) -> State:
 		if state != State.HURT:
 			return State.HURT
 	# 获取左右的输入
-	var direction = Input.get_axis("Left", "Right")
+	var movement = Input.get_axis("Left", "Right")
 	# 滑墙限制1，需要顶部和底部都贴近墙面
 	var is_sliding1 = Player.up_sliding_wall.is_colliding() and Player.down_sliding_wall.is_colliding()
 	# 滑墙限制2，需要按住左或右方向键
@@ -71,10 +71,11 @@ func _get_next_state(Player: CharacterBody2D, state: State) -> State:
 	var judgment_jump1 = (Player.is_on_floor() or Player.coyote_timer.time_left > 0) and Input.is_action_pressed("Jump")
 	# （条件2）prepare_jump_timer计时未结束和在地板上<落地提前按下跳跃键跳跃>
 	var judgment_jump2 = Player.prepare_jump_timer.time_left > 0 and Player.is_on_floor()
-	# 二段跳
-	if Player.is_on_floor() and Player.stats.energy >= 1:
+	# 二段跳状态恢复：在地面上
+	if Player.is_on_floor():
 		Player.double_jump = true
-	if Player.double_jump and not Player.is_on_floor() and Player.prepare_jump_timer.time_left > 0:
+	# 二段跳执行条件：技能可执行、不在地面、按下跳跃键、体力大于1
+	if Player.double_jump and not Player.is_on_floor() and Player.prepare_jump_timer.time_left > 0 and Player.stats.energy >= 1:
 		Player.double_jump = false
 		return State.JUMP
 	# 跳跃，按空格松下后，再次按空格，才能跳跃
@@ -92,7 +93,7 @@ func _get_next_state(Player: CharacterBody2D, state: State) -> State:
 			return State.SLIDESTART
 	Player.input_slide = Input.is_action_pressed("Slide")
 	# 判断是否站立不动
-	var is_stand = not direction and not Player.velocity.x
+	var is_stand = not movement and not Player.velocity.x
 	# 在地面时,并且没有地板，状态变化为FALL
 	if state in GROUND_STATES and not Player.is_on_floor():
 		return State.FALL

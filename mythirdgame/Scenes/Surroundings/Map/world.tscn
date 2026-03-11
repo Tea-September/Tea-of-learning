@@ -1133,11 +1133,13 @@ entry_point = "TopEntry"
 [node name="BottomEntry" type="Marker2D" parent="Interact/Map" unique_id=1349569179]
 position = Vector2(272, 8)
 script = ExtResource("5_p1gi4")
+direction = -1
 metadata/_custom_type_script = "uid://cv1ovs7tewfd6"
 
 [node name="TopEntry" type="Marker2D" parent="Interact/Map" unique_id=1814656990]
 position = Vector2(272, -216)
 script = ExtResource("5_p1gi4")
+direction = -1
 metadata/_custom_type_script = "uid://cv1ovs7tewfd6"
 
 [node name="AddHealth" type="Node" parent="Interact" unique_id=1241905867]

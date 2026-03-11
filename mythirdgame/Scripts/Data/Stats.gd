@@ -35,3 +35,21 @@ signal  energy_changed
 		if attack == T:
 			return
 		attack = T
+
+func to_dict() -> Dictionary:
+	return {
+		max_energy = max_energy,
+		max_health = max_health,
+		max_attack = max_attack,
+		health = health,
+		energy= energy,
+		attack = attack,
+	}
+
+func from_dict(dict: Dictionary) -> void:
+	max_energy = dict.max_energy
+	max_health = dict.max_health
+	max_attack = dict.max_attack
+	health = dict.health
+	energy= dict.energy
+	attack = dict.attack

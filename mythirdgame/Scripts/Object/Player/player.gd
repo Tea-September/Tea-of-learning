@@ -1,10 +1,22 @@
 class_name player
 extends CharacterBody2D
 
+# 左右
+enum Direction {
+	LEFT = -1,
+	RIGHT = 1
+}
 # 贴墙跳距离
 const WALL_JUMP_VELOCITY = Vector2(600, -400)
 # 被击飞距离
 const REPEL_AMOUNT: float = 450.0
+# 获取方向
+@export var direction = Direction.RIGHT:
+	set(v):
+		direction = v
+		if not is_node_ready():
+			await ready
+		graphics.scale.x = direction
 # 移动速度
 @export var move_speed: float
 # 跳跃高度

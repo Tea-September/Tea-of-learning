@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dyjhfo7fsj32k"]
+[gd_scene format=3 uid="uid://dyjhfo7fsj32k"]
 
 [ext_resource type="Script" uid="uid://ceim1n1g5e1yk" path="res://Scripts/Surroundings/state_menu.gd" id="1_eguws"]
 [ext_resource type="Texture2D" uid="uid://c5jrfqwnowjd0" path="res://Game Assets/Legacy-Fantasy - High Forest 2.3/HUD/Base-01.png" id="2_fjd4i"]
@@ -32,7 +32,7 @@ region = Rect2(308, 86, 56, 4)
 atlas = ExtResource("2_fjd4i")
 region = Rect2(308, 150, 56, 4)
 
-[node name="Control" type="Control"]
+[node name="Control" type="Control" unique_id=331821062]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -41,7 +41,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_eguws")
 
-[node name="PlayerMenuMargin" type="MarginContainer" parent="."]
+[node name="PlayerMenuMargin" type="MarginContainer" parent="." unique_id=912286370]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -51,34 +51,34 @@ grow_vertical = 2
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 7
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PlayerMenuMargin"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerMenuMargin" unique_id=749838137]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PlayerMenuMargin/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerMenuMargin/VBoxContainer" unique_id=1628947773]
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="Head" type="MarginContainer" parent="PlayerMenuMargin/VBoxContainer/HBoxContainer"]
+[node name="Head" type="MarginContainer" parent="PlayerMenuMargin/VBoxContainer/HBoxContainer" unique_id=1157268792]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="PlayerMenuMargin/VBoxContainer/HBoxContainer/Head"]
+[node name="PanelContainer" type="PanelContainer" parent="PlayerMenuMargin/VBoxContainer/HBoxContainer/Head" unique_id=1947246190]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_6c1lm")
 
-[node name="TextureRect" type="TextureRect" parent="PlayerMenuMargin/VBoxContainer/HBoxContainer/Head/PanelContainer"]
+[node name="TextureRect" type="TextureRect" parent="PlayerMenuMargin/VBoxContainer/HBoxContainer/Head/PanelContainer" unique_id=144783545]
 custom_minimum_size = Vector2(26, 26)
 layout_mode = 2
 texture = SubResource("AtlasTexture_kmr3e")
 stretch_mode = 5
 
-[node name="StateProgressBar" type="VBoxContainer" parent="PlayerMenuMargin/VBoxContainer/HBoxContainer"]
+[node name="StateProgressBar" type="VBoxContainer" parent="PlayerMenuMargin/VBoxContainer/HBoxContainer" unique_id=2015250657]
 layout_mode = 2
 alignment = 1
 
-[node name="Health" type="MarginContainer" parent="PlayerMenuMargin/VBoxContainer/HBoxContainer/StateProgressBar"]
+[node name="Health" type="MarginContainer" parent="PlayerMenuMargin/VBoxContainer/HBoxContainer/StateProgressBar" unique_id=1076396728]
 layout_mode = 2
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="PlayerMenuMargin/VBoxContainer/HBoxContainer/StateProgressBar/Health"]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="PlayerMenuMargin/VBoxContainer/HBoxContainer/StateProgressBar/Health" unique_id=991240697]
 layout_mode = 2
 max_value = 1.0
 step = 0.0
@@ -87,7 +87,7 @@ texture_over = SubResource("AtlasTexture_t0co0")
 texture_progress = SubResource("AtlasTexture_d3j4w")
 texture_progress_offset = Vector2(1, 1)
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="PlayerMenuMargin/VBoxContainer/HBoxContainer/StateProgressBar/Health/TextureProgressBar"]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="PlayerMenuMargin/VBoxContainer/HBoxContainer/StateProgressBar/Health/TextureProgressBar" unique_id=1852329383]
 show_behind_parent = true
 layout_mode = 0
 max_value = 1.0
@@ -96,10 +96,10 @@ value = 1.0
 texture_progress = SubResource("AtlasTexture_eguws")
 texture_progress_offset = Vector2(1, 1)
 
-[node name="Energy" type="MarginContainer" parent="PlayerMenuMargin/VBoxContainer/HBoxContainer/StateProgressBar"]
+[node name="Energy" type="MarginContainer" parent="PlayerMenuMargin/VBoxContainer/HBoxContainer/StateProgressBar" unique_id=1610980698]
 layout_mode = 2
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="PlayerMenuMargin/VBoxContainer/HBoxContainer/StateProgressBar/Energy"]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="PlayerMenuMargin/VBoxContainer/HBoxContainer/StateProgressBar/Energy" unique_id=888369548]
 layout_mode = 2
 max_value = 1.0
 step = 0.0
