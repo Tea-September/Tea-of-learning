@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bhspt0y5sjkql"]
+[gd_scene format=3 uid="uid://bhspt0y5sjkql"]
 
 [ext_resource type="PackedScene" uid="uid://d3qssqg0bgv4p" path="res://Scenes/Object/Monster/enemy.tscn" id="1_2qgeg"]
 [ext_resource type="Texture2D" uid="uid://dgvovmlvmvidc" path="res://Game Assets/Legacy-Fantasy - High Forest 2.3/Mob/Boar/Hit-Vanish/Hit-Sheet.png" id="2_1jx2i"]
@@ -320,51 +320,49 @@ _data = {
 &"RESET": SubResource("Animation_4cexm")
 }
 
-[node name="Boar" instance=ExtResource("1_2qgeg")]
+[node name="Boar" unique_id=715617000 instance=ExtResource("1_2qgeg")]
 script = ExtResource("2_css1y")
 
-[node name="AnimatedSprite2D" parent="Graphic" index="0"]
+[node name="AnimatedSprite2D" parent="Graphic" parent_id_path=PackedInt32Array(2139353957) index="0" unique_id=1949472495]
 sprite_frames = SubResource("SpriteFrames_e2ujt")
 animation = &"Die"
 autoplay = "Idle"
 
-[node name="Find" type="RayCast2D" parent="Graphic" index="1"]
+[node name="Find" type="RayCast2D" parent="Graphic" parent_id_path=PackedInt32Array(2139353957) index="1" unique_id=41058454]
 position = Vector2(0, 5)
 target_position = Vector2(-63, 0)
 collision_mask = 3
 
-[node name="Wall" type="RayCast2D" parent="Graphic" index="2"]
+[node name="Wall" type="RayCast2D" parent="Graphic" parent_id_path=PackedInt32Array(2139353957) index="2" unique_id=1542792148]
 target_position = Vector2(-20, 0)
 
-[node name="Floor" type="RayCast2D" parent="Graphic" index="3"]
+[node name="Floor" type="RayCast2D" parent="Graphic" parent_id_path=PackedInt32Array(2139353957) index="3" unique_id=125011495]
 position = Vector2(-18, -4)
 target_position = Vector2(0, 24)
 
-[node name="Graphic_HurtBox" type="CollisionShape2D" parent="Graphic/HitBox" index="0"]
+[node name="Graphic_HurtBox" type="CollisionShape2D" parent="Graphic/HitBox" parent_id_path=PackedInt32Array(1438285251) index="0" unique_id=1138858336]
 position = Vector2(1, 3)
 shape = SubResource("CircleShape2D_v8mii")
 
-[node name="Graphic_HurtBox" type="CollisionShape2D" parent="Graphic/HurtBox" index="0"]
+[node name="Graphic_HurtBox" type="CollisionShape2D" parent="Graphic/HurtBox" parent_id_path=PackedInt32Array(1737677126) index="0" unique_id=912312810]
 position = Vector2(1, 3)
 shape = SubResource("CircleShape2D_v8mii")
 
-[node name="IdleTimer" type="Timer" parent="." index="1"]
+[node name="IdleTimer" type="Timer" parent="." index="1" unique_id=2023323803]
 wait_time = 1.5
 one_shot = true
 
-[node name="CollisionShape2D" parent="." index="2"]
+[node name="CollisionShape2D" parent="." index="2" unique_id=1402416010]
 position = Vector2(1, 3)
 shape = SubResource("CircleShape2D_v8mii")
 
-[node name="Stats" parent="." index="4"]
+[node name="Stats" parent="." index="4" unique_id=927670836]
 max_health = 7
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
-libraries = {
-&"": SubResource("AnimationLibrary_t5qu0")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5" unique_id=1073160904]
+libraries/ = SubResource("AnimationLibrary_t5qu0")
 
-[node name="Control" parent="." index="6" node_paths=PackedStringArray("stats") instance=ExtResource("7_4cexm")]
+[node name="Control" parent="." index="6" unique_id=1310399894 node_paths=PackedStringArray("stats") instance=ExtResource("7_4cexm")]
 offset_left = -10.0
 offset_top = -22.0
 offset_right = -10.0

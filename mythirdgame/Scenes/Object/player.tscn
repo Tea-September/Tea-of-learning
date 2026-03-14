@@ -606,8 +606,8 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vgqql"]
-size = Vector2(21, 31)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j1jur"]
+size = Vector2(18, 31)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_isakk"]
 size = Vector2(22, 9)
@@ -617,6 +617,9 @@ size = Vector2(14, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k37lx"]
 size = Vector2(12, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vgqql"]
+size = Vector2(17, 31)
 
 [sub_resource type="Animation" id="Animation_j1jur"]
 resource_name = "AddEnergy"
@@ -698,7 +701,7 @@ _data = {
 &"RESET": SubResource("Animation_k37lx")
 }
 
-[node name="Player" type="CharacterBody2D" unique_id=1968240566 groups=["player"]]
+[node name="Player" type="CharacterBody2D" unique_id=236885036 groups=["player"]]
 collision_layer = 2
 script = ExtResource("1_cvnsp")
 move_speed = 150.0
@@ -737,8 +740,8 @@ script = ExtResource("4_7yi3x")
 metadata/_custom_type_script = "uid://c57brssayd6m2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Graphics/HurtBox" unique_id=339345385]
-position = Vector2(-1.5, 11.5)
-shape = SubResource("RectangleShape2D_vgqql")
+position = Vector2(0, 11.5)
+shape = SubResource("RectangleShape2D_j1jur")
 
 [node name="HitBox" type="Area2D" parent="Graphics" unique_id=1554446404]
 collision_layer = 0

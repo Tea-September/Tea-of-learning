@@ -98,12 +98,12 @@ func _transition_state(Player: CharacterBody2D, from: State, to: State) -> void:
 		State.HURT:
 			# 血量减少
 			Player.stats.health -= Player.pending_damage.amount
+			print(Player.pending_damage.amount)
 			# 获取方向，伤害来源的位置，指向自己（玩家）的位置
 			var dir = Player.pending_damage.source.global_position.direction_to(Player.global_position)
 			# 被击退
 			Player.velocity = dir * Player.REPEL_AMOUNT
-			# 受到攻击，关闭受击框，开启计时器
-			Player.hurt_box.monitorable = false
+			# 受到攻击，开启计时器
 			Player.invincible_timer.start()
 			# 清空对象
 			Player.pending_damage = null
@@ -115,7 +115,7 @@ func _transition_state(Player: CharacterBody2D, from: State, to: State) -> void:
 			Player.game_over = false
 			$"../../../AnimationPlayer".play("Die")
 		State.SLIDESTART:
-			# 伤害
+			# 能量减少
 			Player.stats.energy -= 1
 			# 开始滑铲，关闭受击框
 			Player.hurt_box.monitorable = false

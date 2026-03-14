@@ -59,8 +59,9 @@ func _get_next_state(Player: CharacterBody2D, state: State) -> State:
 		return State.DIE
 	# 当处于非HURT状态时，才会进入HURT状态
 	if Player.pending_damage:
-		if state != State.HURT:
+		if state != State.HURT and Player.invincible_timer.time_left <= 0:
 			return State.HURT
+		Player.pending_damage = null
 	# 获取左右的输入
 	var movement = Input.get_axis("Left", "Right")
 	# 滑墙限制1，需要顶部和底部都贴近墙面
