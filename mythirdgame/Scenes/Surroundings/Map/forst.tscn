@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://cv1ovs7tewfd6" path="res://Scripts/Config/EntryPoint.gd" id="3_3ngkl"]
 [ext_resource type="PackedScene" uid="uid://dcl2tc6ebw5o1" path="res://Scenes/Object/player.tscn" id="4_tku12"]
 [ext_resource type="PackedScene" uid="uid://dd5dkykricnnx" path="res://Scenes/Object/Monster/slime.tscn" id="6_tghfw"]
+[ext_resource type="PackedScene" uid="uid://bffphwyuolgtc" path="res://Scenes/Object/globals/save.tscn" id="7_gyk8h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pvutg"]
 texture = ExtResource("1_clh30")
@@ -1391,3 +1392,9 @@ position = Vector2(1181, -70)
 
 [node name="Slime4" parent="Slime" unique_id=241098610 instance=ExtResource("6_tghfw")]
 position = Vector2(388, -214)
+
+[node name="Save" parent="." unique_id=265974315 instance=ExtResource("7_gyk8h")]
+position = Vector2(237, 113)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=252082748]
+color = Color(0.646875, 0.646875, 0.646875, 1)

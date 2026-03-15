@@ -820,6 +820,7 @@ script = ExtResource("12_j1jur")
 metadata/_custom_type_script = "uid://cxprug7hlniy2"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1843163232]
+layer = 20
 
 [node name="Control" parent="CanvasLayer" unique_id=1130097294 instance=ExtResource("8_k37lx")]
 

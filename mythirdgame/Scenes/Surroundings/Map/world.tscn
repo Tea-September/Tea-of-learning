@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dntc8tjja2mua" path="res://Game Assets/Legacy-Fantasy - High Forest 2.3/Trees/Background.png" id="5_le8i6"]
 [ext_resource type="Script" uid="uid://cv1ovs7tewfd6" path="res://Scripts/Config/EntryPoint.gd" id="5_p1gi4"]
 [ext_resource type="PackedScene" uid="uid://bhspt0y5sjkql" path="res://Scenes/Object/Monster/boar.tscn" id="6_265bt"]
+[ext_resource type="PackedScene" uid="uid://bffphwyuolgtc" path="res://Scenes/Object/globals/save.tscn" id="9_q57gj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_go701"]
 texture = ExtResource("3_76g7w")
@@ -984,7 +985,8 @@ z_index = 5
 scroll_offset = Vector2(53, 5)
 
 [node name="TreeAssets" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=1231579681]
-position = Vector2(-165, -165)
+position = Vector2(-197, -165)
+rotation = -0.35115147
 texture = ExtResource("3_76g7w")
 region_enabled = true
 region_rect = Rect2(210, 293, 124, 86)
@@ -1108,6 +1110,13 @@ region_enabled = true
 region_rect = Rect2(210, 293, 124, 86)
 metadata/_edit_lock_ = true
 
+[node name="TreeAssets18" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=182686363]
+position = Vector2(-93, -173)
+rotation = -0.18048255
+texture = ExtResource("3_76g7w")
+region_enabled = true
+region_rect = Rect2(210, 293, 124, 86)
+
 [node name="Interact" type="Node" parent="." unique_id=1327184662]
 
 [node name="Map" type="Node" parent="Interact" unique_id=72046388]
@@ -1145,3 +1154,6 @@ position = Vector2(0, -88)
 [node name="Boar2" parent="Boar" unique_id=1517129695 instance=ExtResource("6_265bt")]
 z_index = 5
 position = Vector2(32, 0)
+
+[node name="Save" parent="." unique_id=265974315 instance=ExtResource("9_q57gj")]
+position = Vector2(-96, -80)
