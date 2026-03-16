@@ -13,6 +13,9 @@
 [ext_resource type="Script" uid="uid://c4pl3g6v0px3w" path="res://Scripts/Object/Player/PlayerMove.gd" id="10_okqo8"]
 [ext_resource type="Script" uid="uid://bvmggb50t67v8" path="res://Scripts/Object/Player/PlayerGetNextState.gd" id="11_01eq3"]
 [ext_resource type="Script" uid="uid://cxprug7hlniy2" path="res://Scripts/Object/Player/PlayerTransitionState.gd" id="12_j1jur"]
+[ext_resource type="Theme" uid="uid://cxdw2f02tbvs8" path="res://Game Assets/new_theme.tres" id="15_avtl5"]
+[ext_resource type="FontFile" uid="uid://i5bfmhmi78ks" path="res://Game Assets/Uranus_Pixel_11Px.ttf" id="15_v5jsd"]
+[ext_resource type="Script" uid="uid://bktg5ctd052op" path="res://Scripts/Object/Player/PlayerEsc.gd" id="16_v5jsd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m6thy"]
 atlas = ExtResource("3_avtl5")
@@ -701,6 +704,8 @@ _data = {
 &"RESET": SubResource("Animation_k37lx")
 }
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_avtl5"]
+
 [node name="Player" type="CharacterBody2D" unique_id=236885036 groups=["player"]]
 collision_layer = 2
 script = ExtResource("1_cvnsp")
@@ -820,9 +825,174 @@ script = ExtResource("12_j1jur")
 metadata/_custom_type_script = "uid://cxprug7hlniy2"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1843163232]
+process_mode = 3
 layer = 20
 
 [node name="Control" parent="CanvasLayer" unique_id=1130097294 instance=ExtResource("8_k37lx")]
 
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=1065609644]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -38.0
+offset_top = 8.0
+offset_right = -13.0
+offset_bottom = 39.0
+grow_horizontal = 0
+
+[node name="Button" type="Button" parent="CanvasLayer/MarginContainer" unique_id=993395180]
+layout_mode = 2
+theme = ExtResource("15_avtl5")
+theme_override_font_sizes/font_size = 22
+text = "II"
+
+[node name="Paused" type="Control" parent="CanvasLayer" unique_id=1946259088]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("15_avtl5")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Paused" unique_id=164075097]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_avtl5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Paused/Panel" unique_id=838986775]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Paused/Panel/VBoxContainer" unique_id=1519407208]
+z_index = 10
+layout_mode = 2
+theme_override_constants/margin_top = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Paused/Panel/VBoxContainer/MarginContainer2" unique_id=621891839]
+process_mode = 3
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Paused/Panel/VBoxContainer/MarginContainer2/VBoxContainer" unique_id=1975584217]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("15_v5jsd")
+theme_override_font_sizes/font_size = 36
+text = "游戏暂停"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Paused/Panel/VBoxContainer/MarginContainer2/VBoxContainer" unique_id=1312184939]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="Continue" type="Button" parent="CanvasLayer/Paused/Panel/VBoxContainer/MarginContainer2/VBoxContainer" unique_id=2030365036]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("15_avtl5")
+theme_override_font_sizes/font_size = 20
+text = "继续征程"
+
+[node name="LoadGame" type="Button" parent="CanvasLayer/Paused/Panel/VBoxContainer/MarginContainer2/VBoxContainer" unique_id=1499675612]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 20
+text = "读取存档"
+
+[node name="QuitMenu" type="Button" parent="CanvasLayer/Paused/Panel/VBoxContainer/MarginContainer2/VBoxContainer" unique_id=2108056873]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("15_avtl5")
+theme_override_font_sizes/font_size = 20
+text = "返回菜单"
+
+[node name="Die" type="Control" parent="CanvasLayer" unique_id=1889528742]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("15_avtl5")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Die" unique_id=1681926032]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_avtl5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Die/Panel" unique_id=1498916926]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Die/Panel/VBoxContainer" unique_id=737470348]
+z_index = 10
+layout_mode = 2
+theme_override_constants/margin_top = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Die/Panel/VBoxContainer/MarginContainer2" unique_id=1695464287]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Die/Panel/VBoxContainer/MarginContainer2/VBoxContainer" unique_id=620456674]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("15_v5jsd")
+theme_override_font_sizes/font_size = 36
+text = "游戏结束"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Die/Panel/VBoxContainer/MarginContainer2/VBoxContainer" unique_id=434479355]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="LoadGame" type="Button" parent="CanvasLayer/Die/Panel/VBoxContainer/MarginContainer2/VBoxContainer" unique_id=61578125]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 20
+text = "读取存档"
+
+[node name="QuitMenu" type="Button" parent="CanvasLayer/Die/Panel/VBoxContainer/MarginContainer2/VBoxContainer" unique_id=157513955]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("15_avtl5")
+theme_override_font_sizes/font_size = 20
+text = "返回菜单"
+
+[node name="PlayerEsc" type="CharacterBody2D" parent="." unique_id=1486779542]
+process_mode = 3
+script = ExtResource("16_v5jsd")
+
 [connection signal="hurt" from="Graphics/HurtBox" to="." method="_on_hurt_box_hurt"]
 [connection signal="timeout" from="EnergyTimer" to="." method="_on_energy_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Paused/Panel/VBoxContainer/MarginContainer2/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="CanvasLayer/Paused/Panel/VBoxContainer/MarginContainer2/VBoxContainer/LoadGame" to="." method="_on_load_game_pressed"]
+[connection signal="pressed" from="CanvasLayer/Paused/Panel/VBoxContainer/MarginContainer2/VBoxContainer/QuitMenu" to="." method="_on_quit_menu_pressed"]
+[connection signal="pressed" from="CanvasLayer/Die/Panel/VBoxContainer/MarginContainer2/VBoxContainer/LoadGame" to="." method="_on_load_game_pressed"]
+[connection signal="pressed" from="CanvasLayer/Die/Panel/VBoxContainer/MarginContainer2/VBoxContainer/QuitMenu" to="." method="_on_quit_menu_pressed"]

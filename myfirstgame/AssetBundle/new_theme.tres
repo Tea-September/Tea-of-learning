@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cei2cyt0yotjm"]
+[gd_resource type="Theme" format=3 uid="uid://cei2cyt0yotjm"]
 
 [ext_resource type="Texture2D" uid="uid://b7ohv4fdggarc" path="res://AssetBundle/Sprite sheet for Basic Pack.png" id="1_cdedx"]
 [ext_resource type="FontFile" uid="uid://h1btahupb030" path="res://AssetBundle/Uranus_Pixel_11Px.ttf" id="2_yxnmq"]

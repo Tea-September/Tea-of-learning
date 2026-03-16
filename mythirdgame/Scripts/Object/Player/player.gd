@@ -76,7 +76,21 @@ const REPEL_AMOUNT: float = 450.0
 @onready var interacting_with: Array[Interactable]
 # 交互对象
 @onready var interacting: AnimatedSprite2D = $Interacting
-
+# 暂停页面
+@onready var paused: Control = $CanvasLayer/Paused
+# 死亡页面
+@onready var die_title: Control = $CanvasLayer/Die
+# 暂停按钮
+@onready var paused_button: MarginContainer = $CanvasLayer/MarginContainer
+# 读取存档按钮
+@onready var load_game: Button = $CanvasLayer/Die/Panel/VBoxContainer/MarginContainer2/VBoxContainer/LoadGame
+# 按钮存放盒子
+@onready var v_box_container1: VBoxContainer = $CanvasLayer/Paused/Panel/VBoxContainer/MarginContainer2/VBoxContainer
+@onready var v_box_container2: VBoxContainer = $CanvasLayer/Die/Panel/VBoxContainer/MarginContainer2/VBoxContainer
+# 继续游戏按钮
+@onready var continue_button: Button = $CanvasLayer/Paused/Panel/VBoxContainer/MarginContainer2/VBoxContainer/Continue
+#
+@onready var is_game_over: bool = false
 
 # 提前输入
 func _unhandled_input(event: InputEvent) -> void:
@@ -108,12 +122,6 @@ func _on_hurt_box_hurt(hitbox: HitBox) -> void:
 	pending_damage.amount = hitbox.owner.stats.attack
 	pending_damage.source = hitbox.owner
 
-# 死亡执行
-func die() -> void:
-	get_tree().reload_current_scene()
-	# 血量值恢复初始值
-	stats.health = stats.max_health
-	
 # 能量条恢复
 func _on_energy_timer_timeout() -> void:
 	# 能量条满时，标记为不可恢复，恢复计时器结束
@@ -135,3 +143,48 @@ func create_interactable(T: Interactable) -> void:
 # 删除对象
 func delete_interactable(T: Interactable) -> void:
 		interacting_with.erase(T)
+
+# 死亡执行
+func die() -> void:
+	# 游戏结束记录
+	is_game_over = true
+	# 判断是否拥有存档（即读取存档按钮是否能够按取）
+	load_game.disabled = not Game.has_save()
+	paused_button.visible = false
+	die_title.visible = true
+	# 怪物无法检测玩家
+	self.collision_layer = 0
+	# 将键盘和鼠标聚焦一致
+	load_game.grab_focus()
+	# 判断信号是否已连接，未连接再执行连接
+	for button in v_box_container2.get_children():
+		# 检查button的mouse_entered信号是否未连接到button.grab_focus
+		if not button.mouse_entered.is_connected(button.grab_focus):
+			button.mouse_entered.connect(button.grab_focus)
+
+# 暂停按钮
+func _on_button_pressed() -> void:
+	paused_button.visible = false
+	get_tree( ).paused = true
+	paused.visible = true
+	# 将键盘和鼠标聚焦一致
+	continue_button.grab_focus()
+	# 判断信号是否已连接，未连接再执行连接
+	for button in v_box_container1.get_children():
+		# 检查button的mouse_entered信号是否未连接到button.grab_focus
+		if not button.mouse_entered.is_connected(button.grab_focus):
+			button.mouse_entered.connect(button.grab_focus)
+
+# 继续游戏
+func _on_continue_pressed() -> void:
+	paused_button.visible = true
+	get_tree( ).paused = false
+	paused.visible = false
+
+# 返回菜单
+func _on_quit_menu_pressed() -> void:
+	Game.back_to_title()
+
+# 读取旧存档
+func _on_load_game_pressed() -> void:
+	Game.load_game()

@@ -1,7 +1,7 @@
 extends Control
 
-@onready var new_game: Button = $MarginContainer2/HBoxContainer/VBoxContainer/NewGame
 @onready var v: VBoxContainer = $MarginContainer2/HBoxContainer/VBoxContainer
+@onready var new_game: Button = $MarginContainer2/HBoxContainer/VBoxContainer/NewGame
 @onready var load_game: Button = $MarginContainer2/HBoxContainer/VBoxContainer/LoadGame
 
 func _ready() -> void:

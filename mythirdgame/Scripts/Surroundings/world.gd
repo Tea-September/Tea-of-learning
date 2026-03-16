@@ -22,11 +22,6 @@ func _ready() -> void:
 	camera_2d.reset_smoothing()
 	camera_2d.force_update_scroll()
 
-# Esc退出至标题页面
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel"):
-		Game.back_to_title()
-
 func update_player(pos: Vector2, direction: player.Direction) -> void:
 	# 将玩家移动到指定位置
 	Player.global_position = pos

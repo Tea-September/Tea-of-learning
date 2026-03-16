@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://duru8g8s6870p"]
+[gd_scene format=3 uid="uid://duru8g8s6870p"]
 
 [ext_resource type="Texture2D" uid="uid://cmro4ext1mkke" path="res://AssetBundle/Sprites/ForestBackground.png" id="1_6b728"]
 [ext_resource type="Script" uid="uid://ru2ks5udcc5r" path="res://Scripts/GameManager.gd" id="1_kldst"]
@@ -23,7 +23,7 @@ region_rect = Rect2(305, 146, 26, 26)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_71axn"]
 bg_color = Color(0, 0, 0, 0.490196)
 
-[node name="Node2D" type="Node2D" node_paths=PackedStringArray("spawn_timer", "prompt_timer", "prompt_label", "score_label", "game_over_label")]
+[node name="Node2D" type="Node2D" unique_id=337462110 node_paths=PackedStringArray("spawn_timer", "prompt_timer", "prompt_label", "score_label", "game_over_label")]
 y_sort_enabled = true
 script = ExtResource("1_kldst")
 slime_scene = ExtResource("3_acmq7")
@@ -33,70 +33,70 @@ prompt_label = NodePath("CanvasLayer/Control/Prompt")
 score_label = NodePath("CanvasLayer/Control/Label1")
 game_over_label = NodePath("CanvasLayer/Control/Game Over Label")
 
-[node name="Background 1" type="Sprite2D" parent="."]
+[node name="Background 1" type="Sprite2D" parent="." unique_id=1078927772]
 position = Vector2(-120, 0)
 texture = ExtResource("1_6b728")
 
-[node name="Background 2" type="Sprite2D" parent="."]
+[node name="Background 2" type="Sprite2D" parent="." unique_id=33266023]
 position = Vector2(120, 0)
 texture = ExtResource("1_6b728")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1947254450]
 zoom = Vector2(2.415, 2.415)
 
-[node name="Player" parent="." instance=ExtResource("2_pddb1")]
+[node name="Player" parent="." unique_id=990480860 instance=ExtResource("2_pddb1")]
 position = Vector2(-177, 79)
 
-[node name="Boundary" type="Node2D" parent="."]
+[node name="Boundary" type="Node2D" parent="." unique_id=1596808749]
 metadata/_edit_lock_ = true
 
-[node name="StaticBody2D1" type="StaticBody2D" parent="Boundary"]
+[node name="StaticBody2D1" type="StaticBody2D" parent="Boundary" unique_id=175145675]
 position = Vector2(0, 129)
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/StaticBody2D1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/StaticBody2D1" unique_id=964014905]
 shape = SubResource("WorldBoundaryShape2D_kldst")
 metadata/_edit_lock_ = true
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="Boundary"]
+[node name="StaticBody2D2" type="StaticBody2D" parent="Boundary" unique_id=852328731]
 position = Vector2(-235, 62)
 rotation = 1.57079
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/StaticBody2D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/StaticBody2D2" unique_id=912872152]
 shape = SubResource("WorldBoundaryShape2D_kldst")
 metadata/_edit_lock_ = true
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="Boundary"]
+[node name="StaticBody2D3" type="StaticBody2D" parent="Boundary" unique_id=1204501070]
 position = Vector2(234, 62)
 rotation = -1.57079
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/StaticBody2D3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/StaticBody2D3" unique_id=899022624]
 position = Vector2(10, 1.99994)
 shape = SubResource("WorldBoundaryShape2D_kldst")
 metadata/_edit_lock_ = true
 
-[node name="StaticBody2D4" type="StaticBody2D" parent="Boundary"]
+[node name="StaticBody2D4" type="StaticBody2D" parent="Boundary" unique_id=1608911765]
 position = Vector2(0, 36)
 rotation = -3.14159
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/StaticBody2D4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/StaticBody2D4" unique_id=1186575630]
 shape = SubResource("WorldBoundaryShape2D_kldst")
 metadata/_edit_lock_ = true
 
-[node name="Timer1" type="Timer" parent="."]
+[node name="Timer1" type="Timer" parent="." unique_id=1271169955]
 wait_time = 3.0
 autostart = true
 
-[node name="Timer2" type="Timer" parent="."]
+[node name="Timer2" type="Timer" parent="." unique_id=888781104]
 wait_time = 5.0
 autostart = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1376138991]
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=491266853]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -104,7 +104,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Prompt" type="Label" parent="CanvasLayer/Control"]
+[node name="Prompt" type="Label" parent="CanvasLayer/Control" unique_id=1376433887]
 layout_mode = 0
 offset_left = 178.0
 offset_top = 265.0
@@ -114,7 +114,7 @@ theme_override_font_sizes/font_size = 32
 text = "W, A, S, D move up and down, left and right, J fires, and the space rolls and accelerates"
 autowrap_mode = 2
 
-[node name="Label1" type="Label" parent="CanvasLayer/Control"]
+[node name="Label1" type="Label" parent="CanvasLayer/Control" unique_id=1889004795]
 layout_mode = 0
 offset_left = 31.0
 offset_top = 29.0
@@ -123,7 +123,7 @@ offset_bottom = 78.0
 theme_override_fonts/font = ExtResource("5_b2bpf")
 theme_override_font_sizes/font_size = 48
 
-[node name="Game Over Label" type="Label" parent="CanvasLayer/Control"]
+[node name="Game Over Label" type="Label" parent="CanvasLayer/Control" unique_id=171793594]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -144,7 +144,7 @@ theme_override_fonts/font = ExtResource("5_b2bpf")
 theme_override_font_sizes/font_size = 120
 text = "GAME OVER"
 
-[node name="Game Over Label2" type="Label" parent="CanvasLayer/Control/Game Over Label"]
+[node name="Game Over Label2" type="Label" parent="CanvasLayer/Control/Game Over Label" unique_id=1270315245]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -165,12 +165,12 @@ theme_override_font_sizes/font_size = 60
 text = "Game By Tea"
 horizontal_alignment = 1
 
-[node name="GameUI" type="CanvasLayer" parent="." node_paths=PackedStringArray("gameUI")]
+[node name="GameUI" type="CanvasLayer" parent="." unique_id=571802611 node_paths=PackedStringArray("gameUI")]
 process_mode = 3
 script = ExtResource("5_fgofq")
 gameUI = NodePath("Control")
 
-[node name="StopMarginContainer" type="MarginContainer" parent="GameUI"]
+[node name="StopMarginContainer" type="MarginContainer" parent="GameUI" unique_id=922715547]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -180,14 +180,14 @@ grow_horizontal = 0
 theme_override_constants/margin_top = 27
 theme_override_constants/margin_right = 35
 
-[node name="StopButton" type="Button" parent="GameUI/StopMarginContainer"]
+[node name="StopButton" type="Button" parent="GameUI/StopMarginContainer" unique_id=794793320]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_bf53h")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_2irst")
 theme_override_styles/hover = SubResource("StyleBoxTexture_2irst")
 
-[node name="Control" type="Control" parent="GameUI"]
+[node name="Control" type="Control" parent="GameUI" unique_id=1112349266]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -196,7 +196,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="GameUI/Control"]
+[node name="Panel" type="Panel" parent="GameUI/Control" unique_id=226199165]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -205,7 +205,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_71axn")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GameUI/Control"]
+[node name="VBoxContainer" type="VBoxContainer" parent="GameUI/Control" unique_id=1241416016]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -216,24 +216,24 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("7_bf53h")
 
-[node name="Label" type="Label" parent="GameUI/Control/VBoxContainer"]
+[node name="Label" type="Label" parent="GameUI/Control/VBoxContainer" unique_id=531983985]
 layout_mode = 2
 theme = ExtResource("7_bf53h")
 theme_override_font_sizes/font_size = 78
 text = "PAUSED"
 
-[node name="MarginContainer" type="MarginContainer" parent="GameUI/Control/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="GameUI/Control/VBoxContainer" unique_id=1322380181]
 layout_mode = 2
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="ReplayButton" type="Button" parent="GameUI/Control/VBoxContainer/MarginContainer"]
+[node name="ReplayButton" type="Button" parent="GameUI/Control/VBoxContainer/MarginContainer" unique_id=1087381363]
 custom_minimum_size = Vector2(180, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Label" type="Label" parent="GameUI/Control/VBoxContainer/MarginContainer/ReplayButton"]
+[node name="Label" type="Label" parent="GameUI/Control/VBoxContainer/MarginContainer/ReplayButton" unique_id=1667176671]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -251,13 +251,13 @@ theme_override_colors/font_color = Color(0.768627, 0.603922, 0.423529, 1)
 theme_override_font_sizes/font_size = 52
 text = "PLAY"
 
-[node name="QuitButton" type="Button" parent="GameUI/Control/VBoxContainer"]
+[node name="QuitButton" type="Button" parent="GameUI/Control/VBoxContainer" unique_id=1592789509]
 custom_minimum_size = Vector2(180, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Label" type="Label" parent="GameUI/Control/VBoxContainer/QuitButton"]
+[node name="Label" type="Label" parent="GameUI/Control/VBoxContainer/QuitButton" unique_id=900524775]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
