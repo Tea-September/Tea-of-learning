@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="MyThirdGame"
-run/main_scene="uid://3ysa5bd8k7it"
+run/main_scene="uid://ctq27mtxq7css"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 

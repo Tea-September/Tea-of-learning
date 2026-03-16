@@ -1,0 +1,28 @@
+[gd_resource type="Theme" format=3 uid="uid://cxdw2f02tbvs8"]
+
+[ext_resource type="FontFile" uid="uid://i5bfmhmi78ks" path="res://Game Assets/Uranus_Pixel_11Px.ttf" id="1_sm4sj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sm4sj"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_851yr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0mjc5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_krpeq"]
+
+[resource]
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 0)
+Button/colors/icon_focus_color = Color(0, 0, 0, 1)
+Button/fonts/font = ExtResource("1_sm4sj")
+Button/styles/disabled = SubResource("StyleBoxEmpty_sm4sj")
+Button/styles/focus = SubResource("StyleBoxEmpty_851yr")
+Button/styles/hover = SubResource("StyleBoxEmpty_0mjc5")
+Button/styles/normal = SubResource("StyleBoxEmpty_sm4sj")
+Button/styles/pressed = SubResource("StyleBoxEmpty_krpeq")

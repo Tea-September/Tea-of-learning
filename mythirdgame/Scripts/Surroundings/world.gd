@@ -1,3 +1,4 @@
+class_name World
 extends Node2D
 
 # 可碰撞的砖块地图
@@ -20,6 +21,11 @@ func _ready() -> void:
 	# 将相机立即设置到设定位置
 	camera_2d.reset_smoothing()
 	camera_2d.force_update_scroll()
+
+# Esc退出至标题页面
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		Game.back_to_title()
 
 func update_player(pos: Vector2, direction: player.Direction) -> void:
 	# 将玩家移动到指定位置

@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://bw7tcov6kgbtp"
-path="res://.godot/imported/pixelFont-7-8x14-sproutLands.ttf-f7072d3422a1f29a88fdd86efa6c7fd1.fontdata"
+uid="uid://i5bfmhmi78ks"
+path="res://.godot/imported/Uranus_Pixel_11Px.ttf-a4850f4b1754b93d7be0aed40cf0db57.fontdata"
 
 [deps]
 
-source_file="res://Sprout Lands - UI Pack - Basic pack/fonts/pixelFont-7-8x14-sproutLands.ttf"
-dest_files=["res://.godot/imported/pixelFont-7-8x14-sproutLands.ttf-f7072d3422a1f29a88fdd86efa6c7fd1.fontdata"]
+source_file="res://Game Assets/Uranus_Pixel_11Px.ttf"
+dest_files=["res://.godot/imported/Uranus_Pixel_11Px.ttf-a4850f4b1754b93d7be0aed40cf0db57.fontdata"]
 
 [params]
 

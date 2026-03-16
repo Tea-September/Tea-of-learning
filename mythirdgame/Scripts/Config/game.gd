@@ -6,9 +6,12 @@ const SAVE_PATH = "user://data.sav"
 # 存放场景的名称，场景存放各自场景想要存放的数据
 var world_states = {}
 
+# 玩家状态
 @onready var player_stats: Stats = $PlayerStats
 # 补间动画使用的幕布
 @onready var color_rect: ColorRect = $ColorRect
+# 获取当前值
+@onready var default_player_stats = player_stats.to_dict()
 
 func _ready() -> void:
 	# 将补间动画中使用的幕布的透明度，设置为0
@@ -27,9 +30,11 @@ func change_scene(path: String, params = {}) -> void:
 	# 等待补间动画结束
 	await tween.finished
 	
-	# 获取退出场景的名称，将数组中退出场景的状态更改为刚刚保存的状态
-	var old_name = tree.current_scene.scene_file_path.get_file().get_basename()
-	world_states[old_name] = tree.current_scene.to_dict()
+	# 判断当前场景是否为world，标题场景无需保存（缺少必要元素）
+	if tree.current_scene is World:
+		# 获取退出场景的名称，将数组中退出场景的状态更改为刚刚保存的状态
+		var old_name = tree.current_scene.scene_file_path.get_file().get_basename()
+		world_states[old_name] = tree.current_scene.to_dict()
 	
 	if "init" in params:
 		params.init.call()
@@ -39,20 +44,21 @@ func change_scene(path: String, params = {}) -> void:
 	# 等待，直到新场景出现以后
 	await tree.tree_changed
 	
-	# 获取新场景的名称，将新场景的状态更改为旧的保存的状态
-	var new_name = tree.current_scene.scene_file_path.get_file().get_basename()
-	if new_name in world_states:
-		tree.current_scene.from_dict(world_states[new_name])
-	if "entry_point" in params:
-		# 找到位于entry_points这个分组的相同节点
-		for node in tree.get_nodes_in_group("entry_points"):
-			if node.name == params.entry_point:
-				# 将玩家移动到指定位置
-				tree.current_scene.update_player(node.global_position, node.direction)
-				break
+	if tree.current_scene is World:
+		# 获取新场景的名称，将新场景的状态更改为旧的保存的状态
+		var new_name = tree.current_scene.scene_file_path.get_file().get_basename()
+		if new_name in world_states:
+			tree.current_scene.from_dict(world_states[new_name])
+		if "entry_point" in params:
+			# 找到位于entry_points这个分组的相同节点
+			for node in tree.get_nodes_in_group("entry_points"):
+				if node.name == params.entry_point:
+					# 将玩家移动到指定位置
+					tree.current_scene.update_player(node.global_position, node.direction)
+					break
 
-	if "position" in params and "direction" in params:
-		tree.current_scene.update_player(params.position, params.direction)
+		if "position" in params and "direction" in params:
+			tree.current_scene.update_player(params.position, params.direction)
 
 	# 暂停结束
 	tree.paused = false
@@ -61,6 +67,7 @@ func change_scene(path: String, params = {}) -> void:
 	# 黑变透明
 	tween.tween_property(color_rect, "color:a", 0, 0.2)
 
+# 保存游戏
 func save_game() -> void:
 	var scene = get_tree().current_scene
 	var scene_name = scene.scene_file_path.get_file().get_basename()
@@ -83,7 +90,7 @@ func save_game() -> void:
 		return
 	file.store_string(json)
 	
-
+# 读取旧存档
 func load_game() -> void:
 	var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
 	if not file:
@@ -101,11 +108,19 @@ func load_game() -> void:
 				world_states = data.world_states
 				player_stats.from_dict(data.stats)
 	})
-	
-	
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel"):
-		load_game()
-	
-	
-	
+
+# 创建存档
+func new_game() -> void:
+	change_scene("res://Scenes/Surroundings/Map/world.tscn", {
+		init = func ():
+			world_states = {}
+			player_stats.from_dict(default_player_stats)
+	})
+
+# 回答标题场景
+func back_to_title() -> void:
+	change_scene("res://Scenes/Surroundings/Ui/title.tscn")
+
+# 判断是否拥有存档
+func has_save() -> bool:
+	return FileAccess.file_exists(SAVE_PATH)
