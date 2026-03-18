@@ -62,6 +62,10 @@ func _transition_state(Player: CharacterBody2D, from: State, to: State) -> void:
 			Player.prepare_jump_timer.stop() 
 			Player.velocity.y = Player.jump_speed
 			Player.animated.play("Jump")
+			if Player.double_jump:
+				SoundManager.play_sfx("Jump1")
+			else:
+				SoundManager.play_sfx("Jump2")
 		State.FALL:
 			Player.animated.play("Fall")
 			if from in GROUND_STATES:
@@ -69,6 +73,7 @@ func _transition_state(Player: CharacterBody2D, from: State, to: State) -> void:
 				Player.coyote_timer.start()
 		State.LANDING:
 			Player.animated.play("Landing")
+			SoundManager.play_sfx("Fall")
 		State.SLIDINGWALL:
 			Player.is_left_wall = Input.is_action_pressed("Left")
 			Player.animated.play("SlidingWall")
@@ -77,24 +82,28 @@ func _transition_state(Player: CharacterBody2D, from: State, to: State) -> void:
 			Player.velocity = Player.WALL_JUMP_VELOCITY
 			Player.velocity.x *= Player.get_wall_normal().x
 			Player.animated.play("Jump")
+			SoundManager.play_sfx("Jump1")
 		State.ATTACK_1:
 			# 攻击框开启
 			$"../../../Graphics/HitBox/Attack1".disabled = false
 			# 伤害
 			Player.stats.attack = 1
 			Player.animated.play("Attack1")
+			SoundManager.play_sfx("Attack1")
 		State.ATTACK_2:
 			# 攻击框开启
 			$"../../../Graphics/HitBox/Attack2".disabled = false
 			# 伤害
 			Player.stats.attack = 2
 			Player.animated.play("Attack2")
+			SoundManager.play_sfx("Attack2")
 		State.ATTACK_3:
 			# 攻击框开启
 			$"../../../Graphics/HitBox/Attack3".disabled = false
 			# 伤害
 			Player.stats.attack = 3
 			Player.animated.play("Attack3")
+			SoundManager.play_sfx("Attack3")
 		State.HURT:
 			# 血量减少
 			Player.stats.health -= Player.pending_damage.amount
@@ -122,6 +131,7 @@ func _transition_state(Player: CharacterBody2D, from: State, to: State) -> void:
 			Player.animated.play("SlideStart")
 		State.SLIDETACKLE:
 			Player.animated.play("SlideTackle")
+			SoundManager.play_sfx("Slide")
 		State.UPSTANDING:
 			# 滑铲结束，开启受击框
 			Player.hurt_box.monitorable = true

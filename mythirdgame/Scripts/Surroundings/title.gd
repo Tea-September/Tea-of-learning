@@ -11,6 +11,9 @@ func _ready() -> void:
 	new_game.grab_focus()
 	for button: Button in v.get_children():
 		button.mouse_entered.connect(button.grab_focus)
+	SoundManager.setup_ui_sounds(self)
+	# 播放标题BGM
+	SoundManager.play_bgm(preload("uid://dlhhyro31fb8v"))
 	
 # 创建新游戏
 func _on_new_game_pressed() -> void:

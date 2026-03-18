@@ -7,6 +7,7 @@ extends Node2D
 @onready var camera_2d: Camera2D = $Player/Camera2D
 # 玩家
 @onready var Player: player = $Player
+@export var bgm: AudioStream
 
 func _ready() -> void:
 	# 包围所有图块，形成矩形框，包含position和end属性，分别是指左上角和右下角，都为从原点数第几个格子，position为负，end为正
@@ -21,6 +22,9 @@ func _ready() -> void:
 	# 将相机立即设置到设定位置
 	camera_2d.reset_smoothing()
 	camera_2d.force_update_scroll()
+	# 背景音乐
+	if bgm:
+		SoundManager.play_bgm(bgm)
 
 func update_player(pos: Vector2, direction: player.Direction) -> void:
 	# 将玩家移动到指定位置

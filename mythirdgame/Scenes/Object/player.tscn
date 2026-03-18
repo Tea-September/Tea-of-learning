@@ -773,26 +773,6 @@ disabled = true
 position = Vector2(0, 11.5)
 shape = SubResource("RectangleShape2D_vgqql")
 
-[node name="CoyoteTimer" type="Timer" parent="." unique_id=1206408655]
-wait_time = 0.1
-one_shot = true
-
-[node name="PrepareJumpTimer" type="Timer" parent="." unique_id=1227091565]
-wait_time = 0.5
-one_shot = true
-
-[node name="InvincibleTimer" type="Timer" parent="." unique_id=2038852490]
-wait_time = 3.0
-one_shot = true
-
-[node name="PrepareSlideTimer" type="Timer" parent="." unique_id=460553507]
-wait_time = 0.5
-one_shot = true
-
-[node name="EnergyTimer" type="Timer" parent="." unique_id=731745448]
-wait_time = 2.0
-autostart = true
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1770686630]
 libraries/ = SubResource("AnimationLibrary_7sjl0")
 
@@ -988,11 +968,35 @@ text = "返回菜单"
 process_mode = 3
 script = ExtResource("16_v5jsd")
 
+[node name="Timer" type="Node" parent="." unique_id=1072729157]
+
+[node name="CoyoteTimer" type="Timer" parent="Timer" unique_id=1206408655]
+wait_time = 0.1
+one_shot = true
+
+[node name="PrepareJumpTimer" type="Timer" parent="Timer" unique_id=1227091565]
+wait_time = 0.5
+one_shot = true
+
+[node name="InvincibleTimer" type="Timer" parent="Timer" unique_id=2038852490]
+wait_time = 3.0
+one_shot = true
+
+[node name="PrepareSlideTimer" type="Timer" parent="Timer" unique_id=460553507]
+wait_time = 0.5
+one_shot = true
+
+[node name="EnergyTimer" type="Timer" parent="Timer" unique_id=731745448]
+wait_time = 2.0
+autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=594749184]
+
 [connection signal="hurt" from="Graphics/HurtBox" to="." method="_on_hurt_box_hurt"]
-[connection signal="timeout" from="EnergyTimer" to="." method="_on_energy_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Paused/Panel/VBoxContainer/MarginContainer2/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="CanvasLayer/Paused/Panel/VBoxContainer/MarginContainer2/VBoxContainer/LoadGame" to="." method="_on_load_game_pressed"]
 [connection signal="pressed" from="CanvasLayer/Paused/Panel/VBoxContainer/MarginContainer2/VBoxContainer/QuitMenu" to="." method="_on_quit_menu_pressed"]
 [connection signal="pressed" from="CanvasLayer/Die/Panel/VBoxContainer/MarginContainer2/VBoxContainer/LoadGame" to="." method="_on_load_game_pressed"]
 [connection signal="pressed" from="CanvasLayer/Die/Panel/VBoxContainer/MarginContainer2/VBoxContainer/QuitMenu" to="." method="_on_quit_menu_pressed"]
+[connection signal="timeout" from="Timer/EnergyTimer" to="." method="_on_energy_timer_timeout"]

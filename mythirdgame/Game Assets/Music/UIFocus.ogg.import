@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://j3jplec3q1y6"
+path="res://.godot/imported/UIFocus.ogg-5981d42e701ec6b7a11455681654c3e1.oggvorbisstr"
+
+[deps]
+
+source_file="res://Game Assets/Music/UIFocus.ogg"
+dest_files=["res://.godot/imported/UIFocus.ogg-5981d42e701ec6b7a11455681654c3e1.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

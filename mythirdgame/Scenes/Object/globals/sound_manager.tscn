@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://b1k7l8nu4i2gk"]
+
+[ext_resource type="Script" uid="uid://b13rk7sitr4nf" path="res://Scripts/Config/sound_manager.gd" id="1_l6toh"]
+[ext_resource type="AudioStream" uid="uid://47luw0m44g01" path="res://Game Assets/Music/player_attack1.wav" id="2_1liik"]
+[ext_resource type="AudioStream" uid="uid://dwphh7sn2ws3u" path="res://Game Assets/Music/player_attack2.wav" id="3_lqnsj"]
+[ext_resource type="AudioStream" uid="uid://dljob18uftno3" path="res://Game Assets/Music/player_attack3.wav" id="4_q0514"]
+[ext_resource type="AudioStream" uid="uid://cepqjysx38rip" path="res://Game Assets/Music/jump.ogg" id="5_8kw14"]
+[ext_resource type="AudioStream" uid="uid://cq2tl2oect06x" path="res://Game Assets/Music/jump2.ogg" id="6_0u1u6"]
+[ext_resource type="AudioStream" uid="uid://b4owbrxi3kam7" path="res://Game Assets/Music/UIPress.ogg" id="7_lqnsj"]
+[ext_resource type="AudioStream" uid="uid://j3jplec3q1y6" path="res://Game Assets/Music/UIFocus.ogg" id="8_q0514"]
+[ext_resource type="AudioStream" uid="uid://ukthohs65ykn" path="res://Game Assets/Music/fall.wav" id="9_q0514"]
+[ext_resource type="AudioStream" uid="uid://yj5xl28vwlap" path="res://Game Assets/Music/slide.ogg" id="10_8kw14"]
+[ext_resource type="AudioStream" uid="uid://dcqmpf17vd0wd" path="res://Game Assets/Music/run.ogg" id="11_dpcse"]
+[ext_resource type="AudioStream" uid="uid://sudkfeys6up8" path="res://Game Assets/Music/boar_hurt.wav" id="12_hrxox"]
+[ext_resource type="AudioStream" uid="uid://g2e06t6ru7sf" path="res://Game Assets/Music/slime_attack.ogg" id="13_j7kly"]
+[ext_resource type="AudioStream" uid="uid://n56yicxkv3u2" path="res://Game Assets/Music/slim_hurt.wav" id="14_mhsrt"]
+
+[node name="SoundManager" type="Node" unique_id=401391056]
+process_mode = 3
+script = ExtResource("1_l6toh")
+
+[node name="SFX" type="Node" parent="." unique_id=1097846929]
+
+[node name="Attack1" type="AudioStreamPlayer" parent="SFX" unique_id=108368379]
+stream = ExtResource("2_1liik")
+bus = &"SFX"
+
+[node name="Attack2" type="AudioStreamPlayer" parent="SFX" unique_id=401476663]
+stream = ExtResource("3_lqnsj")
+bus = &"SFX"
+
+[node name="Attack3" type="AudioStreamPlayer" parent="SFX" unique_id=1170769572]
+stream = ExtResource("4_q0514")
+bus = &"SFX"
+
+[node name="Jump1" type="AudioStreamPlayer" parent="SFX" unique_id=42692644]
+stream = ExtResource("5_8kw14")
+bus = &"SFX"
+
+[node name="Jump2" type="AudioStreamPlayer" parent="SFX" unique_id=755360173]
+stream = ExtResource("6_0u1u6")
+bus = &"SFX"
+
+[node name="UIPress" type="AudioStreamPlayer" parent="SFX" unique_id=1124918849]
+stream = ExtResource("7_lqnsj")
+volume_db = -5.0
+
+[node name="UIFocus" type="AudioStreamPlayer" parent="SFX" unique_id=1830981359]
+stream = ExtResource("8_q0514")
+volume_db = -5.0
+
+[node name="Fall" type="AudioStreamPlayer" parent="SFX" unique_id=88097503]
+stream = ExtResource("9_q0514")
+bus = &"SFX2"
+
+[node name="Slide" type="AudioStreamPlayer" parent="SFX" unique_id=1440492925]
+stream = ExtResource("10_8kw14")
+bus = &"SFX"
+
+[node name="Run" type="AudioStreamPlayer" parent="SFX" unique_id=511538508]
+stream = ExtResource("11_dpcse")
+pitch_scale = 0.6
+bus = &"SFX2"
+
+[node name="BoarHurt" type="AudioStreamPlayer" parent="SFX" unique_id=1343171937]
+stream = ExtResource("12_hrxox")
+pitch_scale = 0.6
+bus = &"SFX2"
+
+[node name="SlimeAttack" type="AudioStreamPlayer" parent="SFX" unique_id=1804608517]
+stream = ExtResource("13_j7kly")
+pitch_scale = 0.6
+bus = &"SFX2"
+
+[node name="SlimeHurt" type="AudioStreamPlayer" parent="SFX" unique_id=1449560504]
+stream = ExtResource("14_mhsrt")
+pitch_scale = 0.6
+bus = &"SFX2"
+
+[node name="WorldBgm" type="AudioStreamPlayer" parent="." unique_id=1784386830]
+bus = &"BGM"

@@ -143,6 +143,7 @@ func transition_state(_from: State, to: State) -> void:
 			# 受到攻击，关闭攻击框
 			hit_box.monitoring = false
 			animated.play("Hurt")
+			SoundManager.play_sfx("BoarHurt")
 		State.DIE:
 			# 死亡关闭血量条
 			health.visible = false

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dpi4tms3qq1yv"
+path="res://.godot/imported/boss.ogg-cb7426fefb7022ca4994fd230bca335b.oggvorbisstr"
+
+[deps]
+
+source_file="res://Game Assets/Music/boss.ogg"
+dest_files=["res://.godot/imported/boss.ogg-cb7426fefb7022ca4994fd230bca335b.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

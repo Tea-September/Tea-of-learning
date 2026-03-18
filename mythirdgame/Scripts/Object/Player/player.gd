@@ -48,15 +48,15 @@ const REPEL_AMOUNT: float = 450.0
 # 场景翻转
 @onready var graphics: Node2D = $Graphics
 # 离地延迟跳跃
-@onready var coyote_timer: Timer = $CoyoteTimer
+@onready var coyote_timer: Timer = $Timer/CoyoteTimer
 # 空中预备跳跃
-@onready var prepare_jump_timer: Timer = $PrepareJumpTimer
+@onready var prepare_jump_timer: Timer = $Timer/PrepareJumpTimer
 # 空中预备滑铲
-@onready var prepare_slide_timer: Timer = $PrepareSlideTimer
+@onready var prepare_slide_timer: Timer = $Timer/PrepareSlideTimer
 # 能量条恢复
-@onready var energy_timer: Timer = $EnergyTimer
+@onready var energy_timer: Timer = $Timer/EnergyTimer
 # 无敌时间
-@onready var invincible_timer: Timer = $InvincibleTimer
+@onready var invincible_timer: Timer = $Timer/InvincibleTimer
 # 贴墙检测射线
 @onready var up_sliding_wall: RayCast2D = $Graphics/SlidingWall/UpSlidingWall
 @onready var down_sliding_wall: RayCast2D = $Graphics/SlidingWall/DownSlidingWall
@@ -92,6 +92,8 @@ const REPEL_AMOUNT: float = 450.0
 #
 @onready var is_game_over: bool = false
 
+func _ready() -> void:
+	SoundManager.setup_ui_sounds(self)
 # 提前输入
 func _unhandled_input(event: InputEvent) -> void:
 	player_input_ahead._input_ahead(self, event)
@@ -161,6 +163,8 @@ func die() -> void:
 		# 检查button的mouse_entered信号是否未连接到button.grab_focus
 		if not button.mouse_entered.is_connected(button.grab_focus):
 			button.mouse_entered.connect(button.grab_focus)
+	# 播放死亡BGM
+	SoundManager.play_bgm(preload("uid://cnknva0brslal"))
 
 # 暂停按钮
 func _on_button_pressed() -> void:

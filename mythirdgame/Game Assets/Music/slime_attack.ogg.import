@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://g2e06t6ru7sf"
+path="res://.godot/imported/slime_attack.ogg-cc703f829c5531022e0a29454d9d9fc7.oggvorbisstr"
+
+[deps]
+
+source_file="res://Game Assets/Music/slime_attack.ogg"
+dest_files=["res://.godot/imported/slime_attack.ogg-cc703f829c5531022e0a29454d9d9fc7.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

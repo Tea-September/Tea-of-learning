@@ -7,6 +7,7 @@ var player_position: Vector2 = Vector2.ZERO
 @onready var bullet: CharacterBody2D = $"."
 
 func _ready() -> void:
+	SoundManager.play_sfx("SlimeAttack")
 	if Player:
 		player_position = Player.global_position
 	# 你已有的初始化和实时更新逻辑（衔接无违和）

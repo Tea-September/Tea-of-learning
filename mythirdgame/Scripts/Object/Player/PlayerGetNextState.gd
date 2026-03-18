@@ -118,6 +118,12 @@ func _get_next_state(Player: CharacterBody2D, state: State) -> State:
 			if not is_stand:
 				return State.RUNNING
 		State.RUNNING:
+			# 跑动音效
+			if SoundManager.if_run and not SoundManager.run.playing:
+				SoundManager.if_run = false
+				SoundManager.play_sfx("Run")
+			if SoundManager.run.playing:
+				SoundManager.if_run = true
 			# 玩家按下攻击键位，状态变化为ATTACK_1
 			if Input.is_action_just_pressed("Attack"):
 				return State.ATTACK_1

@@ -124,7 +124,6 @@ func transition_state(_from: State, to: State) -> void:
 				if_floor.force_raycast_update()
 		State.ATTACK:
 			# 子弹发射计时器
-			_on_timer_timeout()
 			bullet_timer.start()
 			# 开启攻击框
 			hit_box.monitoring = true
@@ -148,6 +147,7 @@ func transition_state(_from: State, to: State) -> void:
 			# 受到攻击，关闭攻击框
 			hit_box.monitoring = false
 			animated.play("Hurt")
+			SoundManager.play_sfx("SlimeHurt")
 		State.DIE:
 			# 死亡关闭血量条
 			health.visible = false

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bp2gdun6vvqut"
+path="res://.godot/imported/forest.ogg-f75b50fcc88592d15d553aa863fb71e9.oggvorbisstr"
+
+[deps]
+
+source_file="res://Game Assets/Music/forest.ogg"
+dest_files=["res://.godot/imported/forest.ogg-f75b50fcc88592d15d553aa863fb71e9.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
