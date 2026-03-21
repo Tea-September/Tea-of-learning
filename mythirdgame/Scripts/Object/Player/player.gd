@@ -89,7 +89,7 @@ const REPEL_AMOUNT: float = 450.0
 @onready var v_box_container2: VBoxContainer = $CanvasLayer/Die/Panel/VBoxContainer/MarginContainer2/VBoxContainer
 # 继续游戏按钮
 @onready var continue_button: Button = $CanvasLayer/Paused/Panel/VBoxContainer/MarginContainer2/VBoxContainer/Continue
-#
+# 游戏结束
 @onready var is_game_over: bool = false
 
 func _ready() -> void:

@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://cvj455s10aptw"]
+
+[ext_resource type="Script" uid="uid://c2vmp5lqikv0s" path="res://Scripts/Data/Plot.gd" id="1_y3i62"]
+[ext_resource type="Texture2D" uid="uid://be5qmdyj3p4ia" path="res://Game Assets/Book Spritesheet.png" id="2_2jfo8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y3i62"]
+size = Vector2(60.925423, 28.388115)
+
+[sub_resource type="Gradient" id="Gradient_kqi84"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_y3i62"]
+gradient = SubResource("Gradient_kqi84")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+metadata/_snap_enabled = true
+
+[node name="Plot" type="Area2D" unique_id=1237512264]
+rotation = -2.7316973
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_y3i62")
+metadata/_custom_type_script = "uid://c2vmp5lqikv0s"
+
+[node name="Buildings" type="Sprite2D" parent="." unique_id=709146993]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_2jfo8")
+region_enabled = true
+region_rect = Rect2(616, 488, 350, 204)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1057897342]
+position = Vector2(-1.1135087, 1.746476)
+shape = SubResource("RectangleShape2D_y3i62")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1819108248]
+position = Vector2(-9.536743e-07, 9.536743e-07)
+scale = Vector2(0.59067434, 0.5408508)
+color = Color(0.041154698, 0.876982, 0.973509, 1)
+energy = 1.2
+texture = SubResource("GradientTexture2D_y3i62")
+texture_scale = 3.0

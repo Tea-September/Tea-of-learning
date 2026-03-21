@@ -2,6 +2,8 @@ extends Node
 
 # 保存文件的路径
 const SAVE_PATH = "user://data.sav"
+# 配置文件
+const CONFIG_PATH = "user://config.ini"
 
 # 存放场景的名称，场景存放各自场景想要存放的数据
 var world_states = {}
@@ -16,6 +18,8 @@ var world_states = {}
 func _ready() -> void:
 	# 将补间动画中使用的幕布的透明度，设置为0
 	color_rect.color.a = 0
+	# 读取配置文件
+	load_config()
 
 func change_scene(path: String, params = {}) -> void:
 	var tree = get_tree()
@@ -124,3 +128,39 @@ func back_to_title() -> void:
 # 判断是否拥有存档
 func has_save() -> bool:
 	return FileAccess.file_exists(SAVE_PATH)
+
+# 保存配置
+func save_config() -> void:
+	var config = ConfigFile.new()
+	
+	config.set_value("audio", "master",SoundManager.get_volume(SoundManager.Bus.MASTER))
+	config.set_value("audio", "sfx",SoundManager.get_volume(SoundManager.Bus.SFX))
+	config.set_value("audio", "sfx2",SoundManager.get_volume(SoundManager.Bus.SFX2))
+	config.set_value("audio", "bgm",SoundManager.get_volume(SoundManager.Bus.BGM))
+
+	config.save(CONFIG_PATH)
+
+# 读取配置
+func load_config() -> void:
+	var config = ConfigFile.new()
+	config.load(CONFIG_PATH)
+	
+	SoundManager.set_volume(
+		SoundManager.Bus.MASTER,
+		config.get_value("audio", "master", 1)
+	)
+	
+	SoundManager.set_volume(
+		SoundManager.Bus.SFX,
+		config.get_value("audio", "sfx", 1)
+	)
+	
+	SoundManager.set_volume(
+		SoundManager.Bus.SFX2,
+		config.get_value("audio", "sfx2", 0.5)
+	)
+	
+	SoundManager.set_volume(
+		SoundManager.Bus.BGM,
+		config.get_value("audio", "bgm", 0.5)
+	)

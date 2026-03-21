@@ -10,6 +10,12 @@
 [ext_resource type="Script" uid="uid://cv1ovs7tewfd6" path="res://Scripts/Config/EntryPoint.gd" id="5_p1gi4"]
 [ext_resource type="PackedScene" uid="uid://bhspt0y5sjkql" path="res://Scenes/Object/Monster/boar.tscn" id="6_265bt"]
 [ext_resource type="PackedScene" uid="uid://bffphwyuolgtc" path="res://Scenes/Object/globals/save.tscn" id="9_q57gj"]
+[ext_resource type="PackedScene" uid="uid://cvj455s10aptw" path="res://Scenes/Object/plot.tscn" id="9_tcspa"]
+[ext_resource type="Script" uid="uid://hmqonrtmljja" path="res://Scripts/Surroundings/plot_people_interactable.gd" id="10_5gy5a"]
+[ext_resource type="Texture2D" uid="uid://unibld3u6but" path="res://Game Assets/Sprite sheet for Basic Pack.png" id="12_ju6b6"]
+[ext_resource type="Theme" uid="uid://cxdw2f02tbvs8" path="res://Game Assets/new_theme.tres" id="13_tcspa"]
+[ext_resource type="PackedScene" uid="uid://bl6ktvpbbmn08" path="res://Scenes/Object/plot_people.tscn" id="14_abkfq"]
+[ext_resource type="Texture2D" uid="uid://b1i60k3xm0kp" path="res://Game Assets/head/未标题-2.png" id="15_5gy5a"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_go701"]
 texture = ExtResource("3_76g7w")
@@ -814,13 +820,15 @@ physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 2
 sources/1 = SubResource("TileSetAtlasSource_5a7ea")
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_45x66"]
+
 [node name="World" type="Node2D" unique_id=1685336126]
 script = ExtResource("1_265bt")
 bgm = ExtResource("2_aj3q8")
 
 [node name="Player" parent="." unique_id=261933534 instance=ExtResource("2_0702v")]
 z_index = 5
-position = Vector2(-104, 0)
+position = Vector2(-48, -232)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=911140717]
 process_callback = 0
@@ -1145,7 +1153,32 @@ script = ExtResource("5_p1gi4")
 direction = -1
 metadata/_custom_type_script = "uid://cv1ovs7tewfd6"
 
-[node name="AddHealth" type="Node" parent="Interact" unique_id=1241905867]
+[node name="PlotInteractable" type="Node" parent="Interact" unique_id=1241905867]
+
+[node name="PlotPeople" type="Area2D" parent="Interact/PlotInteractable" unique_id=1491123934]
+position = Vector2(-96, -208)
+rotation = -3.1415927
+scale = Vector2(1.1599975, -1)
+script = ExtResource("10_5gy5a")
+metadata/_custom_type_script = "uid://rghok5m7iw6f"
+
+[node name="Sprite2D" type="Sprite2D" parent="Interact/PlotInteractable/PlotPeople" unique_id=141496978]
+texture = ExtResource("15_5gy5a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interact/PlotInteractable/PlotPeople" unique_id=199880508]
+shape = SubResource("CapsuleShape2D_45x66")
+
+[node name="Plot" parent="Interact/PlotInteractable" unique_id=1237512264 instance=ExtResource("9_tcspa")]
+position = Vector2(120, -23.999996)
+plot_point = 1
+
+[node name="Plot2" parent="Interact/PlotInteractable" unique_id=1754296138 instance=ExtResource("9_tcspa")]
+position = Vector2(-32, -72)
+plot_point = 2
+
+[node name="Plot3" parent="Interact/PlotInteractable" unique_id=961262374 instance=ExtResource("9_tcspa")]
+position = Vector2(256, -200)
+plot_point = 5
 
 [node name="Boar" type="Node" parent="." unique_id=760439640]
 
@@ -1159,3 +1192,89 @@ position = Vector2(32, 0)
 
 [node name="Save" parent="." unique_id=265974315 instance=ExtResource("9_q57gj")]
 position = Vector2(-96, -80)
+
+[node name="Plot" type="CanvasLayer" parent="." unique_id=1058915915]
+visible = false
+
+[node name="MarginContainer" type="MarginContainer" parent="Plot" unique_id=910030917]
+custom_minimum_size = Vector2(200, 120)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("13_tcspa")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Plot/MarginContainer" unique_id=508878348]
+layout_mode = 2
+texture = ExtResource("12_ju6b6")
+region_rect = Rect2(107, 59, 26, 26)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Plot/MarginContainer/NinePatchRect" unique_id=1210329441]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Plot/MarginContainer/NinePatchRect/VBoxContainer" unique_id=2079915636]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Plot/MarginContainer/NinePatchRect/VBoxContainer/MarginContainer" unique_id=1248986372]
+layout_mode = 2
+texture = ExtResource("12_ju6b6")
+region_rect = Rect2(293, 5, 38, 38)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="Plot/MarginContainer/NinePatchRect/VBoxContainer/MarginContainer/NinePatchRect" unique_id=1814745934]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Plot/MarginContainer/NinePatchRect/VBoxContainer/MarginContainer/NinePatchRect/MarginContainer" unique_id=2147215415]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "森林深处似乎发生了某些变化，公会委托我前去探查，希望不会出现意外！"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="Plot/MarginContainer/NinePatchRect/VBoxContainer" unique_id=2056639210]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="QuitMenu" type="Button" parent="Plot/MarginContainer/NinePatchRect/VBoxContainer/MarginContainer2" unique_id=249451927]
+process_mode = 3
+z_index = 21
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("13_tcspa")
+theme_override_font_sizes/font_size = 20
+text = "关闭"
+
+[node name="PlotPeople" parent="." unique_id=545325389 instance=ExtResource("14_abkfq")]
+visible = false
+
+[connection signal="pressed" from="Plot/MarginContainer/NinePatchRect/VBoxContainer/MarginContainer2/QuitMenu" to="." method="_on_quit_menu_pressed"]

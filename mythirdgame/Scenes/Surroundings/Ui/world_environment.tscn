@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://t2mvcdkervyw"]
+
+[sub_resource type="Environment" id="Environment_tagh6"]
+background_mode = 3
+adjustment_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" unique_id=1625717098]
+environment = SubResource("Environment_tagh6")

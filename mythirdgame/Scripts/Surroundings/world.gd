@@ -9,6 +9,7 @@ extends Node2D
 @onready var Player: player = $Player
 @export var bgm: AudioStream
 
+
 func _ready() -> void:
 	# 包围所有图块，形成矩形框，包含position和end属性，分别是指左上角和右下角，都为从原点数第几个格子，position为负，end为正
 	var used = tile_map_layer_1.get_used_rect().grow(-1)
@@ -56,3 +57,8 @@ func from_dict(dict: Dictionary) -> void:
 		# 如果path对应的怪物节点不在当前保存的数组中，则释放该怪物
 		if path not in dict.enemies_alive:
 			node.queue_free()
+
+# 关闭书籍菜单
+func _on_quit_menu_pressed() -> void:
+	$Plot.visible = false
+	get_tree( ).paused = false

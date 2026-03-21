@@ -28,6 +28,7 @@ buses/default_bus_layout="uid://wmctxpje2vih"
 Game="*uid://db5mplxd163k"
 Vignette="*uid://disvdnpcsofrl"
 SoundManager="*uid://b1k7l8nu4i2gk"
+GlobalWorldEnvironment="*uid://t2mvcdkervyw"
 
 [display]
 

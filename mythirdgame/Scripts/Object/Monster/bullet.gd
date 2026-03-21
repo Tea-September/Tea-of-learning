@@ -7,12 +7,13 @@ var player_position: Vector2 = Vector2.ZERO
 @onready var bullet: CharacterBody2D = $"."
 
 func _ready() -> void:
+	# 播放射击音效
 	SoundManager.play_sfx("SlimeAttack")
 	if Player:
 		player_position = Player.global_position
-	# 你已有的初始化和实时更新逻辑（衔接无违和）
-	Player = get_tree().get_first_node_in_group("player")  # 沿用你的玩家获取方式
-	# 示例：调用判断方法，获取玩家方向（可直接用于你的抛掷逻辑）
+	# 你已有的初始化和实时更新逻辑
+	Player = get_tree().get_first_node_in_group("player")
+	# 调用判断方法，获取玩家方向
 	launch_velocity.x *= judge_player_direction()
 	# 等待3秒，timeout为倒计时结束才能执行后面的代码
 	await get_tree().create_timer(3).timeout

@@ -1,0 +1,56 @@
+[gd_resource type="Resource" script_class="DialogueGroup" format=3 uid="uid://c705ie8uo3pwo"]
+
+[ext_resource type="Script" uid="uid://c2sjiepav4wju" path="res://Scripts/Data/Dialogue.gd" id="1_qoee5"]
+[ext_resource type="Texture2D" uid="uid://djey63oxtjegq" path="res://Game Assets/head/未标题-1.png" id="2_fif1c"]
+[ext_resource type="Script" uid="uid://dtaljj6vbrojn" path="res://Scripts/Data/dialogue_group.gd" id="2_tqn5f"]
+[ext_resource type="Texture2D" uid="uid://b1i60k3xm0kp" path="res://Game Assets/head/未标题-2.png" id="3_lwdm3"]
+
+[sub_resource type="Resource" id="Resource_qoee5"]
+script = ExtResource("1_qoee5")
+character_name = "冒险者"
+content = "你是护林员？森林中发生了什么？"
+avatar = ExtResource("2_fif1c")
+show_on_left = true
+metadata/_custom_type_script = "uid://c2sjiepav4wju"
+
+[sub_resource type="Resource" id="Resource_tqn5f"]
+script = ExtResource("1_qoee5")
+character_name = "护林员"
+content = "那个怪物，占据了圣湖！"
+avatar = ExtResource("3_lwdm3")
+metadata/_custom_type_script = "uid://c2sjiepav4wju"
+
+[sub_resource type="Resource" id="Resource_fif1c"]
+script = ExtResource("1_qoee5")
+character_name = "冒险者"
+content = "什么怪物？森林周边都受到了影响，我会解决它的！"
+avatar = ExtResource("2_fif1c")
+show_on_left = true
+metadata/_custom_type_script = "uid://c2sjiepav4wju"
+
+[sub_resource type="Resource" id="Resource_lwdm3"]
+script = ExtResource("1_qoee5")
+character_name = "护林员"
+content = "不要去，你一个人是杀不死它的，快去请援军！"
+avatar = ExtResource("3_lwdm3")
+metadata/_custom_type_script = "uid://c2sjiepav4wju"
+
+[sub_resource type="Resource" id="Resource_r5cc2"]
+script = ExtResource("1_qoee5")
+character_name = "冒险者"
+content = "我必须去！"
+avatar = ExtResource("2_fif1c")
+show_on_left = true
+metadata/_custom_type_script = "uid://c2sjiepav4wju"
+
+[sub_resource type="Resource" id="Resource_y4y0v"]
+script = ExtResource("1_qoee5")
+character_name = "护林员"
+content = "那祝你好运！"
+avatar = ExtResource("3_lwdm3")
+metadata/_custom_type_script = "uid://c2sjiepav4wju"
+
+[resource]
+script = ExtResource("2_tqn5f")
+dialogue_list = Array[ExtResource("1_qoee5")]([SubResource("Resource_qoee5"), SubResource("Resource_tqn5f"), SubResource("Resource_fif1c"), SubResource("Resource_lwdm3"), SubResource("Resource_r5cc2"), SubResource("Resource_y4y0v")])
+metadata/_custom_type_script = "uid://dtaljj6vbrojn"
