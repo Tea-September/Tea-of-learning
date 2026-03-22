@@ -24,6 +24,10 @@ enum State{
 	ATTACK_2,
 	# 三段攻击
 	ATTACK_3,
+	# 剑气
+	SWORDAURA,
+	# 突刺
+	ASSAULT,
 	# 受伤
 	HURT,
 	# 死亡
@@ -62,6 +66,8 @@ func _tick_physics(Player: CharacterBody2D, state: State, delta: float) -> void:
 		State.SLIDESTART:
 			Player.slide(Player.default_gravity, delta)
 		State.SLIDETACKLE:
+			Player.slide(Player.default_gravity, delta)
+		State.ASSAULT:
 			Player.slide(Player.default_gravity, delta)
 	# 结束第一帧
 	Player.is_first_tick = false

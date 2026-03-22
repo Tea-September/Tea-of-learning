@@ -23,8 +23,6 @@ const REPEL_AMOUNT: float = 450.0
 @export var jump_speed: float
 # 玩家基础攻击
 @export var basic_attack: int = 1
-# 是否能够连击
-@onready var can_combo: bool = false
 # 是否能够二段跳
 @onready var double_jump: bool = true
 # 是否开启能量条计时器
@@ -39,8 +37,6 @@ const REPEL_AMOUNT: float = 450.0
 @onready var is_first_tick: bool = false
 # 判断是否按下左键
 @onready var is_left_wall: bool = false
-# 判断可以连击事件是否出现
-@onready var is_combo_requested: bool = false
 # 伤害对象
 @onready var pending_damage: Damage
 # 人物动画
@@ -78,8 +74,6 @@ const REPEL_AMOUNT: float = 450.0
 @onready var interacting: AnimatedSprite2D = $Interacting
 # 暂停页面
 @onready var paused: Control = $CanvasLayer/Paused
-# 死亡页面
-@onready var die_title: Control = $CanvasLayer/Die
 # 暂停按钮
 @onready var paused_button: MarginContainer = $CanvasLayer/MarginContainer
 # 读取存档按钮
@@ -91,9 +85,14 @@ const REPEL_AMOUNT: float = 450.0
 @onready var continue_button: Button = $CanvasLayer/Paused/Panel/VBoxContainer/MarginContainer2/VBoxContainer/Continue
 # 游戏结束
 @onready var is_game_over: bool = false
+# 运行人物对话
+@export var is_interactable: bool = true
+# 子弹
+@export var bullet_scene : PackedScene
 
 func _ready() -> void:
 	SoundManager.setup_ui_sounds(self)
+	print("player stats引用：", stats)
 # 提前输入
 func _unhandled_input(event: InputEvent) -> void:
 	player_input_ahead._input_ahead(self, event)
@@ -153,7 +152,7 @@ func die() -> void:
 	# 判断是否拥有存档（即读取存档按钮是否能够按取）
 	load_game.disabled = not Game.has_save()
 	paused_button.visible = false
-	die_title.visible = true
+	$AnimationPlayer.play("EnterDie")
 	# 怪物无法检测玩家
 	self.collision_layer = 0
 	# 将键盘和鼠标聚焦一致
@@ -164,7 +163,7 @@ func die() -> void:
 		if not button.mouse_entered.is_connected(button.grab_focus):
 			button.mouse_entered.connect(button.grab_focus)
 	# 播放死亡BGM
-	SoundManager.play_bgm(preload("uid://cnknva0brslal"))
+	SoundManager.play_bgm(preload("res://Game Assets/Music/game_over.ogg"))
 
 # 暂停按钮
 func _on_button_pressed() -> void:
@@ -192,3 +191,11 @@ func _on_quit_menu_pressed() -> void:
 # 读取旧存档
 func _on_load_game_pressed() -> void:
 	Game.load_game()
+
+
+func _on_bullet_timer_timeout() -> void:
+	# 生成子弹节点
+	var bullet_node = bullet_scene.instantiate()
+	bullet_node.position = position + Vector2(13 * direction, 12)
+	# 将其添加进场景树
+	get_tree().current_scene.add_child(bullet_node)

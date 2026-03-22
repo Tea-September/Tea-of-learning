@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://danmhjqhpq7y4" path="res://Scripts/Object/Player/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://bxa62dh7d7mkj" path="res://Game Assets/generic_char_v0.2/png/blue/char_blue_1.png" id="1_v0iea"]
+[ext_resource type="PackedScene" uid="uid://dy0ve6k72qwgx" path="res://Scenes/Object/sword_aura.tscn" id="2_v42s7"]
 [ext_resource type="Script" uid="uid://c7ingndjv0lwx" path="res://Scripts/Config/StateMachine.gd" id="3_6t5aa"]
 [ext_resource type="Texture2D" uid="uid://c3bge1henvr2r" path="res://Game Assets/gdb-gamepad-2(all)/gdb-keyboard-2.png" id="3_avtl5"]
 [ext_resource type="Texture2D" uid="uid://dnp5kvewenmss" path="res://Game Assets/generic_char_v0.2/png/blue/char_blue_2.png" id="3_vgqql"]
@@ -57,10 +58,6 @@ animations = [{
 atlas = ExtResource("1_v0iea")
 region = Rect2(0, 504, 56, 56)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8704w"]
-atlas = ExtResource("1_v0iea")
-region = Rect2(56, 504, 56, 56)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_7c3yl"]
 atlas = ExtResource("1_v0iea")
 region = Rect2(112, 504, 56, 56)
@@ -72,10 +69,6 @@ region = Rect2(336, 112, 56, 56)
 [sub_resource type="AtlasTexture" id="AtlasTexture_xex15"]
 atlas = ExtResource("1_v0iea")
 region = Rect2(224, 56, 56, 56)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6fty3"]
-atlas = ExtResource("1_v0iea")
-region = Rect2(280, 56, 56, 56)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o8c3t"]
 atlas = ExtResource("1_v0iea")
@@ -345,10 +338,6 @@ region = Rect2(224, 0, 56, 56)
 atlas = ExtResource("1_v0iea")
 region = Rect2(280, 0, 56, 56)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_n7pj6"]
-atlas = ExtResource("3_vgqql")
-region = Rect2(0, 224, 56, 56)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_8gj3e"]
 atlas = ExtResource("3_vgqql")
 region = Rect2(56, 224, 56, 56)
@@ -384,26 +373,17 @@ animations = [{
 "texture": SubResource("AtlasTexture_4blyo")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8704w")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_7c3yl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4blyo")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_x8m18")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xex15")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6fty3")
 }],
-"loop": true,
+"loop": false,
 "name": &"Assault",
-"speed": 8.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -673,9 +653,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_n7pj6")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_8gj3e")
 }, {
 "duration": 1.0,
@@ -690,7 +667,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2nto0")
 }],
-"loop": true,
+"loop": false,
 "name": &"SwordEnergy",
 "speed": 8.0
 }, {
@@ -720,10 +697,6 @@ size = Vector2(12, 18)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vgqql"]
 size = Vector2(17, 31)
-
-[sub_resource type="Animation" id="Animation_j1jur"]
-resource_name = "AddEnergy"
-length = 2.0
 
 [sub_resource type="Animation" id="Animation_ju12x"]
 resource_name = "Die"
@@ -767,6 +740,34 @@ tracks/2/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_v42s7"]
+resource_name = "EnterDie"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Die:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Die:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_k37lx"]
 length = 0.001
 tracks/0/type = "value"
@@ -793,21 +794,47 @@ tracks/1/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Die:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/Die:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7sjl0"]
 _data = {
-&"AddEnergy": SubResource("Animation_j1jur"),
 &"Die": SubResource("Animation_ju12x"),
+&"EnterDie": SubResource("Animation_v42s7"),
 &"RESET": SubResource("Animation_k37lx")
 }
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_avtl5"]
 
 [node name="Player" type="CharacterBody2D" unique_id=236885036 groups=["player"]]
+z_index = 5
 collision_layer = 2
 script = ExtResource("1_cvnsp")
 move_speed = 150.0
 jump_speed = -320.0
+bullet_scene = ExtResource("2_v42s7")
 
 [node name="Interacting" type="AnimatedSprite2D" parent="." unique_id=2143231529]
 position = Vector2(1, -16)
@@ -999,6 +1026,7 @@ text = "返回菜单"
 
 [node name="Die" type="Control" parent="CanvasLayer" unique_id=1889528742]
 visible = false
+modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1087,6 +1115,13 @@ one_shot = true
 [node name="EnergyTimer" type="Timer" parent="Timer" unique_id=731745448]
 wait_time = 2.0
 autostart = true
+
+[node name="BulletTimer" type="Timer" parent="Timer" unique_id=1023606374]
+one_shot = true
+
+[node name="AssaultTimer" type="Timer" parent="Timer" unique_id=316171813]
+wait_time = 2.0
+one_shot = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=594749184]
 

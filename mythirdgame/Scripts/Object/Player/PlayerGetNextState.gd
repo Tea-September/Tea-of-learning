@@ -24,6 +24,10 @@ enum State{
 	ATTACK_2,
 	# 三段攻击
 	ATTACK_3,
+	# 剑气
+	SWORDAURA,
+	# 突击
+	ASSAULT,
 	# 受伤
 	HURT,
 	# 死亡
@@ -39,7 +43,8 @@ enum State{
 # 位于地面
 const GROUND_STATES = [
 	State.IDLE, State.RUNNING, State.LANDING, 
-	State.ATTACK_1, State.ATTACK_2, State.ATTACK_3
+	State.ATTACK_1, State.ATTACK_2, State.ATTACK_3,
+	State.SWORDAURA, State.ASSAULT
 ]
 
 # 位于地面
@@ -48,6 +53,12 @@ const SLIDE_STATES = [
 ]
 
 func _get_next_state(Player: CharacterBody2D, state: State) -> State:
+	# 剑气攻击
+	if Player.is_on_floor() and Player.stats.energy >= 3 and $"../../../Timer/BulletTimer".time_left == 0 and Input.is_action_pressed("SwordAura"):
+		return State.SWORDAURA
+	# 突刺
+	if Player.is_on_floor() and Player.stats.energy >= 3  and Input.is_action_pressed("Assault"):
+		return State.ASSAULT
 	# 交互按钮是否可见，取决于交互对象数组中，是否存在该对象
 	Player.interacting.visible = not Player.interacting_with.is_empty()
 	# 能量条恢复
@@ -100,15 +111,24 @@ func _get_next_state(Player: CharacterBody2D, state: State) -> State:
 		return State.FALL
 	# 无敌计时器
 	if Player.invincible_timer.time_left > 0:
-		# 进行闪烁
-		Player.graphics.modulate.a = sin(Time.get_ticks_msec() / 20.0) * 0.5 + 0.5
+		if not State.ASSAULT:
+			# 进行闪烁
+			Player.graphics.modulate.a = sin(Time.get_ticks_msec() / 20.0) * 0.5 + 0.5
 	else:
 		# 不进行闪烁
 		Player.graphics.modulate.a = 1
 		if state not in SLIDE_STATES:
 			# 开启受击框
 			Player.hurt_box.monitorable = true
-	Player.can_combo = false
+	
+	# 蹬墙跳，并且不是第一帧
+	if Player.prepare_jump_timer.time_left > 0 and not Player.is_first_tick:
+		if Player.is_left_wall:
+			if Input.is_action_pressed("Right"):
+				return State.WALLJUMP
+		else:
+			if Input.is_action_pressed("Left"):
+				return State.WALLJUMP		
 	match state:
 		State.IDLE:
 			# 玩家按下攻击键位，状态变化为ATTACK_1
@@ -149,14 +169,6 @@ func _get_next_state(Player: CharacterBody2D, state: State) -> State:
 			if not Player.animated.is_playing():
 				return State.IDLE
 		State.SLIDINGWALL:
-			# 蹬墙跳，并且不是第一帧
-			if Player.prepare_jump_timer.time_left > 0 and not Player.is_first_tick:
-				if Player.is_left_wall:
-					if Input.is_action_pressed("Right"):
-						return State.WALLJUMP
-				else:
-					if Input.is_action_pressed("Left"):
-						return State.WALLJUMP
 			# 在地面时，状态变化为LANDING
 			if Player.is_on_floor():
 				return State.LANDING
@@ -171,24 +183,20 @@ func _get_next_state(Player: CharacterBody2D, state: State) -> State:
 			if Player.velocity.y >= 0:
 				return State.FALL
 		State.ATTACK_1:
-			# 可以连击
-			Player.can_combo = true
 			# 动画播放完毕，进入IDLE状态
 			if not Player.animated.is_playing():
 				# 攻击框关闭
 				$"../../../Graphics/HitBox/Attack1".disabled = true
-				if Player.is_combo_requested:
+				if Input.is_action_pressed("Attack"):
 					return State.ATTACK_2
 				else:
 					return State.IDLE
 		State.ATTACK_2:
-			# 可以连击
-			Player.can_combo = true
 			# 动画播放完毕，进入IDLE状态
 			if not Player.animated.is_playing():
 				# 攻击框关闭
 				$"../../../Graphics/HitBox/Attack2".disabled = true
-				if Player.is_combo_requested:
+				if Input.is_action_pressed("Attack"):
 					return State.ATTACK_3
 				else:
 					return State.IDLE
@@ -197,6 +205,16 @@ func _get_next_state(Player: CharacterBody2D, state: State) -> State:
 			if not Player.animated.is_playing():
 				# 攻击框关闭
 				$"../../../Graphics/HitBox/Attack3".disabled = true
+				return State.IDLE
+		State.SWORDAURA:
+			# 动画播放完毕，进入IDLE状态
+			if not Player.animated.is_playing():
+				return State.IDLE
+		State.ASSAULT:
+			# 动画播放完毕，进入IDLE状态
+			if not Player.animated.is_playing():
+				# 攻击框关闭
+				$"../../../Graphics/HitBox/Attack1".disabled = true
 				return State.IDLE
 		State.HURT:
 			# 动画播放完毕，进入IDLE状态

@@ -13,10 +13,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		else:
 			# 继续游戏
 			Player._on_continue_pressed()
-			# 暂停也没使用Esc结束暂停
+			# 阅读页面，使用Esc结束阅读
 			if $"../../Plot".visible:
 				$"../../Plot".visible = false
-			# 阅读页面，使用Esc结束阅读
-			elif get_tree().current_scene is World:
-				if $"../../PlotPeople".visible:
-					$"../../PlotPeople".visible = false
+			if not Player.is_interactable:
+				$"../../PlotPeople2".visible = false
+				Player.is_interactable = true

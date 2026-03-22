@@ -27,7 +27,7 @@ signal  energy_changed
 		energy_changed.emit()
 
 # 攻击力，默认1
-@export var max_attack : int = 1
+@export var max_attack : int = 10
 
 @onready var attack : int = max_attack:
 	set(T):

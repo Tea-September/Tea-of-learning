@@ -30,7 +30,7 @@ enum State {
 @onready var health: MarginContainer = $Control/PlayerMenuMargin/VBoxContainer/HBoxContainer/StateProgressBar/Health
 # 能量进度条
 @onready var energy: MarginContainer = $Control/PlayerMenuMargin/VBoxContainer/HBoxContainer/StateProgressBar/Energy
-# 
+# 子弹
 @export var bullet_scene : PackedScene
 
 # 击飞距离

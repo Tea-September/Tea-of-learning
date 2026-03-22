@@ -36,4 +36,5 @@ metadata/_custom_type_script = "uid://c7ingndjv0lwx"
 
 [node name="Stats" type="Node" parent="." unique_id=927670836]
 script = ExtResource("5_q5u44")
+max_attack = 1
 metadata/_custom_type_script = "uid://dkkbqle4cds62"

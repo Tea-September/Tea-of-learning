@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://7ay51x0qy85r" path="res://Game Assets/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_clh30"]
 [ext_resource type="Script" uid="uid://cydk1c6fpbx00" path="res://Scripts/Surroundings/world.gd" id="1_kw8ac"]
-[ext_resource type="AudioStream" uid="uid://bwg56j0xms3n2" path="res://Game Assets/Music/cave.ogg" id="2_dkrnc"]
+[ext_resource type="AudioStream" uid="uid://bwg56j0xms3n2" path="res://Game Assets/Music/cave.ogg" id="2_fhvmu"]
 [ext_resource type="PackedScene" uid="uid://colxpnyy8ib6t" path="res://Scenes/Object/mine_gate.tscn" id="2_pvutg"]
 [ext_resource type="Script" uid="uid://cv1ovs7tewfd6" path="res://Scripts/Config/EntryPoint.gd" id="3_3ngkl"]
 [ext_resource type="PackedScene" uid="uid://dcl2tc6ebw5o1" path="res://Scenes/Object/player.tscn" id="4_tku12"]
@@ -1334,7 +1334,7 @@ sources/0 = SubResource("TileSetAtlasSource_kw8ac")
 
 [node name="Cave" type="Node2D" unique_id=1048641511]
 script = ExtResource("1_kw8ac")
-bgm = ExtResource("2_dkrnc")
+bgm = ExtResource("2_fhvmu")
 
 [node name="Background" type="Node" parent="." unique_id=704914597]
 
@@ -1373,7 +1373,6 @@ tile_map_data = PackedByteArray("AABYABMAAAAEAAkAAABYABIAAAAEAAcAAABYABEAAAAEAAc
 tile_set = SubResource("TileSet_tghfw")
 
 [node name="Player" parent="." unique_id=1511381810 instance=ExtResource("4_tku12")]
-z_index = 5
 position = Vector2(114, 256)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=677320621]

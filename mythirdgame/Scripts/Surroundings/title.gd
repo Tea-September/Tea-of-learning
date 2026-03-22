@@ -22,7 +22,7 @@ func _ready() -> void:
 		button.mouse_entered.connect(button.grab_focus)
 	SoundManager.setup_ui_sounds(self)
 	# 播放标题BGM
-	SoundManager.play_bgm(preload("uid://dlhhyro31fb8v"))
+	SoundManager.play_bgm(preload("res://Game Assets/Music/title.ogg"))
 	# 初始化音量
 	volume_slider.value = SoundManager.get_volume(bus_index)
 	# 设置音量

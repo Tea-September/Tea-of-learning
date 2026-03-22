@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cdx78xq5pqtix"
+path="res://.godot/imported/game_end.ogg-fb763fe58f783f8094239f6997ccc6ba.oggvorbisstr"
+
+[deps]
+
+source_file="res://Game Assets/Music/game_end.ogg"
+dest_files=["res://.godot/imported/game_end.ogg-fb763fe58f783f8094239f6997ccc6ba.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

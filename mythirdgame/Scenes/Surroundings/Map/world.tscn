@@ -1,14 +1,15 @@
 [gd_scene format=4 uid="uid://3ysa5bd8k7it"]
 
 [ext_resource type="Script" uid="uid://cydk1c6fpbx00" path="res://Scripts/Surroundings/world.gd" id="1_265bt"]
+[ext_resource type="AudioStream" uid="uid://bp2gdun6vvqut" path="res://Game Assets/Music/forest.ogg" id="2_45x66"]
 [ext_resource type="PackedScene" uid="uid://dcl2tc6ebw5o1" path="res://Scenes/Object/player.tscn" id="2_0702v"]
-[ext_resource type="AudioStream" uid="uid://bp2gdun6vvqut" path="res://Game Assets/Music/forest.ogg" id="2_aj3q8"]
 [ext_resource type="Texture2D" uid="uid://x00je0ue6unw" path="res://Game Assets/Legacy-Fantasy - High Forest 2.3/Assets/Tree-Assets.png" id="3_76g7w"]
 [ext_resource type="Texture2D" uid="uid://3cjcorgu5fql" path="res://Game Assets/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="4_8j1dr"]
 [ext_resource type="PackedScene" uid="uid://colxpnyy8ib6t" path="res://Scenes/Object/mine_gate.tscn" id="4_ff2fp"]
 [ext_resource type="Texture2D" uid="uid://dntc8tjja2mua" path="res://Game Assets/Legacy-Fantasy - High Forest 2.3/Trees/Background.png" id="5_le8i6"]
 [ext_resource type="Script" uid="uid://cv1ovs7tewfd6" path="res://Scripts/Config/EntryPoint.gd" id="5_p1gi4"]
 [ext_resource type="PackedScene" uid="uid://bhspt0y5sjkql" path="res://Scenes/Object/Monster/boar.tscn" id="6_265bt"]
+[ext_resource type="Script" uid="uid://c2ekateg2p0b2" path="res://Scripts/Config/Teleporter.gd" id="9_45x66"]
 [ext_resource type="PackedScene" uid="uid://bffphwyuolgtc" path="res://Scenes/Object/globals/save.tscn" id="9_q57gj"]
 [ext_resource type="PackedScene" uid="uid://cvj455s10aptw" path="res://Scenes/Object/plot.tscn" id="9_tcspa"]
 [ext_resource type="Script" uid="uid://hmqonrtmljja" path="res://Scripts/Surroundings/plot_people_interactable.gd" id="10_5gy5a"]
@@ -820,15 +821,18 @@ physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 2
 sources/1 = SubResource("TileSetAtlasSource_5a7ea")
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6lhp7"]
+radius = 16.0
+height = 48.0
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_45x66"]
 
 [node name="World" type="Node2D" unique_id=1685336126]
 script = ExtResource("1_265bt")
-bgm = ExtResource("2_aj3q8")
+bgm = ExtResource("2_45x66")
 
 [node name="Player" parent="." unique_id=261933534 instance=ExtResource("2_0702v")]
-z_index = 5
-position = Vector2(-48, -232)
+position = Vector2(-128, 0)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=911140717]
 process_callback = 0
@@ -847,7 +851,7 @@ tile_set = SubResource("TileSet_5a7ea")
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="Background" unique_id=1948888952]
 z_index = 3
-tile_map_data = PackedByteArray("AAD1/+v/AQAAAAUAAAD1/+3/AQANAA0AAAD1/+7/AQANAA4AAAD1/+//AQANAA8AAAD1//D/AQANABAAAAD2/+v/AQAAAAUAAAD2/+z/AQAAAAYAAAD2/+3/AQAAAAYAAAD2/+7/AQAAAAcAAAD2/+//AQAAAAYAAAD2//D/AQAEAAgAAAD2//H/AQAEAAkAAAD2//L/AQAEAAoAAAD2//P/AQAEAAsAAAD2//T/AQAAAAYAAAD2//X/AQAAAAcAAAD2//b/AQAAAAYAAAD2//f/AQAAAAcAAAD2//j/AQAAAAYAAAD2//n/AQAAAAcAAAD2//r/AQAAAAcAAAD2//v/AQAAAAcAAAD2//z/AQAAAAYAAAD2//3/AQAAAAcAAAD2//7/AQAEAAgAAAD2////AQAEAAkAAAD2/wAAAQAEAAoAAAD2/wEAAQAEAAsAAAD3/+v/AQABAAUAAAD3/+z/AQABAAYAAAD3/+3/AQABAAYAAAD3/+7/AQABAAcAAAD3/+//AQABAAYAAAD3//D/AQAFAAgAAAD3//H/AQAFAAkAAAD3//L/AQAFAAoAAAD3//P/AQAFAAsAAAD3//T/AQABAAYAAAD3//X/AQABAAcAAAD3//b/AQABAAYAAAD3//f/AQABAAcAAAD3//j/AQABAAYAAAD3//n/AQABAAcAAAD3//r/AQABAAcAAAD3//v/AQABAAcAAAD3//z/AQABAAYAAAD3//3/AQABAAcAAAD3//7/AQAFAAgAAAD3////AQAFAAkAAAD3/wAAAQAFAAoAAAD3/wEAAQAFAAsAAAD7//n/AQANAAQAAAAEAPz/AQANAAoAAAA=")
+tile_map_data = PackedByteArray("AAD1/+v/AQAAAAUAAAD1/+3/AQANAA0AAAD1/+7/AQANAA4AAAD1/+//AQANAA8AAAD1//D/AQANABAAAAD2/+v/AQAAAAUAAAD2/+z/AQAAAAYAAAD2/+3/AQAAAAYAAAD2/+7/AQAAAAcAAAD2/+//AQAAAAYAAAD2//D/AQAEAAgAAAD2//H/AQAEAAkAAAD2//L/AQAEAAoAAAD2//P/AQAEAAsAAAD2//T/AQAAAAYAAAD2//X/AQAAAAcAAAD3/+v/AQABAAUAAAD3/+z/AQABAAYAAAD3/+3/AQABAAYAAAD3/+7/AQABAAcAAAD3/+//AQABAAYAAAD3//D/AQAFAAgAAAD3//H/AQAFAAkAAAD3//L/AQAFAAoAAAD3//P/AQAFAAsAAAD3//T/AQABAAYAAAD3//X/AQABAAcAAAD7//n/AQANAAQAAAAEAPz/AQANAAoAAAA=")
 tile_set = SubResource("TileSet_8j60k")
 
 [node name="ParallaxBackground" type="Node" parent="Background" unique_id=2133023390]
@@ -960,6 +964,13 @@ region_enabled = true
 region_rect = Rect2(210, 5, 124, 86)
 metadata/_edit_lock_ = true
 
+[node name="TreeAssets10" type="Sprite2D" parent="Background/ParallaxBackground/Leaves1" unique_id=1126307965]
+position = Vector2(-160, -8)
+texture = ExtResource("3_76g7w")
+region_enabled = true
+region_rect = Rect2(210, 5, 124, 86)
+metadata/_edit_lock_ = true
+
 [node name="Leaves2" type="Parallax2D" parent="Background/ParallaxBackground" unique_id=887887119]
 
 [node name="TreeAssets" type="Sprite2D" parent="Background/ParallaxBackground/Leaves2" unique_id=241766635]
@@ -995,8 +1006,9 @@ z_index = 5
 scroll_offset = Vector2(53, 5)
 
 [node name="TreeAssets" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=1231579681]
-position = Vector2(-197, -165)
-rotation = -0.35115147
+position = Vector2(-200.22879, -162.51631)
+rotation = -0.20498084
+scale = Vector2(1.0626789, 0.97159326)
 texture = ExtResource("3_76g7w")
 region_enabled = true
 region_rect = Rect2(210, 293, 124, 86)
@@ -1153,6 +1165,16 @@ script = ExtResource("5_p1gi4")
 direction = -1
 metadata/_custom_type_script = "uid://cv1ovs7tewfd6"
 
+[node name="Boos" type="Area2D" parent="Interact/Map" unique_id=212775443]
+script = ExtResource("9_45x66")
+path = "uid://csm3p0cwsnjvk"
+entry_point = "Entry"
+metadata/_custom_type_script = "uid://c2ekateg2p0b2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interact/Map/Boos" unique_id=1478969855]
+position = Vector2(-144, -216)
+shape = SubResource("CapsuleShape2D_6lhp7")
+
 [node name="PlotInteractable" type="Node" parent="Interact" unique_id=1241905867]
 
 [node name="PlotPeople" type="Area2D" parent="Interact/PlotInteractable" unique_id=1491123934]
@@ -1190,8 +1212,15 @@ position = Vector2(0, -88)
 z_index = 5
 position = Vector2(32, 0)
 
+[node name="Boar3" parent="Boar" unique_id=715617000 instance=ExtResource("6_265bt")]
+z_index = 5
+position = Vector2(96, -208)
+
 [node name="Save" parent="." unique_id=265974315 instance=ExtResource("9_q57gj")]
-position = Vector2(-96, -80)
+position = Vector2(-101.00001, -80.00001)
+
+[node name="PlotPeople2" parent="." unique_id=545325389 instance=ExtResource("14_abkfq")]
+visible = false
 
 [node name="Plot" type="CanvasLayer" parent="." unique_id=1058915915]
 visible = false
@@ -1273,8 +1302,5 @@ size_flags_horizontal = 4
 theme = ExtResource("13_tcspa")
 theme_override_font_sizes/font_size = 20
 text = "关闭"
-
-[node name="PlotPeople" parent="." unique_id=545325389 instance=ExtResource("14_abkfq")]
-visible = false
 
 [connection signal="pressed" from="Plot/MarginContainer/NinePatchRect/VBoxContainer/MarginContainer2/QuitMenu" to="." method="_on_quit_menu_pressed"]

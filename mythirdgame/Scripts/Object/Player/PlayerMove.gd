@@ -58,5 +58,5 @@ func _slide(Player: CharacterBody2D, gravity: float, delta: float) -> void:
 	# 游戏结束时，无法移动
 	if Player.game_over:
 		# 左右滑铲
-		Player.velocity.x = Player.direction * 200.0
+		Player.velocity.x = Player.direction * 300.0
 	Player.move_and_slide()

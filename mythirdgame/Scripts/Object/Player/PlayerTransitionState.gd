@@ -24,6 +24,10 @@ enum State{
 	ATTACK_2,
 	# 三段攻击
 	ATTACK_3,
+	# 剑气
+	SWORDAURA,
+	# 突刺
+	ASSAULT,
 	# 受伤
 	HURT,
 	# 死亡
@@ -42,13 +46,10 @@ const GROUND_STATES = [
 	State.ATTACK_1, State.ATTACK_2, State.ATTACK_3
 ]
 
-# Called when the node enters the scene tree for the first time.
 func _transition_state(Player: CharacterBody2D, from: State, to: State) -> void:
 	# 当状态变化前不位于地面、变化后位于地面时coyote_timer停止
 	if from not in GROUND_STATES and to in GROUND_STATES:
 		Player.coyote_timer.stop()
-	# 重置is_combo_requested
-	Player.is_combo_requested = false
 	match to:
 		State.IDLE:
 			Player.animated.play("Stand")
@@ -104,10 +105,25 @@ func _transition_state(Player: CharacterBody2D, from: State, to: State) -> void:
 			Player.stats.attack = 3
 			Player.animated.play("Attack3")
 			SoundManager.play_sfx("Attack3")
+		State.SWORDAURA:
+			Player.stats.energy -= 3
+			$"../../../Timer/BulletTimer".start()
+			Player._on_bullet_timer_timeout()
+			Player.animated.play("SwordEnergy")
+			SoundManager.play_sfx("Slide")
+		State.ASSAULT:
+			# 攻击框开启
+			$"../../../Graphics/HitBox/Attack1".disabled = false
+			# 无敌
+			Player.invincible_timer.start()
+			# 伤害
+			Player.stats.attack = 2
+			# 能量减少
+			Player.stats.energy -= 2
+			Player.animated.play("Assault")
 		State.HURT:
 			# 血量减少
 			Player.stats.health -= Player.pending_damage.amount
-			print(Player.pending_damage.amount)
 			# 获取方向，伤害来源的位置，指向自己（玩家）的位置
 			var dir = Player.pending_damage.source.global_position.direction_to(Player.global_position)
 			# 被击退
