@@ -60,6 +60,7 @@ func _tick_physics(Player: CharacterBody2D, state: State, delta: float) -> void:
 			# 跳跃第一帧无重力
 			Player.move(0.0 if Player.is_first_tick else Player.default_gravity, delta)
 		State.HURT:
+			# 受伤时，下坠速度乘2
 			Player.move(Player.default_gravity * 2, delta)
 		State.DIE:
 			Player.move(Player.default_gravity * 2, delta)

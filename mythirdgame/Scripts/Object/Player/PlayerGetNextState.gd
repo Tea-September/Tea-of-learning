@@ -54,10 +54,13 @@ const SLIDE_STATES = [
 
 func _get_next_state(Player: CharacterBody2D, state: State) -> State:
 	# 剑气攻击
-	if Player.is_on_floor() and Player.stats.energy >= 3 and $"../../../Timer/BulletTimer".time_left == 0 and Input.is_action_pressed("SwordAura"):
+	var sword_aura1 = Player.is_on_floor() and Player.stats.energy >= 3
+	var sword_aura2 = $"../../../Timer/BulletTimer".time_left == 0
+	if sword_aura1 and sword_aura2 and Input.is_action_pressed("SwordAura"):
 		return State.SWORDAURA
 	# 突刺
-	if Player.is_on_floor() and Player.stats.energy >= 3  and Input.is_action_pressed("Assault"):
+	var assault1 = Player.is_on_floor() and Player.stats.energy >= 3
+	if assault1 and Input.is_action_pressed("Assault"):
 		return State.ASSAULT
 	# 交互按钮是否可见，取决于交互对象数组中，是否存在该对象
 	Player.interacting.visible = not Player.interacting_with.is_empty()
@@ -87,7 +90,8 @@ func _get_next_state(Player: CharacterBody2D, state: State) -> State:
 	if Player.is_on_floor():
 		Player.double_jump = true
 	# 二段跳执行条件：技能可执行、不在地面、按下跳跃键、体力大于1
-	if Player.double_jump and not Player.is_on_floor() and Player.prepare_jump_timer.time_left > 0 and Player.stats.energy >= 1:
+	var double_jump1 = not Player.is_on_floor() and Player.prepare_jump_timer.time_left > 0
+	if Player.double_jump and double_jump1 and Player.stats.energy >= 1:
 		Player.double_jump = false
 		return State.JUMP
 	# 跳跃，按空格松下后，再次按空格，才能跳跃
@@ -120,15 +124,6 @@ func _get_next_state(Player: CharacterBody2D, state: State) -> State:
 		if state not in SLIDE_STATES:
 			# 开启受击框
 			Player.hurt_box.monitorable = true
-	
-	# 蹬墙跳，并且不是第一帧
-	if Player.prepare_jump_timer.time_left > 0 and not Player.is_first_tick:
-		if Player.is_left_wall:
-			if Input.is_action_pressed("Right"):
-				return State.WALLJUMP
-		else:
-			if Input.is_action_pressed("Left"):
-				return State.WALLJUMP		
 	match state:
 		State.IDLE:
 			# 玩家按下攻击键位，状态变化为ATTACK_1
@@ -169,6 +164,14 @@ func _get_next_state(Player: CharacterBody2D, state: State) -> State:
 			if not Player.animated.is_playing():
 				return State.IDLE
 		State.SLIDINGWALL:
+				# 蹬墙跳，并且不是第一帧
+			if Player.prepare_jump_timer.time_left > 0 and not Player.is_first_tick:
+				if Player.is_left_wall:
+					if Input.is_action_pressed("Right"):
+						return State.WALLJUMP
+				else:
+					if Input.is_action_pressed("Left"):
+						return State.WALLJUMP		
 			# 在地面时，状态变化为LANDING
 			if Player.is_on_floor():
 				return State.LANDING

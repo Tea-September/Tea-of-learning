@@ -39,3 +39,9 @@ func _physics_process(delta: float) -> void:
 		# 销毁节点
 		self.queue_free()
 	move_and_slide()
+
+
+func _on_hit_box_bullet_area_entered(area: Area2D) -> void:
+	area = area
+	# 销毁节点
+	self.queue_free()

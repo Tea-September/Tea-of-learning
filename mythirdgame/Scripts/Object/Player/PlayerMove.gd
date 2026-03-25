@@ -43,13 +43,24 @@ func _move(Player: CharacterBody2D, gravity: float, delta: float) -> void:
 	if Player.game_over:
 		# 获取左右的输入
 		var movement = Input.get_axis("Left", "Right")
-		# 空中和陆地上的加速度
+		# 空中和陆地上的加速度，0.2秒后加速到设置速度，空中为0.1秒
 		var add_speed: float = 0.2 if Player.is_on_floor() else 0.1
-		# 左右移动，0.2秒后加速到设置速度，空中为0.1秒
-		Player.velocity.x = move_toward(Player.velocity.x, movement * Player.move_speed, Player.move_speed / add_speed * delta)
-		# 镜像翻转
+		# 目标位置
+		var target_location = movement * Player.move_speed
+		# 步长
+		var step_size = Player.move_speed / add_speed * delta
+		# 左右移动，将玩家向target_location移动
+		# 每次移动的长度是step_size，不会超过target_location。
+		Player.velocity.x = move_toward(
+			Player.velocity.x, target_location, step_size
+		)
+		# 镜像翻转，向左时movement为负数、向右时movement为正数
 		if movement:
-			Player.direction = Player.Direction.LEFT if movement < 0 else Player.Direction.RIGHT
+			if movement < 0:
+				Player.direction = Player.Direction.LEFT
+			else:
+				Player.direction = Player.Direction.RIGHT
+	# 根据设置的velocity移动物体
 	Player.move_and_slide()
 	
 func _slide(Player: CharacterBody2D, gravity: float, delta: float) -> void:

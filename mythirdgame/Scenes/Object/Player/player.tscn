@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://danmhjqhpq7y4" path="res://Scripts/Object/Player/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://bxa62dh7d7mkj" path="res://Game Assets/generic_char_v0.2/png/blue/char_blue_1.png" id="1_v0iea"]
-[ext_resource type="PackedScene" uid="uid://dy0ve6k72qwgx" path="res://Scenes/Object/sword_aura.tscn" id="2_v42s7"]
+[ext_resource type="PackedScene" uid="uid://dy0ve6k72qwgx" path="res://Scenes/Object/Player/sword_aura.tscn" id="2_v42s7"]
 [ext_resource type="Script" uid="uid://c7ingndjv0lwx" path="res://Scripts/Config/StateMachine.gd" id="3_6t5aa"]
 [ext_resource type="Texture2D" uid="uid://c3bge1henvr2r" path="res://Game Assets/gdb-gamepad-2(all)/gdb-keyboard-2.png" id="3_avtl5"]
 [ext_resource type="Texture2D" uid="uid://dnp5kvewenmss" path="res://Game Assets/generic_char_v0.2/png/blue/char_blue_2.png" id="3_vgqql"]

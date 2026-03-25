@@ -3,14 +3,14 @@
 [ext_resource type="Texture2D" uid="uid://7ay51x0qy85r" path="res://Game Assets/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_clh30"]
 [ext_resource type="Script" uid="uid://cydk1c6fpbx00" path="res://Scripts/Surroundings/world.gd" id="1_kw8ac"]
 [ext_resource type="AudioStream" uid="uid://bwg56j0xms3n2" path="res://Game Assets/Music/cave.ogg" id="2_fhvmu"]
-[ext_resource type="PackedScene" uid="uid://colxpnyy8ib6t" path="res://Scenes/Object/mine_gate.tscn" id="2_pvutg"]
+[ext_resource type="PackedScene" uid="uid://colxpnyy8ib6t" path="res://Scenes/Object/Globals/Interact/mine_gate.tscn" id="2_pvutg"]
 [ext_resource type="Script" uid="uid://cv1ovs7tewfd6" path="res://Scripts/Config/EntryPoint.gd" id="3_3ngkl"]
-[ext_resource type="PackedScene" uid="uid://dcl2tc6ebw5o1" path="res://Scenes/Object/player.tscn" id="4_tku12"]
+[ext_resource type="PackedScene" uid="uid://dcl2tc6ebw5o1" path="res://Scenes/Object/Player/player.tscn" id="4_tku12"]
 [ext_resource type="PackedScene" uid="uid://dd5dkykricnnx" path="res://Scenes/Object/Monster/slime.tscn" id="6_tghfw"]
-[ext_resource type="PackedScene" uid="uid://bffphwyuolgtc" path="res://Scenes/Object/globals/save.tscn" id="7_gyk8h"]
+[ext_resource type="PackedScene" uid="uid://bffphwyuolgtc" path="res://Scenes/Object/Globals/Interact/save.tscn" id="7_gyk8h"]
 [ext_resource type="Theme" uid="uid://cxdw2f02tbvs8" path="res://Game Assets/new_theme.tres" id="9_jb2oi"]
 [ext_resource type="Texture2D" uid="uid://unibld3u6but" path="res://Game Assets/Sprite sheet for Basic Pack.png" id="10_fhvmu"]
-[ext_resource type="PackedScene" uid="uid://cvj455s10aptw" path="res://Scenes/Object/plot.tscn" id="11_fhvmu"]
+[ext_resource type="PackedScene" uid="uid://cvj455s10aptw" path="res://Scenes/Object/Globals/Interact/plot.tscn" id="11_fhvmu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pvutg"]
 texture = ExtResource("1_clh30")
@@ -1469,7 +1469,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "森林深处似乎发生了某些变化，公会委托我前去探查，希望不会出现意外！"
 horizontal_alignment = 1
-autowrap_mode = 2
+autowrap_mode = 3
 
 [node name="MarginContainer2" type="MarginContainer" parent="Plot/MarginContainer/NinePatchRect/VBoxContainer" unique_id=765567329]
 layout_mode = 2

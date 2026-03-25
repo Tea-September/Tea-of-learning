@@ -1,25 +1,111 @@
-[gd_scene format=4 uid="uid://3ysa5bd8k7it"]
+[gd_scene format=4 uid="uid://ctq27mtxq7css"]
 
-[ext_resource type="Script" uid="uid://cydk1c6fpbx00" path="res://Scripts/Surroundings/world.gd" id="1_265bt"]
-[ext_resource type="AudioStream" uid="uid://bp2gdun6vvqut" path="res://Game Assets/Music/forest.ogg" id="2_45x66"]
-[ext_resource type="PackedScene" uid="uid://dcl2tc6ebw5o1" path="res://Scenes/Object/player.tscn" id="2_0702v"]
-[ext_resource type="Texture2D" uid="uid://x00je0ue6unw" path="res://Game Assets/Legacy-Fantasy - High Forest 2.3/Assets/Tree-Assets.png" id="3_76g7w"]
-[ext_resource type="Texture2D" uid="uid://3cjcorgu5fql" path="res://Game Assets/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="4_8j1dr"]
-[ext_resource type="PackedScene" uid="uid://colxpnyy8ib6t" path="res://Scenes/Object/mine_gate.tscn" id="4_ff2fp"]
-[ext_resource type="Texture2D" uid="uid://dntc8tjja2mua" path="res://Game Assets/Legacy-Fantasy - High Forest 2.3/Trees/Background.png" id="5_le8i6"]
-[ext_resource type="Script" uid="uid://cv1ovs7tewfd6" path="res://Scripts/Config/EntryPoint.gd" id="5_p1gi4"]
-[ext_resource type="PackedScene" uid="uid://bhspt0y5sjkql" path="res://Scenes/Object/Monster/boar.tscn" id="6_265bt"]
-[ext_resource type="Script" uid="uid://c2ekateg2p0b2" path="res://Scripts/Config/Teleporter.gd" id="9_45x66"]
-[ext_resource type="PackedScene" uid="uid://bffphwyuolgtc" path="res://Scenes/Object/globals/save.tscn" id="9_q57gj"]
-[ext_resource type="PackedScene" uid="uid://cvj455s10aptw" path="res://Scenes/Object/plot.tscn" id="9_tcspa"]
-[ext_resource type="Script" uid="uid://hmqonrtmljja" path="res://Scripts/Surroundings/plot_people_interactable.gd" id="10_5gy5a"]
-[ext_resource type="Texture2D" uid="uid://unibld3u6but" path="res://Game Assets/Sprite sheet for Basic Pack.png" id="12_ju6b6"]
-[ext_resource type="Theme" uid="uid://cxdw2f02tbvs8" path="res://Game Assets/new_theme.tres" id="13_tcspa"]
-[ext_resource type="PackedScene" uid="uid://bl6ktvpbbmn08" path="res://Scenes/Object/plot_people.tscn" id="14_abkfq"]
-[ext_resource type="Texture2D" uid="uid://b1i60k3xm0kp" path="res://Game Assets/head/未标题-2.png" id="15_5gy5a"]
+[ext_resource type="FontFile" uid="uid://i5bfmhmi78ks" path="res://Game Assets/Uranus_Pixel_11Px.ttf" id="1_uqu35"]
+[ext_resource type="Script" uid="uid://b1nkdt1muxjfv" path="res://Scripts/Surroundings/title.gd" id="2_ml1we"]
+[ext_resource type="Theme" uid="uid://cxdw2f02tbvs8" path="res://Game Assets/new_theme.tres" id="2_ylkqe"]
+[ext_resource type="Texture2D" uid="uid://x00je0ue6unw" path="res://Game Assets/Legacy-Fantasy - High Forest 2.3/Assets/Tree-Assets.png" id="4_ju0m4"]
+[ext_resource type="Texture2D" uid="uid://3cjcorgu5fql" path="res://Game Assets/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="5_fv2gx"]
+[ext_resource type="Texture2D" uid="uid://dntc8tjja2mua" path="res://Game Assets/Legacy-Fantasy - High Forest 2.3/Trees/Background.png" id="6_y8msv"]
+[ext_resource type="PackedScene" uid="uid://bffphwyuolgtc" path="res://Scenes/Object/Globals/Interact/save.tscn" id="7_btgeq"]
+[ext_resource type="Texture2D" uid="uid://bxa62dh7d7mkj" path="res://Game Assets/generic_char_v0.2/png/blue/char_blue_1.png" id="8_fv2gx"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_go701"]
-texture = ExtResource("3_76g7w")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uqu35"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ylkqe"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ml1we"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.225, 0.225, 0.225, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lexxx"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pb5p7"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="Theme" id="Theme_ise6s"]
+default_font = ExtResource("1_uqu35")
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 16
+Button/styles/disabled = SubResource("StyleBoxFlat_uqu35")
+Button/styles/focus = SubResource("StyleBoxFlat_ylkqe")
+Button/styles/hover = SubResource("StyleBoxFlat_ml1we")
+Button/styles/normal = SubResource("StyleBoxFlat_lexxx")
+Button/styles/pressed = SubResource("StyleBoxFlat_pb5p7")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lp33p"]
+texture = ExtResource("4_ju0m4")
 1:2/0 = 0
 1:2/0/terrain_set = 0
 1:2/0/terrain = 0
@@ -521,15 +607,15 @@ texture = ExtResource("3_76g7w")
 13:4/0 = 0
 20:4/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_5a7ea"]
+[sub_resource type="TileSet" id="TileSet_x41g8"]
 physics_layer_0/collision_layer = 1
 terrain_set_0/mode = 1
 terrain_set_0/terrain_0/name = "Trunk"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
-sources/1 = SubResource("TileSetAtlasSource_go701")
+sources/1 = SubResource("TileSetAtlasSource_lp33p")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5a7ea"]
-texture = ExtResource("3_76g7w")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p2pft"]
+texture = ExtResource("4_ju0m4")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -816,491 +902,573 @@ texture = ExtResource("3_76g7w")
 17:23/0 = 0
 18:23/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_8j60k"]
+[sub_resource type="TileSet" id="TileSet_mn62h"]
 physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 2
-sources/1 = SubResource("TileSetAtlasSource_5a7ea")
+sources/1 = SubResource("TileSetAtlasSource_p2pft")
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6lhp7"]
-radius = 16.0
-height = 48.0
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8msv"]
+atlas = ExtResource("8_fv2gx")
+region = Rect2(0, 0, 56, 56)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_45x66"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_btgeq"]
+atlas = ExtResource("8_fv2gx")
+region = Rect2(56, 0, 56, 56)
 
-[node name="World" type="Node2D" unique_id=1685336126]
-script = ExtResource("1_265bt")
-bgm = ExtResource("2_45x66")
+[sub_resource type="AtlasTexture" id="AtlasTexture_lp33p"]
+atlas = ExtResource("8_fv2gx")
+region = Rect2(112, 0, 56, 56)
 
-[node name="Player" parent="." unique_id=261933534 instance=ExtResource("2_0702v")]
-position = Vector2(-128, 0)
+[sub_resource type="AtlasTexture" id="AtlasTexture_x41g8"]
+atlas = ExtResource("8_fv2gx")
+region = Rect2(168, 0, 56, 56)
 
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=911140717]
-process_callback = 0
-limit_smoothed = true
-position_smoothing_enabled = true
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
-editor_draw_drag_margin = true
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2pft"]
+atlas = ExtResource("8_fv2gx")
+region = Rect2(224, 0, 56, 56)
 
-[node name="Background" type="Node" parent="." unique_id=1682211782]
+[sub_resource type="AtlasTexture" id="AtlasTexture_mn62h"]
+atlas = ExtResource("8_fv2gx")
+region = Rect2(280, 0, 56, 56)
 
-[node name="TileMapLayer1" type="TileMapLayer" parent="Background" unique_id=137304126]
+[sub_resource type="SpriteFrames" id="SpriteFrames_gfrd3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y8msv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_btgeq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lp33p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x41g8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2pft")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mn62h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="Animation" id="Animation_fv2gx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 79)]
+}
+
+[sub_resource type="Animation" id="Animation_y8msv"]
+resource_name = "enter"
+length = 0.8
+step = 0.0333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(128, 79), Vector2(0, 79)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_btgeq"]
+_data = {
+&"RESET": SubResource("Animation_fv2gx"),
+&"enter": SubResource("Animation_y8msv")
+}
+
+[node name="Title" type="Control" unique_id=1494124154]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_ylkqe")
+script = ExtResource("2_ml1we")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1915139772]
+z_index = 10
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 81.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=110747498]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1174277639]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("1_uqu35")
+theme_override_font_sizes/font_size = 36
+text = "勇者的剑锋：密林深处"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=1447416965]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=1462541986]
+z_index = 10
+layout_mode = 0
+offset_top = 79.0
+offset_right = 384.0
+offset_bottom = 203.0
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2" unique_id=1142355024]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/HBoxContainer" unique_id=1823836518]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_ise6s")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2/HBoxContainer" unique_id=980947795]
+z_index = 7
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_ylkqe")
+
+[node name="NewGame" type="Button" parent="MarginContainer2/HBoxContainer/VBoxContainer" unique_id=811820629]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_ylkqe")
+theme_override_font_sizes/font_size = 20
+text = "新的故事"
+
+[node name="LoadGame" type="Button" parent="MarginContainer2/HBoxContainer/VBoxContainer" unique_id=78909140]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 20
+text = "旧的回忆"
+
+[node name="BaseSet" type="Button" parent="MarginContainer2/HBoxContainer/VBoxContainer" unique_id=2023008741]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 20
+text = "基础设置"
+
+[node name="Quit" type="Button" parent="MarginContainer2/HBoxContainer/VBoxContainer" unique_id=1933837252]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 20
+text = "退出游戏"
+
+[node name="MarginContainer3" type="MarginContainer" parent="." unique_id=1669538409]
+visible = false
+z_index = 20
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer3" unique_id=938783153]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer3/VBoxContainer" unique_id=735120406]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer3/VBoxContainer/MarginContainer" unique_id=761161099]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer3/VBoxContainer/MarginContainer/HBoxContainer" unique_id=969712679]
+layout_mode = 2
+text = "音量"
+
+[node name="VolumeSlider" type="HSlider" parent="MarginContainer3/VBoxContainer/MarginContainer/HBoxContainer" unique_id=2057872999]
+z_index = 20
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.1
+value = 0.5
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer3/VBoxContainer" unique_id=1431717033]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer3/VBoxContainer/MarginContainer2" unique_id=836754501]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer" unique_id=1490941889]
+layout_mode = 2
+text = "亮度"
+
+[node name="LightSlider" type="HSlider" parent="MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer" unique_id=1558600247]
+z_index = 20
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.1
+value = 0.5
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer3/VBoxContainer" unique_id=1477435291]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_top = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer3/VBoxContainer/MarginContainer3" unique_id=1249253548]
+layout_mode = 2
+
+[node name="ReturnMenu" type="Button" parent="MarginContainer3/VBoxContainer/MarginContainer3/HBoxContainer" unique_id=1177069736]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 20
+text = "返回菜单"
+
+[node name="Background" type="Node2D" parent="." unique_id=961338676]
+metadata/_edit_lock_ = true
+
+[node name="TileMapLayer1" type="TileMapLayer" parent="Background" unique_id=2001973828]
 z_index = 4
+position = Vector2(183, 160.00002)
 tile_map_data = PackedByteArray("AAAAAAIAAQADAAIAAAABAAIAAQACAAMAAAADAAIAAQACAAMAAAAEAAIAAQACAAMAAAAFAAEAAQAHAAIAAAAGAAAAAQAHAAIAAAAHAAAAAQADAAMAAAAIAAAAAQADAAIAAAAJAAAAAQADAAIAAAAKAAAAAQADAAIAAAANAAEAAQAEAAAAAAAPAAMAAQADAAQAAAACAAMAAQAGAAAAAAADAAMAAQACAAQAAAAEAAMAAQABAAQAAAAFAAMAAQADAAQAAAAGAAMAAQACAAQAAAAHAAMAAQACAAQAAAAIAAMAAQAGAAAAAAAJAAMAAQADAAQAAAAKAAMAAQAGAAAAAAALAAMAAQABAAQAAAAMAAMAAQACAAQAAAANAAMAAQABAAQAAAANAAIAAQAFAAIAAAAMAAIAAQABAAIAAAALAAIAAQABAAIAAAAKAAIAAQABAAIAAAAJAAIAAQABAAIAAAAIAAIAAQABAAIAAAAHAAIAAQABAAIAAAAGAAIAAQACAAMAAAAHAAEAAQADAAIAAAAKAAEAAQABAAIAAAAJAAEAAQABAAIAAAAIAAEAAQADAAIAAAD//wMAAQADAAQAAAD+/wMAAQADAAQAAAD9/wMAAQABAAQAAAD8/wMAAQABAAQAAAD7/wMAAQABAAQAAAD6/wMAAQADAAQAAAD5/wMAAQABAAQAAAD4/wMAAQADAAQAAAD3/wMAAQABAAQAAAD2/wMAAQAGAAAAAAD1/wIAAQAFAAIAAAD1/wEAAQAFAAEAAAD1/wAAAQAEAAIAAAD1////AQAEAAIAAAD1//7/AQAFAAEAAAD1//3/AQAEAAIAAAD1//z/AQAFAAAAAAD1//v/AQAFAAIAAAD1//r/AQAFAAEAAAAQAAMAAQAGAAAAAAARAAMAAQACAAQAAAASAAMAAQAGAAAAAAATAAMAAQADAAQAAAAUAAMAAQAGAAAAAAAVAAMAAQADAAQAAAAVAAIAAQAHAAIAAAAVAP7/AQAAAAIAAAAVAP3/AQAAAAIAAAAVAPz/AQAAAAIAAAAVAPv/AQAAAAIAAAAVAPr/AQAAAAIAAAD0//r/AQAAAAIAAAD0//v/AQAAAAIAAAD0//z/AQAAAAMAAAD0//3/AQAAAAIAAAD0//7/AQAAAAIAAAD0////AQAIAAEAAAD0/wAAAQAAAAMAAAD0/wEAAQAAAAIAAAD0/wIAAQAAAAMAAAD0/wMAAQAAAAQAAAAWAAMAAQAEAAQAAAAWAAIAAQAEAAIAAAAWAP7/AQAKAAAAAAAWAP3/AQAFAAEAAAAWAPz/AQAKAAAAAAAWAPv/AQAEAAMAAAAWAPr/AQAFAAEAAAAVAPn/AQAAAAIAAAAVAPj/AQAAAAIAAAAVAPf/AQAAAAIAAAAVAPb/AQAAAAIAAAAVAPX/AQAHAAAAAAAVAPT/AQAHAAIAAAD1//n/AQAEAAMAAAD1//j/AQAEAAIAAAD1//f/AQAFAAAAAAD1//b/AQACAAIAAAD1//X/AQABAAIAAAD1//T/AQAFAAIAAAD0//n/AQAIAAEAAAD0//j/AQAAAAIAAAD0//f/AQAIAAAAAAD0//b/AQAAAAIAAAD0//X/AQAAAAIAAAD0//T/AQAAAAIAAAAWAPn/AQAFAAEAAAAWAPj/AQAKAAEAAAAWAPf/AQAFAAEAAAAWAPb/AQAEAAIAAAAWAPX/AQAEAAIAAAAWAPT/AQAEAAMAAAD1/wMAAQADAAQAAAAAAAEAAQAGAAEAAAABAAEAAQABAAAAAAACAAEAAQACAAAAAAADAAEAAQADAAAAAAABAAMAAQAGAAAAAAAAAAMAAQAGAAAAAAD9/wIAAQABAAMAAAD+/wIAAQABAAMAAAD//wIAAQABAAMAAAD6/wIAAQABAAAAAAD7/wIAAQACAAAAAAD8/wIAAQAHAAIAAAD3/wIAAQABAAAAAAD4/wIAAQACAAAAAAD5/wIAAQADAAAAAAD2/wIAAQACAAAAAAAEAAEAAQAGAAEAAAAFAAIAAQACAAMAAAAGAAEAAQADAAMAAAAHAP//AQABAAAAAAAIAP//AQABAAAAAAAJAP//AQACAAAAAAAKAP//AQADAAAAAAAPAAIAAQADAAAAAAAQAAIAAQADAAAAAAARAAIAAQADAAAAAAASAAIAAQADAAAAAAATAAIAAQADAAAAAAAUAAIAAQADAAAAAAAVAPP/AQAAAAIAAAAWAPP/AQAEAAMAAAD8/wEAAQAAAAAAAAACAAAAAQAGAAMAAAAAAPT/AQAFAAIAAAAAAPP/AQAKAAEAAAD///T/AQABAAIAAAD///P/AQAHAAIAAAD+//T/AQAHAAIAAAD+//P/AQAAAAAAAAD9//T/AQACAAAAAAD8//T/AQACAAAAAAD7//T/AQADAAAAAAAKAPX/AQABAAQAAAAKAPT/AQABAAIAAAAJAPX/AQAGAAAAAAAJAPT/AQABAAIAAAAIAPX/AQACAAQAAAAIAPT/AQAHAAIAAAAHAPX/AQACAAQAAAAHAPT/AQAGAAEAAAAGAPX/AQAFAAAAAAAFAPX/AQAHAAAAAAAEAPX/AQADAAQAAAADAPX/AQABAAQAAAADAPT/AQAGAAEAAAACAPX/AQAGAAAAAAACAPT/AQAGAAEAAAABAPX/AQAGAAAAAAABAPT/AQAGAAEAAAAAAPX/AQAGAAAAAAD///X/AQACAAQAAAAQAPX/AQABAAQAAAAQAPT/AQABAAAAAAAPAPX/AQABAAQAAAAPAPT/AQABAAAAAAAOAPX/AQABAAQAAAAOAPT/AQABAAAAAAANAPX/AQABAAQAAAANAPT/AQAFAAIAAAAMAPX/AQABAAQAAAAMAPT/AQADAAIAAAALAPX/AQABAAQAAAALAPT/AQABAAIAAAASAPX/AQACAAQAAAASAPT/AQAGAAEAAAARAPX/AQABAAQAAAARAPT/AQAGAAEAAAAGAPf/AQAEAAQAAAAGAPb/AQAFAAEAAAAFAPf/AQAAAAQAAAAFAPb/AQAIAAEAAAD1//P/AQAFAAEAAAD1//L/AQAKAAAAAAD1//H/AQAFAAEAAAD1//D/AQAEAAMAAAD1/+//AQAKAAEAAAD1/+7/AQAFAAEAAAD1/+3/AQAFAAEAAAD1/+z/AQAFAAEAAAD1/+v/AQAFAAAAAAD0//P/AQAAAAMAAAD0//L/AQAAAAMAAAD0//H/AQAIAAAAAAD0//D/AQAAAAMAAAD0/+//AQAAAAIAAAD0/+7/AQAAAAIAAAD0/+3/AQAAAAIAAAD0/+z/AQAAAAMAAAD0/+v/AQAAAAIAAAAWAPL/AQAEAAMAAAAWAPH/AQAEAAIAAAAWAPD/AQAFAAEAAAAWAO//AQAFAAEAAAAVAPL/AQAIAAEAAAAVAPD/AQAIAAEAAAAVAO//AQAAAAIAAAAWAO7/AQAEAAIAAAAWAO3/AQAEAAIAAAAWAOz/AQAFAAEAAAAWAOv/AQAEAAIAAAAWAOr/AQAEAAAAAAAVAO7/AQAAAAMAAAAVAO3/AQAAAAMAAAAVAOz/AQAAAAMAAAAVAOv/AQAHAAAAAAAVAOr/AQAGAAEAAAD1/+r/AQAGAAEAAAD0/+r/AQAAAAAAAAAUAOv/AQABAAQAAAAUAOr/AQADAAAAAAATAOv/AQACAAQAAAATAOr/AQADAAAAAAASAOv/AQABAAQAAAASAOr/AQACAAAAAAARAOv/AQABAAQAAAARAOr/AQADAAAAAAAQAOv/AQABAAQAAAAQAOr/AQABAAAAAAAPAOv/AQAGAAAAAAAPAOr/AQACAAAAAAAOAOv/AQADAAQAAAAOAOr/AQADAAAAAAANAOv/AQAGAAAAAAANAOr/AQADAAAAAAAMAOv/AQACAAQAAAAMAOr/AQADAAAAAAALAOv/AQABAAQAAAALAOr/AQABAAAAAAAKAOv/AQABAAQAAAAKAOr/AQABAAAAAAAJAOv/AQACAAQAAAAJAOr/AQAGAAEAAAAIAOv/AQADAAQAAAAIAOr/AQAGAAEAAAAHAOv/AQACAAQAAAAHAOr/AQADAAAAAAAGAOv/AQACAAQAAAAGAOr/AQAGAAEAAAAFAOv/AQAGAAAAAAAFAOr/AQAGAAEAAAAEAOv/AQABAAQAAAAEAOr/AQAGAAEAAAADAOv/AQABAAQAAAADAOr/AQABAAAAAAACAOv/AQAGAAAAAAACAOr/AQACAAAAAAABAOv/AQABAAQAAAABAOr/AQACAAAAAAAAAOv/AQADAAQAAAAAAOr/AQADAAAAAAD//+v/AQAGAAAAAAD//+r/AQADAAAAAAD+/+v/AQADAAQAAAD+/+r/AQAGAAEAAAD9/+v/AQABAAQAAAD9/+r/AQADAAAAAAD8/+v/AQACAAQAAAD8/+r/AQABAAAAAAD7/+v/AQABAAQAAAD7/+r/AQACAAAAAAD6/+v/AQADAAQAAAD6/+r/AQABAAAAAAD5/+v/AQABAAQAAAD5/+r/AQABAAAAAAD4/+v/AQACAAQAAAD4/+r/AQADAAAAAAD3/+v/AQABAAQAAAD3/+r/AQABAAAAAAD2/+v/AQAGAAAAAAD2/+r/AQADAAAAAAAAAAAAAQAJAAIAAAAJAP7/AQAIAAIAAAD3/wEAAQAHAAMAAAAIAP7/AQAGAAMAAAAUAAEAAQAIAAMAAAACAAIAAQACAAMAAAAVAP//AQAIAAEAAAAWAP//AQAEAAMAAAAWAAAAAQAFAAEAAAAVAAAAAQAAAAIAAAAVAAEAAQAAAAMAAAAWAAEAAQAKAAEAAAAEAPT/AQABAAAAAAAFAPT/AQACAAAAAAAGAPT/AQADAAAAAAAEAPP/AQAKAAIAAAATAPT/AQABAAAAAAAUAPT/AQABAAAAAAATAPX/AQABAAQAAAAUAPX/AQACAAQAAAALAP//AQAEAAAAAAALAAAAAQAFAAIAAAALAAEAAQABAAIAAAAMAAEAAQAFAAIAAAAMAAAAAQAEAAAAAAAOAAIAAQADAAAAAAAOAAMAAQACAAQAAAAOAAEAAQAGAAMAAAAOAPP/AQAJAAMAAAAJAPP/AQAAAAAAAAAKAPP/AQABAAAAAAALAPP/AQABAAAAAAAMAPP/AQADAAAAAAALAPL/AQAKAAIAAAANAPP/AQAEAAAAAAAVAPH/AQAAAAIAAAD6//T/AQABAAAAAAD5//T/AQACAAAAAAD4//T/AQADAAAAAAD3//T/AQACAAAAAAD2//T/AQABAAAAAAD8//z/AQAFAAIAAAD8//v/AQAEAAAAAAD7//z/AQAHAAAAAAD7//v/AQADAAAAAAAAAP3/AQADAAQAAAD///3/AQABAAQAAAD+//3/AQABAAQAAAD9//3/AQABAAQAAAD8//3/AQABAAQAAAD6//z/AQABAAQAAAD6//v/AQAGAAEAAAD5//z/AQACAAQAAAD5//v/AQAGAAEAAAD4//z/AQAGAAAAAAD4//v/AQABAAAAAAD3//z/AQABAAQAAAD3//v/AQAGAAEAAAD2//z/AQACAAQAAAD2//v/AQAGAAEAAAD+//X/AQADAAQAAAD9//X/AQABAAQAAAD8//X/AQADAAQAAAD7//X/AQADAAQAAAD6//X/AQAGAAAAAAD5//X/AQAGAAAAAAD4//X/AQAFAAAAAAD3//X/AQADAAMAAAD2//X/AQADAAIAAAAAAPL/AQAEAAAAAAD///L/AQAAAAAAAAAFAAAAAQAAAAAAAAAGAP//AQAAAAAAAAD//wEAAQADAAAAAAD+/wEAAQADAAAAAAD9/wEAAQACAAAAAAD4//f/AQAEAAQAAAD4//b/AQAEAAMAAAD3//f/AQAGAAAAAAD3//b/AQADAAMAAAD2//f/AQABAAQAAAD2//b/AQABAAIAAAD7//3/AQAAAAQAAAAAAPz/AQAGAAEAAAD///z/AQADAAAAAAD+//z/AQAGAAEAAAD9//z/AQADAAAAAAACAPz/AQAEAAAAAAABAPz/AQABAAAAAAD3//r/AQAGAAMAAAD8//r/AQAJAAIAAAAAAPv/AQAJAAMAAAACAP3/AQAEAAQAAAABAP3/AQADAAQAAAA=")
-tile_set = SubResource("TileSet_5a7ea")
+tile_set = SubResource("TileSet_x41g8")
+metadata/_edit_lock_ = true
 
-[node name="TileMapLayer2" type="TileMapLayer" parent="Background" unique_id=1948888952]
+[node name="TileMapLayer2" type="TileMapLayer" parent="Background" unique_id=611662653]
 z_index = 3
-tile_map_data = PackedByteArray("AAD1/+v/AQAAAAUAAAD1/+3/AQANAA0AAAD1/+7/AQANAA4AAAD1/+//AQANAA8AAAD1//D/AQANABAAAAD2/+v/AQAAAAUAAAD2/+z/AQAAAAYAAAD2/+3/AQAAAAYAAAD2/+7/AQAAAAcAAAD2/+//AQAAAAYAAAD2//D/AQAEAAgAAAD2//H/AQAEAAkAAAD2//L/AQAEAAoAAAD2//P/AQAEAAsAAAD2//T/AQAAAAYAAAD2//X/AQAAAAcAAAD3/+v/AQABAAUAAAD3/+z/AQABAAYAAAD3/+3/AQABAAYAAAD3/+7/AQABAAcAAAD3/+//AQABAAYAAAD3//D/AQAFAAgAAAD3//H/AQAFAAkAAAD3//L/AQAFAAoAAAD3//P/AQAFAAsAAAD3//T/AQABAAYAAAD3//X/AQABAAcAAAD7//n/AQANAAQAAAAEAPz/AQANAAoAAAA=")
-tile_set = SubResource("TileSet_8j60k")
+position = Vector2(183, 160.00002)
+tile_map_data = PackedByteArray("AAD1/+v/AQAAAAUAAAD1/+3/AQANAA0AAAD1/+7/AQANAA4AAAD1/+//AQANAA8AAAD1//D/AQANABAAAAD2/+v/AQAAAAUAAAD2/+z/AQAAAAYAAAD2/+3/AQAAAAYAAAD2/+7/AQAAAAcAAAD2/+//AQAAAAYAAAD2//D/AQAEAAgAAAD2//H/AQAEAAkAAAD2//L/AQAEAAoAAAD2//P/AQAEAAsAAAD2//T/AQAAAAYAAAD2//X/AQAAAAcAAAD2//b/AQAAAAYAAAD2//f/AQAAAAcAAAD2//j/AQAAAAYAAAD2//n/AQAAAAcAAAD2//r/AQAAAAcAAAD2//v/AQAAAAcAAAD2//z/AQAAAAYAAAD2//3/AQAAAAcAAAD2//7/AQAEAAgAAAD2////AQAEAAkAAAD2/wAAAQAEAAoAAAD2/wEAAQAEAAsAAAD3/+v/AQABAAUAAAD3/+z/AQABAAYAAAD3/+3/AQABAAYAAAD3/+7/AQABAAcAAAD3/+//AQABAAYAAAD3//D/AQAFAAgAAAD3//H/AQAFAAkAAAD3//L/AQAFAAoAAAD3//P/AQAFAAsAAAD3//T/AQABAAYAAAD3//X/AQABAAcAAAD3//b/AQABAAYAAAD3//f/AQABAAcAAAD3//j/AQABAAYAAAD3//n/AQABAAcAAAD3//r/AQABAAcAAAD3//v/AQABAAcAAAD3//z/AQABAAYAAAD3//3/AQABAAcAAAD3//7/AQAFAAgAAAD3////AQAFAAkAAAD3/wAAAQAFAAoAAAD3/wEAAQAFAAsAAAD7//n/AQANAAQAAAAEAPz/AQANAAoAAAA=")
+tile_set = SubResource("TileSet_mn62h")
+metadata/_edit_lock_ = true
 
-[node name="ParallaxBackground" type="Node" parent="Background" unique_id=2133023390]
+[node name="ParallaxBackground" type="Node2D" parent="Background" unique_id=1670876619]
 
-[node name="Sky" type="Parallax2D" parent="Background/ParallaxBackground" unique_id=1373581001]
+[node name="Sky" type="Parallax2D" parent="Background/ParallaxBackground" unique_id=1426905198]
 scroll_scale = Vector2(0.1, 0.1)
-scroll_offset = Vector2(1, -48)
+scroll_offset = Vector2(-184, -29)
 repeat_size = Vector2(384, 0)
 repeat_times = 3
 
-[node name="Background" type="Sprite2D" parent="Background/ParallaxBackground/Sky" unique_id=1279580491]
+[node name="Background" type="Sprite2D" parent="Background/ParallaxBackground/Sky" unique_id=1339259223]
 scale = Vector2(0.8, 0.93014705)
-texture = ExtResource("4_8j1dr")
+texture = ExtResource("5_fv2gx")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="Hills" type="Parallax2D" parent="Background/ParallaxBackground" unique_id=913505606]
+[node name="Hills" type="Parallax2D" parent="Background/ParallaxBackground" unique_id=2044740673]
 scroll_scale = Vector2(0.3, 0.2)
-scroll_offset = Vector2(-18, -33)
+scroll_offset = Vector2(-23, -14)
 repeat_size = Vector2(68, 0)
 repeat_times = 11
 
-[node name="Background" type="Sprite2D" parent="Background/ParallaxBackground/Hills" unique_id=854173623]
+[node name="Background" type="Sprite2D" parent="Background/ParallaxBackground/Hills" unique_id=726951675]
 position = Vector2(0, 20.000004)
 scale = Vector2(0.7083334, 0.85202205)
-texture = ExtResource("5_le8i6")
+texture = ExtResource("6_y8msv")
 centered = false
 region_enabled = true
 region_rect = Rect2(800, 0, 96, 256)
 metadata/_edit_lock_ = true
 
-[node name="Trees" type="Parallax2D" parent="Background/ParallaxBackground" unique_id=1617729710]
+[node name="Trees" type="Parallax2D" parent="Background/ParallaxBackground" unique_id=405348416]
 scroll_scale = Vector2(0.5, 0.3)
-scroll_offset = Vector2(-26, -33)
+scroll_offset = Vector2(-51, -14)
 repeat_size = Vector2(56, 0)
 repeat_times = 13
 
-[node name="Background" type="Sprite2D" parent="Background/ParallaxBackground/Trees" unique_id=1925682777]
+[node name="Background" type="Sprite2D" parent="Background/ParallaxBackground/Trees" unique_id=126972116]
 position = Vector2(0, 91.000015)
 scale = Vector2(0.59375006, 0.5746783)
-texture = ExtResource("5_le8i6")
+texture = ExtResource("6_y8msv")
 centered = false
 region_enabled = true
 region_rect = Rect2(112, 0, 96, 256)
 metadata/_edit_lock_ = true
 
-[node name="Leaves1" type="Parallax2D" parent="Background/ParallaxBackground" unique_id=933564959]
+[node name="Leaves1" type="Parallax2D" parent="Background/ParallaxBackground" unique_id=922352554]
+scroll_offset = Vector2(183, 160.00002)
 
-[node name="TreeAssets" type="Sprite2D" parent="Background/ParallaxBackground/Leaves1" unique_id=1906943610]
+[node name="TreeAssets" type="Sprite2D" parent="Background/ParallaxBackground/Leaves1" unique_id=1006586689]
 position = Vector2(-100, 18)
-texture = ExtResource("3_76g7w")
+texture = ExtResource("4_ju0m4")
 region_enabled = true
 region_rect = Rect2(210, 5, 124, 86)
 metadata/_edit_lock_ = true
 
-[node name="TreeAssets2" type="Sprite2D" parent="Background/ParallaxBackground/Leaves1" unique_id=2134783483]
+[node name="TreeAssets2" type="Sprite2D" parent="Background/ParallaxBackground/Leaves1" unique_id=380750439]
 position = Vector2(317, 12)
-texture = ExtResource("3_76g7w")
+texture = ExtResource("4_ju0m4")
 region_enabled = true
 region_rect = Rect2(210, 5, 124, 86)
 metadata/_edit_lock_ = true
 
-[node name="TreeAssets3" type="Sprite2D" parent="Background/ParallaxBackground/Leaves1" unique_id=80420503]
+[node name="TreeAssets3" type="Sprite2D" parent="Background/ParallaxBackground/Leaves1" unique_id=1712341394]
 position = Vector2(102, 11)
-texture = ExtResource("3_76g7w")
+texture = ExtResource("4_ju0m4")
 region_enabled = true
 region_rect = Rect2(210, 5, 124, 86)
 metadata/_edit_lock_ = true
 
-[node name="TreeAssets5" type="Sprite2D" parent="Background/ParallaxBackground/Leaves1" unique_id=1214410916]
+[node name="TreeAssets5" type="Sprite2D" parent="Background/ParallaxBackground/Leaves1" unique_id=870684905]
 position = Vector2(182, -202)
-texture = ExtResource("3_76g7w")
+texture = ExtResource("4_ju0m4")
 region_enabled = true
 region_rect = Rect2(210, 5, 124, 86)
 metadata/_edit_lock_ = true
 
-[node name="TreeAssets6" type="Sprite2D" parent="Background/ParallaxBackground/Leaves1" unique_id=369867162]
+[node name="TreeAssets6" type="Sprite2D" parent="Background/ParallaxBackground/Leaves1" unique_id=2071895961]
 position = Vector2(-132, -129)
-texture = ExtResource("3_76g7w")
+texture = ExtResource("4_ju0m4")
 region_enabled = true
 region_rect = Rect2(210, 5, 124, 86)
 metadata/_edit_lock_ = true
 
-[node name="TreeAssets7" type="Sprite2D" parent="Background/ParallaxBackground/Leaves1" unique_id=940625656]
+[node name="TreeAssets7" type="Sprite2D" parent="Background/ParallaxBackground/Leaves1" unique_id=1447749426]
 position = Vector2(-117, -308)
-texture = ExtResource("3_76g7w")
+texture = ExtResource("4_ju0m4")
 region_enabled = true
 region_rect = Rect2(210, 5, 124, 86)
 metadata/_edit_lock_ = true
 
-[node name="TreeAssets8" type="Sprite2D" parent="Background/ParallaxBackground/Leaves1" unique_id=613274201]
+[node name="TreeAssets8" type="Sprite2D" parent="Background/ParallaxBackground/Leaves1" unique_id=194365626]
 position = Vector2(309, -309)
-texture = ExtResource("3_76g7w")
+texture = ExtResource("4_ju0m4")
 region_enabled = true
 region_rect = Rect2(210, 5, 124, 86)
 metadata/_edit_lock_ = true
 
-[node name="TreeAssets4" type="Sprite2D" parent="Background/ParallaxBackground/Leaves1" unique_id=1032793763]
+[node name="TreeAssets4" type="Sprite2D" parent="Background/ParallaxBackground/Leaves1" unique_id=273794823]
 position = Vector2(317, -96)
 rotation = 4.404995
-texture = ExtResource("3_76g7w")
+texture = ExtResource("4_ju0m4")
 region_enabled = true
 region_rect = Rect2(210, 5, 124, 86)
 metadata/_edit_lock_ = true
 
-[node name="TreeAssets9" type="Sprite2D" parent="Background/ParallaxBackground/Leaves1" unique_id=316005087]
+[node name="TreeAssets9" type="Sprite2D" parent="Background/ParallaxBackground/Leaves1" unique_id=2016654671]
 position = Vector2(-88, -72)
-texture = ExtResource("3_76g7w")
+texture = ExtResource("4_ju0m4")
 region_enabled = true
 region_rect = Rect2(210, 5, 124, 86)
 metadata/_edit_lock_ = true
 
-[node name="TreeAssets10" type="Sprite2D" parent="Background/ParallaxBackground/Leaves1" unique_id=1126307965]
-position = Vector2(-160, -8)
-texture = ExtResource("3_76g7w")
-region_enabled = true
-region_rect = Rect2(210, 5, 124, 86)
-metadata/_edit_lock_ = true
+[node name="Leaves2" type="Parallax2D" parent="Background/ParallaxBackground" unique_id=1716855039]
+scroll_offset = Vector2(183, 160.00002)
 
-[node name="Leaves2" type="Parallax2D" parent="Background/ParallaxBackground" unique_id=887887119]
-
-[node name="TreeAssets" type="Sprite2D" parent="Background/ParallaxBackground/Leaves2" unique_id=241766635]
+[node name="TreeAssets" type="Sprite2D" parent="Background/ParallaxBackground/Leaves2" unique_id=1736725865]
 position = Vector2(44, -72)
-texture = ExtResource("3_76g7w")
+texture = ExtResource("4_ju0m4")
 region_enabled = true
 region_rect = Rect2(210, 101, 124, 86)
 metadata/_edit_lock_ = true
 
-[node name="TreeAssets2" type="Sprite2D" parent="Background/ParallaxBackground/Leaves2" unique_id=429857043]
+[node name="TreeAssets2" type="Sprite2D" parent="Background/ParallaxBackground/Leaves2" unique_id=953436587]
 position = Vector2(-8, -185)
-texture = ExtResource("3_76g7w")
+texture = ExtResource("4_ju0m4")
 region_enabled = true
 region_rect = Rect2(210, 101, 124, 86)
 metadata/_edit_lock_ = true
 
-[node name="TreeAssets3" type="Sprite2D" parent="Background/ParallaxBackground/Leaves2" unique_id=891936154]
+[node name="TreeAssets3" type="Sprite2D" parent="Background/ParallaxBackground/Leaves2" unique_id=750588088]
 position = Vector2(221, -144)
-texture = ExtResource("3_76g7w")
+texture = ExtResource("4_ju0m4")
 region_enabled = true
 region_rect = Rect2(210, 101, 124, 86)
 metadata/_edit_lock_ = true
 
-[node name="TreeAssets4" type="Sprite2D" parent="Background/ParallaxBackground/Leaves2" unique_id=1250403138]
+[node name="TreeAssets4" type="Sprite2D" parent="Background/ParallaxBackground/Leaves2" unique_id=866103535]
 position = Vector2(82, -318)
-texture = ExtResource("3_76g7w")
+texture = ExtResource("4_ju0m4")
 region_enabled = true
 region_rect = Rect2(210, 101, 124, 86)
 metadata/_edit_lock_ = true
 
-[node name="Leaves3" type="Parallax2D" parent="Background/ParallaxBackground" unique_id=1236418169]
-z_index = 5
-scroll_offset = Vector2(53, 5)
+[node name="Leaves3" type="Parallax2D" parent="Background/ParallaxBackground" unique_id=1288068071]
+z_index = 16
+scroll_offset = Vector2(236, 165.00002)
 
-[node name="TreeAssets" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=1231579681]
-position = Vector2(-200.22879, -162.51631)
-rotation = -0.20498084
-scale = Vector2(1.0626789, 0.97159326)
-texture = ExtResource("3_76g7w")
+[node name="TreeAssets" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=1846126484]
+position = Vector2(-180, -173.00002)
+rotation = -0.35115147
+texture = ExtResource("4_ju0m4")
 region_enabled = true
 region_rect = Rect2(210, 293, 124, 86)
 metadata/_edit_lock_ = true
 
-[node name="TreeAssets2" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=1021087963]
+[node name="TreeAssets2" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=1872706308]
 position = Vector2(-32, 48)
-texture = ExtResource("3_76g7w")
+texture = ExtResource("4_ju0m4")
 region_enabled = true
 region_rect = Rect2(210, 293, 124, 86)
 metadata/_edit_lock_ = true
 
-[node name="TreeAssets3" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=85611767]
+[node name="TreeAssets3" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=971989810]
 position = Vector2(106, 15)
 rotation = 0.12497834
 scale = Vector2(1, 1.0116279)
-texture = ExtResource("3_76g7w")
+texture = ExtResource("4_ju0m4")
 region_enabled = true
 region_rect = Rect2(210, 293, 124, 86)
 metadata/_edit_lock_ = true
 
-[node name="TreeAssets5" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=271359968]
+[node name="TreeAssets5" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=1978545941]
 position = Vector2(211, -157)
-texture = ExtResource("3_76g7w")
+texture = ExtResource("4_ju0m4")
 region_enabled = true
 region_rect = Rect2(210, 293, 124, 86)
 metadata/_edit_lock_ = true
 
-[node name="TreeAssets6" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=1390262092]
-position = Vector2(5, -167)
+[node name="TreeAssets6" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=1546193630]
+position = Vector2(12, -165.00003)
 scale = Vector2(1.217742, 0.89534885)
-texture = ExtResource("3_76g7w")
+texture = ExtResource("4_ju0m4")
 region_enabled = true
 region_rect = Rect2(210, 293, 124, 86)
 metadata/_edit_lock_ = true
 
-[node name="TreeAssets9" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=1836046793]
-position = Vector2(-61, -181.00002)
+[node name="TreeAssets9" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=1911705903]
+position = Vector2(-60, -181.00003)
 scale = Vector2(0.7903226, 0.6686046)
-texture = ExtResource("3_76g7w")
+texture = ExtResource("4_ju0m4")
 region_enabled = true
 region_rect = Rect2(210, 293, 124, 86)
 metadata/_edit_lock_ = true
 
-[node name="TreeAssets7" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=1978990819]
+[node name="TreeAssets7" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=1394158774]
 position = Vector2(107, -173)
-texture = ExtResource("3_76g7w")
+texture = ExtResource("4_ju0m4")
 region_enabled = true
 region_rect = Rect2(210, 293, 124, 86)
 metadata/_edit_lock_ = true
 
-[node name="TreeAssets10" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=1091620429]
+[node name="TreeAssets10" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=110605263]
 position = Vector2(70, -331)
-texture = ExtResource("3_76g7w")
+texture = ExtResource("4_ju0m4")
 region_enabled = true
 region_rect = Rect2(210, 293, 124, 86)
 metadata/_edit_lock_ = true
 
-[node name="TreeAssets11" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=1847747868]
+[node name="TreeAssets11" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=674312100]
 position = Vector2(-5, -343)
-texture = ExtResource("3_76g7w")
+texture = ExtResource("4_ju0m4")
 region_enabled = true
 region_rect = Rect2(210, 293, 124, 86)
 metadata/_edit_lock_ = true
 
-[node name="TreeAssets8" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=1952250917]
+[node name="TreeAssets8" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=488281213]
 position = Vector2(-217.00002, -326)
 rotation = 1.1024075
 scale = Vector2(0.9162393, 0.8891574)
-texture = ExtResource("3_76g7w")
+texture = ExtResource("4_ju0m4")
 region_enabled = true
 region_rect = Rect2(210, 293, 124, 86)
 metadata/_edit_lock_ = true
 
-[node name="TreeAssets4" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=164859957]
+[node name="TreeAssets4" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=526589908]
 position = Vector2(203, -77)
-texture = ExtResource("3_76g7w")
+texture = ExtResource("4_ju0m4")
 region_enabled = true
 region_rect = Rect2(210, 293, 124, 86)
 metadata/_edit_lock_ = true
 
-[node name="TreeAssets12" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=492562504]
+[node name="TreeAssets12" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=1502615451]
 position = Vector2(221, -309)
-texture = ExtResource("3_76g7w")
+texture = ExtResource("4_ju0m4")
 region_enabled = true
 region_rect = Rect2(210, 293, 124, 86)
 metadata/_edit_lock_ = true
 
-[node name="TreeAssets13" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=543456669]
+[node name="TreeAssets13" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=2132690704]
 position = Vector2(291, -101)
-texture = ExtResource("3_76g7w")
+texture = ExtResource("4_ju0m4")
 region_enabled = true
 region_rect = Rect2(210, 293, 124, 86)
 metadata/_edit_lock_ = true
 
-[node name="TreeAssets14" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=856598504]
+[node name="TreeAssets14" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=335147731]
 position = Vector2(-168, -360)
-texture = ExtResource("3_76g7w")
+texture = ExtResource("4_ju0m4")
 region_enabled = true
 region_rect = Rect2(210, 293, 124, 86)
 metadata/_edit_lock_ = true
 
-[node name="TreeAssets15" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=1808367261]
+[node name="TreeAssets15" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=2112110996]
 position = Vector2(289, -323)
-texture = ExtResource("3_76g7w")
+texture = ExtResource("4_ju0m4")
 region_enabled = true
 region_rect = Rect2(210, 293, 124, 86)
 metadata/_edit_lock_ = true
 
-[node name="TreeAssets16" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=1590071268]
+[node name="TreeAssets16" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=1951022386]
 position = Vector2(160, -362)
-texture = ExtResource("3_76g7w")
+texture = ExtResource("4_ju0m4")
 region_enabled = true
 region_rect = Rect2(210, 293, 124, 86)
 metadata/_edit_lock_ = true
 
-[node name="TreeAssets17" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=1089028479]
+[node name="TreeAssets17" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=1062722946]
 position = Vector2(-237, -69)
-texture = ExtResource("3_76g7w")
+texture = ExtResource("4_ju0m4")
 region_enabled = true
 region_rect = Rect2(210, 293, 124, 86)
 metadata/_edit_lock_ = true
 
-[node name="TreeAssets18" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=182686363]
-position = Vector2(-93, -173)
+[node name="TreeAssets18" type="Sprite2D" parent="Background/ParallaxBackground/Leaves3" unique_id=628456484]
+position = Vector2(-100, -173.00003)
 rotation = -0.18048255
-texture = ExtResource("3_76g7w")
+texture = ExtResource("4_ju0m4")
 region_enabled = true
 region_rect = Rect2(210, 293, 124, 86)
 
-[node name="Interact" type="Node" parent="." unique_id=1327184662]
+[node name="Save" parent="Background" unique_id=265974315 instance=ExtResource("7_btgeq")]
+position = Vector2(86.999985, 80)
 
-[node name="Map" type="Node" parent="Interact" unique_id=72046388]
-
-[node name="MineGate" parent="Interact/Map" unique_id=388448989 instance=ExtResource("4_ff2fp")]
-position = Vector2(143, -127)
-path = "uid://dmbvi2jkctndw"
-entry_point = "BottomEntry"
-
-[node name="MineGate2" parent="Interact/Map" unique_id=1862591523 instance=ExtResource("4_ff2fp")]
-position = Vector2(144, -349)
-path = "uid://dmbvi2jkctndw"
-entry_point = "TopEntry"
-
-[node name="BottomEntry" type="Marker2D" parent="Interact/Map" unique_id=1349569179]
-position = Vector2(272, 8)
-script = ExtResource("5_p1gi4")
-direction = -1
-metadata/_custom_type_script = "uid://cv1ovs7tewfd6"
-
-[node name="TopEntry" type="Marker2D" parent="Interact/Map" unique_id=1814656990]
-position = Vector2(272, -216)
-script = ExtResource("5_p1gi4")
-direction = -1
-metadata/_custom_type_script = "uid://cv1ovs7tewfd6"
-
-[node name="Boos" type="Area2D" parent="Interact/Map" unique_id=212775443]
-script = ExtResource("9_45x66")
-path = "uid://csm3p0cwsnjvk"
-entry_point = "Entry"
-metadata/_custom_type_script = "uid://c2ekateg2p0b2"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interact/Map/Boos" unique_id=1478969855]
-position = Vector2(-144, -216)
-shape = SubResource("CapsuleShape2D_6lhp7")
-
-[node name="PlotInteractable" type="Node" parent="Interact" unique_id=1241905867]
-
-[node name="PlotPeople" type="Area2D" parent="Interact/PlotInteractable" unique_id=1491123934]
-position = Vector2(-96, -208)
-rotation = -3.1415927
-scale = Vector2(1.1599975, -1)
-script = ExtResource("10_5gy5a")
-metadata/_custom_type_script = "uid://rghok5m7iw6f"
-
-[node name="Sprite2D" type="Sprite2D" parent="Interact/PlotInteractable/PlotPeople" unique_id=141496978]
-texture = ExtResource("15_5gy5a")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interact/PlotInteractable/PlotPeople" unique_id=199880508]
-shape = SubResource("CapsuleShape2D_45x66")
-
-[node name="Plot" parent="Interact/PlotInteractable" unique_id=1237512264 instance=ExtResource("9_tcspa")]
-position = Vector2(120, -23.999996)
-plot_point = 1
-
-[node name="Plot2" parent="Interact/PlotInteractable" unique_id=1754296138 instance=ExtResource("9_tcspa")]
-position = Vector2(-32, -72)
-plot_point = 2
-
-[node name="Plot3" parent="Interact/PlotInteractable" unique_id=961262374 instance=ExtResource("9_tcspa")]
-position = Vector2(256, -200)
-plot_point = 5
-
-[node name="Boar" type="Node" parent="." unique_id=760439640]
-
-[node name="Boar1" parent="Boar" unique_id=893280259 instance=ExtResource("6_265bt")]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background" unique_id=1208824236]
 z_index = 5
-position = Vector2(0, -88)
+position = Vector2(79, 164.00002)
+sprite_frames = SubResource("SpriteFrames_gfrd3")
+autoplay = "default"
 
-[node name="Boar2" parent="Boar" unique_id=1517129695 instance=ExtResource("6_265bt")]
-z_index = 5
-position = Vector2(32, 0)
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=502507326]
+libraries/ = SubResource("AnimationLibrary_btgeq")
+autoplay = &"enter"
 
-[node name="Boar3" parent="Boar" unique_id=715617000 instance=ExtResource("6_265bt")]
-z_index = 5
-position = Vector2(96, -208)
-
-[node name="Save" parent="." unique_id=265974315 instance=ExtResource("9_q57gj")]
-position = Vector2(-101.00001, -80.00001)
-
-[node name="PlotPeople2" parent="." unique_id=545325389 instance=ExtResource("14_abkfq")]
-visible = false
-
-[node name="Plot" type="CanvasLayer" parent="." unique_id=1058915915]
-visible = false
-
-[node name="MarginContainer" type="MarginContainer" parent="Plot" unique_id=910030917]
-custom_minimum_size = Vector2(200, 120)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("13_tcspa")
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Plot/MarginContainer" unique_id=508878348]
-layout_mode = 2
-texture = ExtResource("12_ju6b6")
-region_rect = Rect2(107, 59, 26, 26)
-patch_margin_left = 10
-patch_margin_top = 10
-patch_margin_right = 10
-patch_margin_bottom = 10
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Plot/MarginContainer/NinePatchRect" unique_id=1210329441]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="Plot/MarginContainer/NinePatchRect/VBoxContainer" unique_id=2079915636]
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 2
-size_flags_vertical = 4
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Plot/MarginContainer/NinePatchRect/VBoxContainer/MarginContainer" unique_id=1248986372]
-layout_mode = 2
-texture = ExtResource("12_ju6b6")
-region_rect = Rect2(293, 5, 38, 38)
-patch_margin_left = 8
-patch_margin_top = 8
-patch_margin_right = 8
-patch_margin_bottom = 8
-
-[node name="MarginContainer" type="MarginContainer" parent="Plot/MarginContainer/NinePatchRect/VBoxContainer/MarginContainer/NinePatchRect" unique_id=1814745934]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="Plot/MarginContainer/NinePatchRect/VBoxContainer/MarginContainer/NinePatchRect/MarginContainer" unique_id=2147215415]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-theme_override_font_sizes/font_size = 14
-text = "森林深处似乎发生了某些变化，公会委托我前去探查，希望不会出现意外！"
-horizontal_alignment = 1
-autowrap_mode = 2
-
-[node name="MarginContainer2" type="MarginContainer" parent="Plot/MarginContainer/NinePatchRect/VBoxContainer" unique_id=2056639210]
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="QuitMenu" type="Button" parent="Plot/MarginContainer/NinePatchRect/VBoxContainer/MarginContainer2" unique_id=249451927]
-process_mode = 3
-z_index = 21
-layout_mode = 2
-size_flags_horizontal = 4
-theme = ExtResource("13_tcspa")
-theme_override_font_sizes/font_size = 20
-text = "关闭"
-
-[connection signal="pressed" from="Plot/MarginContainer/NinePatchRect/VBoxContainer/MarginContainer2/QuitMenu" to="." method="_on_quit_menu_pressed"]
+[connection signal="pressed" from="MarginContainer2/HBoxContainer/VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="MarginContainer2/HBoxContainer/VBoxContainer/LoadGame" to="." method="_on_load_game_pressed"]
+[connection signal="pressed" from="MarginContainer2/HBoxContainer/VBoxContainer/BaseSet" to="." method="_on_base_set_pressed"]
+[connection signal="pressed" from="MarginContainer2/HBoxContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="value_changed" from="MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/LightSlider" to="." method="_on_light_slider_value_changed"]
+[connection signal="pressed" from="MarginContainer3/VBoxContainer/MarginContainer3/HBoxContainer/ReturnMenu" to="." method="_on_return_menu_pressed"]

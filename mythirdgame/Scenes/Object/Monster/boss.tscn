@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://2pix764yik66"]
 
 [ext_resource type="PackedScene" uid="uid://d3qssqg0bgv4p" path="res://Scenes/Object/Monster/enemy.tscn" id="1_2qgeg"]
-[ext_resource type="Script" uid="uid://q6xwalcu6qys" path="res://Scripts/Object/Monster/boos.gd" id="2_qjnwt"]
+[ext_resource type="Script" uid="uid://q6xwalcu6qys" path="res://Scripts/Object/Monster/boss.gd" id="2_qjnwt"]
 [ext_resource type="PackedScene" uid="uid://c58x6lsnbvuc8" path="res://Scenes/Object/Monster/bullet2.tscn" id="3_7xr8y"]
 [ext_resource type="Texture2D" uid="uid://d1tpafd4bwc6" path="res://Game Assets/Slime/slime_purple.png" id="4_0ytax"]
 [ext_resource type="Texture2D" uid="uid://ddgblv3uyhr8o" path="res://Game Assets/Slime/未标题-1.png" id="5_qjnwt"]

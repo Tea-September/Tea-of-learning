@@ -115,7 +115,7 @@ func load_game() -> void:
 
 # 创建存档
 func new_game() -> void:
-	change_scene("res://Scenes/Surroundings/Map/world.tscn", {
+	change_scene("res://Scenes/Surroundings/Map/forst.tscn", {
 		init = func ():
 			world_states = {}
 			player_stats.from_dict(default_player_stats)
@@ -123,7 +123,7 @@ func new_game() -> void:
 
 # 回答标题场景
 func back_to_title() -> void:
-	change_scene("res://Scenes/Surroundings/Ui/title.tscn")
+	change_scene("res://Scenes/Surroundings/Map/title.tscn")
 
 # 判断是否拥有存档
 func has_save() -> bool:

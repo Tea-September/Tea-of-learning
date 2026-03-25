@@ -1,5 +1,4 @@
 extends Control
-
 @export var stats: Stats
 # 健康条
 @onready var texture_progress_bar: TextureProgressBar = $PlayerMenuMargin/VBoxContainer/HBoxContainer/StateProgressBar/Health/TextureProgressBar
@@ -7,7 +6,6 @@ extends Control
 @onready var texture_progress_bar2: TextureProgressBar = $PlayerMenuMargin/VBoxContainer/HBoxContainer/StateProgressBar/Health/TextureProgressBar/TextureProgressBar
 # 体力条
 @onready var texture_progress_bar3: TextureProgressBar = $PlayerMenuMargin/VBoxContainer/HBoxContainer/StateProgressBar/Energy/TextureProgressBar
-
 func _ready() -> void:
 	if not stats:
 		stats = Game.player_stats
@@ -17,7 +15,6 @@ func _ready() -> void:
 	# 初始化该函数
 	update_health(true)
 	update_energy()
-
 func update_health(skip_anim = false) -> void:
 	# 存放当前血量百分比、0~1
 	var percentage = stats.health * 1.0 / stats.max_health
@@ -28,7 +25,6 @@ func update_health(skip_anim = false) -> void:
 	else:
 		# 补间动画，将底部血条进度条数值的减少，以动画的形式进行变化
 		create_tween().tween_property(texture_progress_bar2, "value", percentage, 0.3)
-	
 func update_energy() -> void:
 	# 存放当前体力百分比、0~1
 	var percentage = stats.energy * 1.0 / stats.max_energy

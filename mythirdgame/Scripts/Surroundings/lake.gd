@@ -5,15 +5,14 @@ extends World
 
 func _ready() -> void:
 	# camera_2d为设置极限坐标
-	camera_2d.limit_right = 744
-	camera_2d.limit_left = -688
+	camera_2d.limit_right = 742
+	camera_2d.limit_left = -686
 	# 将相机立即设置到设定位置
 	camera_2d.reset_smoothing()
 	camera_2d.force_update_scroll()
 	# 背景音乐
 	if bgm:
 		SoundManager.play_bgm(bgm)
-
 func to_dict() -> Dictionary:
 	var enemies_alive = []
 	# 遍历enemies中所有敌人的状态
@@ -38,4 +37,4 @@ func from_dict(dict: Dictionary) -> void:
 
 func _on_boos_died() -> void:
 	await get_tree().create_timer(1).timeout
-	Game.change_scene("res://Scenes/Surroundings/Ui/game_end.tscn")
+	Game.change_scene("res://Scenes/Surroundings/Map/game_end.tscn")

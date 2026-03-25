@@ -219,3 +219,5 @@ shape = SubResource("CircleShape2D_kbyrv")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1084377251]
 libraries/ = SubResource("AnimationLibrary_l7r21")
+
+[connection signal="area_entered" from="Graphic/HitBoxBullet" to="." method="_on_hit_box_bullet_area_entered"]

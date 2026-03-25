@@ -3,21 +3,18 @@ extends Node
 
 signal health_changed
 signal  energy_changed
-
 # 生命值，默认3
 @export var max_health : int = 3
-
 @onready var health : int = max_health:
 	set(T):
+		# T为小于0，返回0，大于max_health，返回max_health
 		T = clampi(T, 0, max_health)
 		if health == T:
 			return
 		health = T
-		health_changed.emit()
-
+		health_changed.emit() # health发生改变，发出信号
 # 能量值，默认5
 @export var max_energy : int = 5
-
 @onready var energy : int = max_energy:
 	set(T):
 		T = clampi(T, 0, max_energy)
@@ -25,10 +22,8 @@ signal  energy_changed
 			return
 		energy = T
 		energy_changed.emit()
-
-# 攻击力，默认1
-@export var max_attack : int = 10
-
+# 攻击力，默认5
+@export var max_attack : int = 5
 @onready var attack : int = max_attack:
 	set(T):
 		T = clampi(T, 0, max_attack)

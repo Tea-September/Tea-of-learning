@@ -91,14 +91,14 @@ func _transition_state(Player: CharacterBody2D, from: State, to: State) -> void:
 			Player.stats.attack = 1
 			Player.animated.play("Attack1")
 			SoundManager.play_sfx("Attack1")
-		State.ATTACK_2:
+		State.ATTACK_2: # 与ATTACK_1类似
 			# 攻击框开启
 			$"../../../Graphics/HitBox/Attack2".disabled = false
 			# 伤害
 			Player.stats.attack = 2
 			Player.animated.play("Attack2")
 			SoundManager.play_sfx("Attack2")
-		State.ATTACK_3:
+		State.ATTACK_3: # 与ATTACK_1类似
 			# 攻击框开启
 			$"../../../Graphics/HitBox/Attack3".disabled = false
 			# 伤害

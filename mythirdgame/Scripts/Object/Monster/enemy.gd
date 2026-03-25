@@ -15,11 +15,9 @@ enum Direction {
 		graphic.scale.x = -direction
 @export var max_speed: float = 180
 @export var acceleration: float = 2000
-
 @onready var graphic: Node2D = $Graphic
 @onready var animated: AnimatedSprite2D = $Graphic/AnimatedSprite2D
 @onready var stats: Stats = $Stats
-
 var default_gravity = ProjectSettings.get("physics/2d/default_gravity") as float
 
 func move(speed: float, delta: float) -> void:

@@ -1,15 +1,8 @@
 extends Enemy
 
 enum State {
-	IDLE,
-	WALK,
-	ATTACK1,
-	ATTACK2,
-	ATTACK3,
-	HURT,
-	DIE
+	IDLE, WALK, ATTACK1, ATTACK2, ATTACK3, HURT, DIE
 }
-
 # 伤害对象
 @onready var pending_damage: Damage
 # 发现敌人
@@ -22,8 +15,6 @@ enum State {
 @onready var bullet_timer: Timer = $BulletTimer
 # 伤害范围对象
 @onready var hit_box: HitBox = $Graphic/HitBox
-# 史莱姆动画
-@onready var animated_slime: AnimatedSprite2D = $Graphic/AnimatedSprite2D
 # 血条头像
 @onready var head: MarginContainer = $Control/PlayerMenuMargin/VBoxContainer/HBoxContainer/Head
 # 血条进度条
@@ -34,22 +25,23 @@ enum State {
 @export var bullet_scene : PackedScene
 # 无敌
 @onready var hurt_box: HurtBox = $Graphic/HurtBox
-# 三段
+# 狂暴阶段
 @onready var attack3: bool = true
-
-# 击飞距离
-const REPEL_AMOUNT: float = 520.0
-
 # 可以攻击
 const CAN_ATTACK1 = [
 	State.IDLE, State.ATTACK1, State.WALK
 ]
-
 # 状态攻击
 const ATTACK_STATE = [
 	State.ATTACK2, State.ATTACK3
 ]
 
+# 初始化
+func _ready() -> void:
+	# 隐藏头像，复用玩家的血量条
+	head.visible = false
+	energy.visible = false
+	direction *= -1.0
 # 判断是否发现敌人
 func can_find_player() -> bool:
 	# 没有发现敌人
@@ -57,43 +49,50 @@ func can_find_player() -> bool:
 		return false
 	# 发现敌人，并且是player
 	return find.get_collider() is player
+# 施展伤害的对象
+func _on_hurt_box_hurt(hitbox: HitBox) -> void:
+	pending_damage = Damage.new()
+	pending_damage.amount = hitbox.owner.stats.attack
+	pending_damage.source = hitbox.owner
+# 用于超过玩家后，回头
+func _on_timer_timeout() -> void:
+	# 未发现墙壁，转向
+	if not wall.is_colliding():
+		direction *= -1.0
+# 无敌计时器
+func _on_invincible_timer_timeout() -> void:
+	# 关闭受伤检测
+	hurt_box.monitoring = true
+# 子弹发射计时器
+func _on_bullet_timer_timeout() -> void:
+	# 生成子弹节点
+	var bullet_node = bullet_scene.instantiate()
+	# 设置正确的子弹位置
+	bullet_node.position = position + Vector2(-10, 40)
+	# 将其添加进场景树
+	get_tree().current_scene.add_child(bullet_node)
 
-# 初始化
-func _ready() -> void:
-	# 隐藏头像
-	head.visible = false
-	energy.visible = false
-	direction *= -1.0
-
-# 状态执行函数
+# 状态执行函数，调用移动函数
 func tick_physics(state: State, delta: float) -> void:
 	match state:
-		State.IDLE:
-			move(0.0, delta)
 		State.WALK:
 			move(max_speed / -3, delta)
-		State.ATTACK1:
-			move(0.0, delta)
 		State.ATTACK2:
 			move(1000.0 / -3, delta)
 		State.ATTACK3:
 			move(400.0 / -3, delta)
-		State.HURT:
-			move(0.0, delta)
-		State.DIE:
-			move(0.0, delta)
 
 # 状态判断函数
 func get_next_state(state: State) -> State:
-	# 狂暴模式
+	# 狂暴模式，进入ATTACK3态
 	if stats.health <= 10 and attack3:
 		return State.ATTACK3
-	# 死亡判断
+	# 死亡判断，进入DIE状态
 	if stats.health <= 0:
 		return State.DIE
 	# 当处于非HURT状态时，才会进入HURT状态
 	if pending_damage:
-		# 可以攻击状态、不处于无敌时间
+		# 可以被攻击状态、不处于无敌时间，进入受伤状态
 		if state in CAN_ATTACK1 and $InvincibleTimer.time_left == 0 and state not in ATTACK_STATE:
 			return State.HURT
 	match state:
@@ -101,7 +100,7 @@ func get_next_state(state: State) -> State:
 			# 发现敌人，进入攻击模式
 			if can_find_player():
 				return State.ATTACK1
-			# 等待一会后进入散步
+			# 等待一会后进入散步状态
 			if idle_timer.is_stopped():
 				return State.WALK
 		State.WALK:
@@ -112,6 +111,7 @@ func get_next_state(state: State) -> State:
 			if wall.is_colliding():
 				return State.IDLE
 		State.ATTACK1:
+			# 一段攻击计时器结束，进入二段攻击状态
 			if $Attack1TimerLeft.time_left == 0:
 				return State.ATTACK2
 			# 没有发现敌人，进入散步状态
@@ -124,7 +124,7 @@ func get_next_state(state: State) -> State:
 					stats.health -= pending_damage.amount
 				# 获取方向，伤害来源的位置，指向自己（史莱姆）的位置
 				var dir = pending_damage.source.global_position.direction_to(global_position)
-				# 面对玩家
+				# 改变direction的值，面对玩家，小于0朝左，大于0朝右
 				if dir.x < 0:
 					# 面朝左
 					direction = Direction.LEFT
@@ -133,13 +133,13 @@ func get_next_state(state: State) -> State:
 					direction = Direction.RIGHT
 				# 清空对象
 				pending_damage = null
-			# 前方是墙壁，回头
+			# 前方是墙壁，回头，direction * -1
 			if wall.is_colliding():
 				direction *= -1.0
-			# 发现敌人，准备回头
+			# 发现敌人，准备回头，超过敌人后两秒回头，使用工具类_on_timer_timeout()
 			if can_find_player():
 				$Timer.start()
-			# 结束攻击
+			# 结束二段攻击，进入等待状态
 			if $Attack2TimerLeft.time_left == 0:
 				return State.IDLE
 		State.ATTACK3:
@@ -149,7 +149,7 @@ func get_next_state(state: State) -> State:
 					stats.health -= pending_damage.amount
 				# 获取方向，伤害来源的位置，指向自己（史莱姆）的位置
 				var dir = pending_damage.source.global_position.direction_to(global_position)
-				# 面对玩家
+				# 改变direction的值，面对玩家，小于0朝左，大于0朝右
 				if dir.x < 0:
 					# 面朝左
 					direction = Direction.LEFT
@@ -158,22 +158,22 @@ func get_next_state(state: State) -> State:
 					direction = Direction.RIGHT
 				# 清空对象
 				pending_damage = null
-			# 前方是墙壁，回头
+			# 前方是墙壁，回头，direction * -1
 			if wall.is_colliding():
 				direction *= -1.0
-			# 发现敌人
+			# 发现敌人，准备回头，超过敌人后两秒回头，使用工具类_on_timer_timeout()
 			if can_find_player():
 				$Timer.start()
-			# 结束攻击
+			# 结束三段攻击，进入等待状态
 			if $Attack3TimerLeft.time_left == 0:
 				return State.IDLE
 		State.HURT:
-			# 受击动画结束后，进入攻击状态
-			if not animated_slime.is_playing():
+			# 受击动画结束后，进入一段攻击状态
+			if not animated.is_playing():
 				return State.ATTACK1
 	return state
 
-# 动画播放函数，只有在状态发送改变时调用
+# 动画播放函数，只有在状态发生改变时调用
 func transition_state(_from: State, to: State) -> void:
 	match to:
 		State.IDLE:
@@ -182,7 +182,7 @@ func transition_state(_from: State, to: State) -> void:
 			# 等待一会
 			idle_timer.start()
 			animated.play("Idle")
-			# 前方是墙壁，回头
+			# 前方是墙壁，回头，direction * -1
 			if wall.is_colliding():
 				direction *= -1.0
 		State.WALK:
@@ -218,7 +218,7 @@ func transition_state(_from: State, to: State) -> void:
 				if pending_damage and pending_damage.source and is_instance_valid(pending_damage.source):
 					# 获取方向，伤害来源的位置，指向自己（史莱姆）的位置
 					var dir = pending_damage.source.global_position.direction_to(global_position)
-					# 面对玩家
+					# 改变direction的值，面对玩家，小于0朝左，大于0朝右
 					if dir.x < 0:
 						# 面朝左
 						direction = Direction.LEFT
@@ -240,29 +240,3 @@ func transition_state(_from: State, to: State) -> void:
 			$AnimationPlayer.play("Die")
 			$"../AnimationPlayer".play("Game_ending")
 			await get_tree().create_timer(3).timeout
-			
-
-# 施展伤害的对象
-func _on_hurt_box_hurt(hitbox: HitBox) -> void:
-	pending_damage = Damage.new()
-	pending_damage.amount = hitbox.owner.stats.attack
-	pending_damage.source = hitbox.owner
-
-func _on_timer_timeout() -> void:
-	# 前方是墙壁，回头
-	if not wall.is_colliding():
-		direction *= -1.0
-
-
-func _on_invincible_timer_timeout() -> void:
-	# 无敌
-	hurt_box.monitoring = true
-
-# 子弹发射
-func _on_bullet_timer_timeout() -> void:
-	# 生成子弹节点
-	var bullet_node = bullet_scene.instantiate()
-	# 设置正确的子弹位置
-	bullet_node.position = position + Vector2(-10, 40)
-	# 将其添加进场景树
-	get_tree().current_scene.add_child(bullet_node)

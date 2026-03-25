@@ -10,5 +10,3 @@ func _init() -> void:
 func _on_area_entered(hurtbox: HurtBox) -> void:
 	hit.emit(hurtbox)
 	hurtbox.hurt.emit(self)
-	if self.is_in_group("bullet"):
-		$"../../AnimationPlayer".play("BulletDie")
