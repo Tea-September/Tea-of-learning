@@ -35,6 +35,8 @@ func judge_player_direction() -> int:
 		return -1   # 玩家在当前节点右边（x相等时也返回1，可微调）
 
 func _physics_process(delta: float) -> void:
+	if $Graphics/RayCast2D.is_colliding():
+		self.queue_free()
 	# 通过更改全局坐标，来实现子弹的移动
 	position += Vector2(bullet_speed, 0) * delta * direction
 	

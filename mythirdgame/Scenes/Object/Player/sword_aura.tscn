@@ -76,6 +76,7 @@ _data = {
 }
 
 [node name="SwordAura" type="CharacterBody2D" unique_id=1832615018]
+z_index = 10
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_7op8k")
@@ -96,6 +97,10 @@ metadata/_custom_type_script = "uid://cwj582pp1fwkb"
 [node name="Attack" type="CollisionShape2D" parent="Graphics/HitBox" unique_id=1254216284]
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_js4gl")
+
+[node name="RayCast2D" type="RayCast2D" parent="Graphics" unique_id=1165943631]
+position = Vector2(-8, 8)
+target_position = Vector2(8, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=777209586]
 position = Vector2(0.75, 0.25)
